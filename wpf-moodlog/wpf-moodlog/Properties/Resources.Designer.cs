@@ -61,6 +61,15 @@ namespace wpf_moodlog.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string emoticons {
+            get {
+                return ResourceManager.GetString("emoticons", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 2-faced
         ///2-faces
         ///abnormal
@@ -174,6 +183,20 @@ namespace wpf_moodlog.Properties {
         internal static string positive_words_no_emval {
             get {
                 return ResourceManager.GetString("positive_words_no_emval", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ,
+        ///!
+        ///?
+        ///;
+        ///:
+        ///.
+        /// </summary>
+        internal static string punctuations {
+            get {
+                return ResourceManager.GetString("punctuations", resourceCulture);
             }
         }
     }

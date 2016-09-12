@@ -13,5 +13,6 @@ namespace wpf_moodlog
     /// </summary>
     public partial class App : Application
     {
+
     }
 }
