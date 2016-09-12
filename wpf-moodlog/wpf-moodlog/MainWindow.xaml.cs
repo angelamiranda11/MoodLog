@@ -25,10 +25,13 @@ namespace wpf_moodlog
     {
         public MainWindow()
         {
+            String[] bagOfWords;
             try
             {
                 //sample for loading resources for BoW Algo
+                String sampleIn = Console.ReadLine();
                 string bow_algo_reference = wpf_moodlog.Properties.Resources.bow_algorithm_reference;
+                bagOfWords = bow_algo_reference.Split(' ');
                 string punctuations = wpf_moodlog.Properties.Resources.punctuations;
                 string emoticons = wpf_moodlog.Properties.Resources.emoticons;
                 InitializeComponent();
