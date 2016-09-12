@@ -21,7 +21,7 @@ namespace wpf_moodlog
     public partial class MainWindow : Window
     {
         public MainWindow()
-        {
+        { 
             InitializeComponent();
         }
     }

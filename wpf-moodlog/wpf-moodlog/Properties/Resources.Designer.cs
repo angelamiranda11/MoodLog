@@ -8,10 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace wpf_moodlog.Properties
-{
-
-
+namespace wpf_moodlog.Properties {
+    using System;
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -22,49 +22,158 @@ namespace wpf_moodlog.Properties
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources
-    {
-
+    internal class Resources {
+        
         private static global::System.Resources.ResourceManager resourceMan;
-
+        
         private static global::System.Globalization.CultureInfo resourceCulture;
-
+        
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources()
-        {
+        internal Resources() {
         }
-
+        
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager
-        {
-            get
-            {
-                if ((resourceMan == null))
-                {
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("wpf_moodlog.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
             }
         }
-
+        
         /// <summary>
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture
-        {
-            get
-            {
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
                 return resourceCulture;
             }
-            set
-            {
+            set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 2-faced
+        ///2-faces
+        ///abnormal
+        ///abolish
+        ///abominable
+        ///abominably
+        ///abominate
+        ///abomination
+        ///abort
+        ///aborted
+        ///aborts
+        ///abrade
+        ///abrasive
+        ///abrupt
+        ///abruptly
+        ///abscond
+        ///absence
+        ///absent-minded
+        ///absentee
+        ///absurd
+        ///absurdity
+        ///absurdly
+        ///absurdness
+        ///abuse
+        ///abused
+        ///abuses
+        ///abusive
+        ///abysmal
+        ///abysmally
+        ///abyss
+        ///accidental
+        ///accost
+        ///accursed
+        ///accusation
+        ///accusations
+        ///accuse
+        ///accuses
+        ///accusing
+        ///accusingly
+        ///acerbate
+        ///acerbic
+        ///acerbically
+        ///ache
+        ///ached
+        ///aches
+        ///achey
+        ///aching
+        ///acrid
+        ///acridly
+        ///acridness
+        ///acrimonious
+        ///acrimoniously
+        ///acrimony [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string negative_words_no_emval {
+            get {
+                return ResourceManager.GetString("negative_words_no_emval", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to a+
+        ///abound
+        ///abounds
+        ///abundance
+        ///abundant
+        ///accessable
+        ///accessible
+        ///acclaim
+        ///acclaimed
+        ///acclamation
+        ///accolade
+        ///accolades
+        ///accommodative
+        ///accomodative
+        ///accomplish
+        ///accomplished
+        ///accomplishment
+        ///accomplishments
+        ///accurate
+        ///accurately
+        ///achievable
+        ///achievement
+        ///achievements
+        ///achievible
+        ///acumen
+        ///adaptable
+        ///adaptive
+        ///adequate
+        ///adjustable
+        ///admirable
+        ///admirably
+        ///admiration
+        ///admire
+        ///admirer
+        ///admiring
+        ///admiringly
+        ///adorable
+        ///adore
+        ///adored
+        ///adorer
+        ///adoring
+        ///adoringly
+        ///adroit
+        ///adroitly
+        ///adulate
+        ///adulation
+        ///adulatory
+        ///advan [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string positive_words_no_emval {
+            get {
+                return ResourceManager.GetString("positive_words_no_emval", resourceCulture);
             }
         }
     }
