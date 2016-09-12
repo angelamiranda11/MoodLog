@@ -23,16 +23,15 @@ namespace wpf_moodlog
     /// </summary>
     public partial class MainWindow : Window
     {
-        private Assembly _assembly= Assembly.GetExecutingAssembly();
-        private StreamReader _textStreamReader, _textStreamReader2;
-
         public MainWindow()
         {
             try
             {
+                //sample for loading resources for BoW Algo
                 string positiveBank = wpf_moodlog.Properties.Resources.positive_words_no_emval;
                 string negativeBank = wpf_moodlog.Properties.Resources.negative_words_no_emval;
-
+                string punctuations = wpf_moodlog.Properties.Resources.punctuations;
+                string emoticons = wpf_moodlog.Properties.Resources.emoticons;
                 
             }
             catch(Exception e)
