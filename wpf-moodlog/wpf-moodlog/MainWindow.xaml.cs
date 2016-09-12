@@ -28,11 +28,10 @@ namespace wpf_moodlog
             try
             {
                 //sample for loading resources for BoW Algo
-                string positiveBank = wpf_moodlog.Properties.Resources.positive_words_no_emval;
-                string negativeBank = wpf_moodlog.Properties.Resources.negative_words_no_emval;
+                string bow_algo_reference = wpf_moodlog.Properties.Resources.bow_algorithm_reference;
                 string punctuations = wpf_moodlog.Properties.Resources.punctuations;
                 string emoticons = wpf_moodlog.Properties.Resources.emoticons;
-                
+                InitializeComponent();
             }
             catch(Exception e)
             {

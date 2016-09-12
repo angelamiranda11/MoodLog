@@ -61,76 +61,6 @@ namespace wpf_moodlog.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        internal static string emoticons {
-            get {
-                return ResourceManager.GetString("emoticons", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 2-faced
-        ///2-faces
-        ///abnormal
-        ///abolish
-        ///abominable
-        ///abominably
-        ///abominate
-        ///abomination
-        ///abort
-        ///aborted
-        ///aborts
-        ///abrade
-        ///abrasive
-        ///abrupt
-        ///abruptly
-        ///abscond
-        ///absence
-        ///absent-minded
-        ///absentee
-        ///absurd
-        ///absurdity
-        ///absurdly
-        ///absurdness
-        ///abuse
-        ///abused
-        ///abuses
-        ///abusive
-        ///abysmal
-        ///abysmally
-        ///abyss
-        ///accidental
-        ///accost
-        ///accursed
-        ///accusation
-        ///accusations
-        ///accuse
-        ///accuses
-        ///accusing
-        ///accusingly
-        ///acerbate
-        ///acerbic
-        ///acerbically
-        ///ache
-        ///ached
-        ///aches
-        ///achey
-        ///aching
-        ///acrid
-        ///acridly
-        ///acridness
-        ///acrimonious
-        ///acrimoniously
-        ///acrimony [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string negative_words_no_emval {
-            get {
-                return ResourceManager.GetString("negative_words_no_emval", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to a+
         ///abound
         ///abounds
@@ -180,9 +110,18 @@ namespace wpf_moodlog.Properties {
         ///adulatory
         ///advan [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string positive_words_no_emval {
+        internal static string bow_algorithm_reference {
             get {
-                return ResourceManager.GetString("positive_words_no_emval", resourceCulture);
+                return ResourceManager.GetString("bow_algorithm_reference", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string emoticons {
+            get {
+                return ResourceManager.GetString("emoticons", resourceCulture);
             }
         }
         
