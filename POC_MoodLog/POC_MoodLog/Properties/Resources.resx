@@ -127,7 +127,13 @@
   <data name="ngrams1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ngrams1.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
+  <data name="python" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\python.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="SampleIn" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SampleIn.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="word_segmentation" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\word-segmentation.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

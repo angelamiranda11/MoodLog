@@ -213,11 +213,31 @@ namespace POC_MoodLog.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I’ve been searching the Internet for a tool, package, or API that performs word segmentation. I’ve seen lots but I was faced with problems. I couldn’t run code written in C/C#. I don’t know how to properly install and use the package or API. I couldn’t make sense of the code. But I don’t have enough time to learn how. After hours of searching the Internet, I thought I finally found the right tool with python’s ‘wordsegment’ package. I can run python code, the tool is easy to use, and I can understand the co [rest of string was truncated]&quot;;.
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] python {
+            get {
+                object obj = ResourceManager.GetObject("python", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I am very happy. I am happy. I am very gwapo. :) #LoveWins.
         /// </summary>
         internal static string SampleIn {
             get {
                 return ResourceManager.GetString("SampleIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] word_segmentation {
+            get {
+                object obj = ResourceManager.GetObject("word_segmentation", resourceCulture);
+                return ((byte[])(obj));
             }
         }
     }

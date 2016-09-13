@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -113,6 +114,13 @@ namespace POC_MoodLog
             Console.WriteLine(outHash);
             Console.WriteLine("\nPress any key to exit");
             Console.ReadKey();
+        }
+
+        private static void runpy()
+        {
+            ProcessStartInfo start = new ProcessStartInfo();
+            object ob = POC_MoodLog.Properties.Resources.ResourceManager.GetObject("python");
+            byte[] myRes = (byte[])ob;
         }
 
         public static IEnumerable<string> makeBigrams(string text)
