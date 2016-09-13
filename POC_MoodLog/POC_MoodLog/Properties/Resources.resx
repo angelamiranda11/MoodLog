@@ -124,7 +124,10 @@
   <data name="emoticons" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\emoticons.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
-  <data name="punctuations" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\punctuations.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  <data name="ngrams1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ngrams1.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="SampleIn" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SampleIn.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
 </root>

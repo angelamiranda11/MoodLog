@@ -117,7 +117,8 @@ namespace POC_MoodLog.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to :)
+        ///:(.
         /// </summary>
         internal static string emoticons {
             get {
@@ -126,16 +127,97 @@ namespace POC_MoodLog.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ,
-        ///!
-        ///?
-        ///;
-        ///:
-        ///.
+        ///   Looks up a localized string similar to and
+        ///best
+        ///can
+        ///cannot
+        ///can&apos;t
+        ///could
+        ///couldn&apos;t
+        ///did
+        ///didn&apos;t
+        ///do
+        ///does
+        ///doesn&apos;t
+        ///don&apos;t
+        ///either
+        ///every
+        ///for
+        ///from
+        ///have
+        ///haven&apos;t
+        ///he&apos;s
+        ///is
+        ///isn&apos;t
+        ///its
+        ///just
+        ///like
+        ///lots
+        ///many
+        ///maybe
+        ///might
+        ///more
+        ///must
+        ///my
+        ///never
+        ///no
+        ///none
+        ///not
+        ///nothing
+        ///of
+        ///on
+        ///once
+        ///one
+        ///only
+        ///or
+        ///overly
+        ///perfectly
+        ///perhaps
+        ///probably
+        ///seemed
+        ///seems
+        ///she&apos;s
+        ///should
+        ///simply
+        ///so
+        ///some
+        ///somehow
+        ///something
+        ///soon
+        ///start
+        ///takes
+        ///tell
+        ///thank
+        ///that&apos;s
+        ///the
+        ///their
+        ///them
+        ///then
+        ///there
+        ///there&apos;s
+        ///they
+        ///they&apos;re
+        ///this
+        ///those
+        ///to
+        ///too
+        ///totally
+        ///tried
+        ///truly
+        ///t [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string punctuations {
+        internal static string ngrams1 {
             get {
-                return ResourceManager.GetString("punctuations", resourceCulture);
+                return ResourceManager.GetString("ngrams1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I’ve been searching the Internet for a tool, package, or API that performs word segmentation. I’ve seen lots but I was faced with problems. I couldn’t run code written in C/C#. I don’t know how to properly install and use the package or API. I couldn’t make sense of the code. But I don’t have enough time to learn how. After hours of searching the Internet, I thought I finally found the right tool with python’s ‘wordsegment’ package. I can run python code, the tool is easy to use, and I can understand the co [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string SampleIn {
+            get {
+                return ResourceManager.GetString("SampleIn", resourceCulture);
             }
         }
     }
