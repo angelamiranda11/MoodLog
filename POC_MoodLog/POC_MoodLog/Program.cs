@@ -5,6 +5,10 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using IronPython.Hosting;
+using Microsoft.Scripting.Hosting;
+using Microsoft.Scripting;
+using System.IO;
 
 namespace POC_MoodLog
 {
@@ -36,7 +40,8 @@ namespace POC_MoodLog
             {
                 if (item.IndexOf('#')==0)
                 {
-                    hashtagCollection.Add(item);
+                    String segmented = doSegment(item);
+                    hashtagCollection.Add(segmented);
                     input = input.Remove(input.IndexOf(item[0]), item.Length);
                 }
                 else if (emoticons.Contains(item))
@@ -116,12 +121,23 @@ namespace POC_MoodLog
             Console.ReadKey();
         }
 
-        private static void runpy()
+        private static String doSegment(String item)
         {
-            ProcessStartInfo start = new ProcessStartInfo();
-            object ob = POC_MoodLog.Properties.Resources.ResourceManager.GetObject("python");
-            byte[] myRes = (byte[])ob;
+            try
+            {
+                var engine = Python.CreateRuntime();
+                dynamic test = engine.UseFile("word-segmentation.py");
+                test.segmenter(item);
+                return null;
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
+
         }
+
 
         public static IEnumerable<string> makeBigrams(string text)
         {

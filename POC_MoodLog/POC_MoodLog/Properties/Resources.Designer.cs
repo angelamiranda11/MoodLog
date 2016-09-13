@@ -213,31 +213,11 @@ namespace POC_MoodLog.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] python {
-            get {
-                object obj = ResourceManager.GetObject("python", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to I am very happy. I am happy. I am very gwapo. :) #LoveWins.
         /// </summary>
         internal static string SampleIn {
             get {
                 return ResourceManager.GetString("SampleIn", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] word_segmentation {
-            get {
-                object obj = ResourceManager.GetObject("word_segmentation", resourceCulture);
-                return ((byte[])(obj));
             }
         }
     }
