@@ -70,8 +70,36 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MoodLogEntriesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MoodLogLoginPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MoodLogSignUpPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MoodLogStatsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MoodLogEntriesPage.xaml.cs">
+      <DependentUpon>MoodLogEntriesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MoodLogLoginPage.xaml.cs">
+      <DependentUpon>MoodLogLoginPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MoodLogSignUpPage.xaml.cs">
+      <DependentUpon>MoodLogSignUpPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MoodLogStatsPage.xaml.cs">
+      <DependentUpon>MoodLogStatsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
