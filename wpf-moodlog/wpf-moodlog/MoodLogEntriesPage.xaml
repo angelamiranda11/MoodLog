@@ -34,14 +34,28 @@
                 <StackPanel HorizontalAlignment="Left" Height="100" Margin="25,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="500">
                     <TextBox x:Name="textBox" Height="55" TextWrapping="Wrap" Text="How are you feeling today?" TextChanged="textBox_TextChanged"/>
                     <StackPanel Height="30" Orientation="Horizontal">
-                        <Button x:Name="button4" Content="Button"/>
-                        <Button x:Name="button5" Content="Button" Width="75"/>
-                        <Button x:Name="button6" Content="Button" Width="75"/>
-                        <Button x:Name="button7" Content="Button" Width="75"/>
-                        <Button x:Name="button8" Content="Button" Width="75"/>
-                        <Button x:Name="button9" Content="Button" Width="75"/>
-                        <Button x:Name="button10" Content="Button" Width="75"/>
-                        <Button x:Name="button11" Content="Button" Width="75"/>
+                        <Button x:Name="button4">
+                            <TextBlock>&#x0023;</TextBlock>
+                        </Button>
+                        <Button x:Name="button5">
+                            <Image Source="Images/EmoticonJoy.png"/>
+                        </Button>
+                        <Button x:Name="button6">
+                            <Image Source="Images/EmoticonSadness.png"/>
+                        </Button>
+                        <Button x:Name="button7">
+                            <Image Source="Images/EmoticonDisgust.png"/>
+                        </Button>
+                        <Button x:Name="button8">
+                            <Image Source="Images/EmoticonAnger.png"/>
+                        </Button>
+                        <Button x:Name="button9">
+                            <Image Source="Images/EmoticonSurprised.png"/>
+                        </Button>
+                        <Button x:Name="button10">
+                            <Image Source="Images/EmoticonFear.png"/>
+                        </Button>
+                        <Button x:Name="button11" Content="ADD ENTRY"/>
                     </StackPanel>
                 </StackPanel>
             </Grid>
