@@ -20,12 +20,12 @@
             <RowDefinition Height="21*"/>
             <RowDefinition Height="23*"/>
         </Grid.RowDefinitions>
-        <Image x:Name="image" HorizontalAlignment="Left" Height="100" Margin="102,10,0,0" VerticalAlignment="Top" Width="100" Source="Images/mood.png"/>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="92,3,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Row="2"/>
-        <TextBox x:Name="textBox_Copy" HorizontalAlignment="Left" Height="23" Margin="92,1,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Row="3"/>
-        <Button x:Name="button" Content="Login" HorizontalAlignment="Left" Margin="92,3,0,0" VerticalAlignment="Top" Width="120" Height="25" FontFamily="Calibri" BorderThickness="0" Grid.Row="4"/>
-        <Label x:Name="label" Content="Don't have an account yet?" HorizontalAlignment="Left" Margin="81,0,0,0" VerticalAlignment="Top" Height="26" Width="161" FontFamily="Calibri" Grid.Row="7" Grid.RowSpan="2"/>
-        <Button x:Name="button1" Content="Sign Up" HorizontalAlignment="Left" Margin="92,1,0,0" VerticalAlignment="Top" Width="120" Click="button1_Click" Grid.Row="8" Height="22"/>
+        <Image x:Name="image" HorizontalAlignment="Left" Height="100" Margin="103,10,0,0" VerticalAlignment="Top" Width="100" Source="Images/MoodLog.png"/>
+        <TextBox x:Name="textBox" TextWrapping="Wrap" Grid.Row="2"/>
+        <TextBox x:Name="textBox_Copy" TextWrapping="Wrap" Grid.Row="3"/>
+        <Button x:Name="button" Content="Login" FontFamily="Calibri" BorderThickness="0" Grid.Row="4"/>
+        <Label x:Name="label" Content="Don't have an account yet?" FontFamily="Calibri" Grid.Row="7" Grid.RowSpan="2"/>
+        <Button x:Name="button1" Content="Sign Up" Click="button1_Click" Grid.Row="8"/>
 
     </Grid>
 </Page>
