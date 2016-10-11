@@ -39,22 +39,22 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Grid HorizontalAlignment="Left" Height="100" Margin="10,22,0,0" VerticalAlignment="Top" Width="100" Background="#FFFDFBFB" Grid.RowSpan="2">
-                <Button x:Name="button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="24" Background="#FF9D53B3" BorderThickness="0">
+                <Button x:Name="profileButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="24" Background="#FF9D53B3" BorderThickness="0">
                     <StackPanel>
                         <Image Source="Images/fa-profile.png" Height="20"/>
                     </StackPanel>
                 </Button>
-                <Button x:Name="button_Copy"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="24" Background="#FF9C7EFD" BorderThickness="0" Margin="0,24,0,0">
+                <Button x:Name="entriesButton"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="24" Background="#FF9C7EFD" BorderThickness="0" Margin="0,24,0,0">
                     <StackPanel>
                         <Image Source="Images/fa-entries.png" Height="20"/>
                     </StackPanel>
                 </Button>
-                <Button x:Name="button_Copy1"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="24" Background="#FFD6B9ED" BorderThickness="0" Margin="0,48,0,0">
+                <Button x:Name="statsButton"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="24" Background="#FFD6B9ED" BorderThickness="0" Margin="0,48,0,0">
                     <StackPanel>
                         <Image Source="Images/fa-line-chart.png" Height="20"/>
                     </StackPanel>
                 </Button>
-                <Button x:Name="button_Copy2"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="24" Background="#FFA3E88A" BorderThickness="0" Margin="0,72,0,0" Click="button_Copy2_Click">
+                <Button x:Name="logoutButton"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="24" Background="#FFA3E88A" BorderThickness="0" Margin="0,72,0,0" Click="button_Copy2_Click">
                     <StackPanel>
                         <Image Source="Images/fa-logout.png" Height="20"/>
                     </StackPanel>
