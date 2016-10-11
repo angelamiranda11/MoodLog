@@ -9,6 +9,8 @@ using IronPython.Hosting;
 using Microsoft.Scripting.Hosting;
 using Microsoft.Scripting;
 using System.IO;
+using System.Text.RegularExpressions;
+using System.Reflection;
 
 namespace POC_MoodLog
 {
@@ -16,13 +18,14 @@ namespace POC_MoodLog
     {
         static ArrayList bowreference = new ArrayList();
         static ArrayList emoticons = new ArrayList();
-        static char[] punctuations= { '.', '!', '?', ';' };
+        static char[] punctuations= { '.', '!', '?', ';'};
         static ArrayList prepNInter = new ArrayList();
         static ArrayList sentences = new ArrayList();
         static ArrayList ngramCollection = new ArrayList();
         static ArrayList emoticonCollection = new ArrayList();
         static ArrayList hashtagCollection = new ArrayList();
         static ArrayList finalBoW = new ArrayList();
+        static int[] emotionInt = { 0, 0, 0, 0, 0, 0 };
         private static string outStr;
         private static string outEmo;
         private static string outHash;
@@ -41,6 +44,11 @@ namespace POC_MoodLog
                 if (item.IndexOf('#')==0)
                 {
                     String segmented = doSegment(item);
+                    char[] arr = segmented.ToCharArray();
+
+                    arr = Array.FindAll<char>(arr, (c => (char.IsLetterOrDigit(c)
+                                                      || char.IsWhiteSpace(c))));
+                    segmented = new string(arr);
                     hashtagCollection.Add(segmented);
                     input = input.Remove(input.IndexOf(item[0]), item.Length);
                 }
@@ -97,11 +105,85 @@ namespace POC_MoodLog
 
             }
 
-            Console.Write("\nStrings remaining: ");
-            foreach (var item in finalBoW)
+            ArrayList tempa = new ArrayList();
+            ArrayList Q1 = new ArrayList();
+            ArrayList Q2 = new ArrayList();
+            ArrayList Q3 = new ArrayList();
+            ArrayList Q4 = new ArrayList();
+            tempa.AddRange(POC_MoodLog.Properties.Resources.anewReference.Split('\n'));
+            String outQ1 = "";
+            String outQ2 = "";
+            String outQ3 = "";
+            String outQ4 = "";
+            foreach (string temp2 in tempa)
             {
-                outStr += item + " ";
+                try
+                {
+                    double x = Convert.ToDouble(temp2.Split(',')[1]);
+                    double y = Convert.ToDouble(temp2.Split(',')[2]);
+                    if (x < 5 && x >= 0)
+                    {
+                        if (y < 5 && y >= 0)
+                        {
+                            Q3.Add(temp2.Split(',')[0]);
+                        }
+                        else if (y > 5 && y <= 10)
+                        {
+                            Q2.Add(temp2.Split(',')[0]);
+                        }
+                    }
+                    else if (x > 5 && x <= 10 || x==5)
+                    {
+                        if (y < 5 && y >= 0 || x == 5)
+                        {
+                            Q4.Add(temp2.Split(',')[0]);
+                        }
+                        else if (y > 5 && y <= 10)
+                        {
+                            Q1.Add(temp2.Split(',')[0]);
+                        }
+                    }
+                }
+                catch(IndexOutOfRangeException ie)
+                {
+                    continue;
+                }
+                
             }
+
+            Console.Write("\nStrings in Q1 for Happy & Surprise ("+Q1.Count+"): ");
+            foreach (var item in Q1)
+            {
+                outQ1 += item + " ";
+            }
+            Console.WriteLine(outQ1);
+
+            Console.Write("\nStrings in Q2 for Anger, Fear & Disgust (" + Q2.Count + "): ");
+            foreach (var item in Q2)
+            {
+                outQ2 += item + " ";
+            }
+            Console.WriteLine(outQ2);
+
+            Console.Write("\nStrings in Q3 for Sadness (" + Q3.Count + "): ");
+            foreach (var item in Q3)
+            {
+                outQ3 += item + " ";
+            }
+            Console.WriteLine(outQ3);
+
+            Console.Write("\nStrings in Q4 for Neutral (" + Q4.Count + "): ");
+            foreach (var item in Q4)
+            {
+                outQ4 += item + " ";
+            }
+            Console.WriteLine(outQ4);
+
+            /*Console.Write("\nStrings remaining: ");
+           foreach (var item in finalBoW)
+           {
+               outStr += item + " ";
+           }
             Console.WriteLine(outStr);
 
             Console.Write("\nEmoticons: ");
@@ -117,6 +199,8 @@ namespace POC_MoodLog
                 outHash += item + " ";
             }
             Console.WriteLine(outHash);
+            */
+
             Console.WriteLine("\nPress any key to exit");
             Console.ReadKey();
         }
@@ -125,10 +209,13 @@ namespace POC_MoodLog
         {
             try
             {
-                var engine = Python.CreateRuntime();
-                dynamic test = engine.UseFile("word-segmentation.py");
-                test.segmenter(item);
-                return null;
+                var engine = Python.CreateEngine();
+                ScriptSource source = engine.CreateScriptSourceFromString(POC_MoodLog.Properties.Resources.wordseg);
+                CompiledCode compiledCode = source.Compile();
+                ScriptScope scope = engine.CreateScope();
+                scope.SetVariable("x", item);
+                String result = compiledCode.Execute<String>(scope);
+                return result;
             }
             catch(Exception e)
             {
