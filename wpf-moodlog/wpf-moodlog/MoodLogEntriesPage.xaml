@@ -13,8 +13,39 @@
             <RowDefinition/>
             <RowDefinition Height="15*"/>
         </Grid.RowDefinitions>
-        <Label x:Name="label" Content="Oct 30" HorizontalAlignment="Left" Margin="420,10,0,0" VerticalAlignment="Top"/>
-        <Grid HorizontalAlignment="Left" Height="580" Margin="10,11,0,0" Grid.Row="1" VerticalAlignment="Top" Width="940"/>
+        <Grid HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="960" Background="#FFD6B9ED"/>
+        <Grid HorizontalAlignment="Left" Height="600" Grid.Row="1" VerticalAlignment="Top" Width="960">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="17*"/>
+                <ColumnDefinition Width="79*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="170" Margin="0,35,0,0">
+                <Button x:Name="button" Content="PROFILE"/>
+                <Button x:Name="button1" Content="ENTRIES"/>
+                <Button x:Name="button2" Content="STATS"/>
+                <Button x:Name="button3" Content="LOGOUT"/>
+            </StackPanel>
+            <Grid HorizontalAlignment="Left" Height="415" VerticalAlignment="Top" Width="535" Grid.Column="1" Margin="10,10,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="4*"/>
+                    <RowDefinition Height="26*"/>
+                    <RowDefinition Height="53*"/>
+                </Grid.RowDefinitions>
+                <StackPanel HorizontalAlignment="Left" Height="100" Margin="25,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="500">
+                    <TextBox x:Name="textBox" Height="55" TextWrapping="Wrap" Text="How are you feeling today?" TextChanged="textBox_TextChanged"/>
+                    <StackPanel Height="30" Orientation="Horizontal">
+                        <Button x:Name="button4" Content="Button"/>
+                        <Button x:Name="button5" Content="Button" Width="75"/>
+                        <Button x:Name="button6" Content="Button" Width="75"/>
+                        <Button x:Name="button7" Content="Button" Width="75"/>
+                        <Button x:Name="button8" Content="Button" Width="75"/>
+                        <Button x:Name="button9" Content="Button" Width="75"/>
+                        <Button x:Name="button10" Content="Button" Width="75"/>
+                        <Button x:Name="button11" Content="Button" Width="75"/>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </Grid>
 
     </Grid>
 </Page>
