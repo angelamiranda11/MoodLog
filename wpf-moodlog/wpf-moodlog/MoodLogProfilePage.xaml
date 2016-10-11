@@ -12,58 +12,34 @@
         <Grid HorizontalAlignment="Left" Height="33" VerticalAlignment="Top" Width="300" Background="#FFD6B9ED">
             <Label x:Name="label" Content="Oct 30" HorizontalAlignment="Left" Margin="133,8,0,0" VerticalAlignment="Top" FontFamily="Calibri"/>
         </Grid>
-        <Grid HorizontalAlignment="Left" Height="267" Margin="0,33,0,0" VerticalAlignment="Top" Width="300" Background="#FFF3EBEB">
+        <Grid HorizontalAlignment="Left" Height="267" Margin="0,33,0,0" VerticalAlignment="Top" Width="300" Background="#FFFFFBFB">
             <Grid HorizontalAlignment="Left" Height="100" Margin="10,22,0,0" VerticalAlignment="Top" Width="100" Background="#FFFDFBFB">
-                <Button x:Name="button" Content="   PROFILE" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="24" Background="#FF9D53B3" BorderThickness="0"/>
-                <Button x:Name="button_Copy" Content="   ENTRIES" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="24" Background="#FF9C7EFD" BorderThickness="0" Margin="0,24,0,0"/>
-                <Button x:Name="button_Copy1" Content="STATS" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="24" Background="#FFD6B9ED" BorderThickness="0" Margin="0,48,0,0"/>
-                <Button x:Name="button_Copy2" Content="     LOGOUT" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="24" Background="#FFA3E88A" BorderThickness="0" Margin="0,72,0,0" Click="button_Copy2_Click"/>
+                <Button x:Name="button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="24" Background="#FF9D53B3" BorderThickness="0">
+                    <StackPanel>
+                        <Image Source="Images/fa-profile.png" Height="20"/>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="button_Copy"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="24" Background="#FF9C7EFD" BorderThickness="0" Margin="0,24,0,0">
+                    <StackPanel>
+                        <Image Source="Images/fa-entries.png" Height="20"/>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="button_Copy1"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="24" Background="#FFD6B9ED" BorderThickness="0" Margin="0,48,0,0">
+                    <StackPanel>
+                        <Image Source="Images/fa-line-chart.png" Height="20"/>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="button_Copy2"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="24" Background="#FFA3E88A" BorderThickness="0" Margin="0,72,0,0" Click="button_Copy2_Click">
+                    <StackPanel>
+                        <Image Source="Images/fa-logout.png" Height="20"/>
+                    </StackPanel>
+                </Button>
             </Grid>
-            <StackPanel HorizontalAlignment="Left" Height="100" Margin="10,22,0,0" VerticalAlignment="Top" Width="100"/>
-            <Image x:Name="image" Margin="20,52,254,201" RenderTransformOrigin="1.077,0.636" Source="fa-entries.png">
-                <Image.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform Angle="0.261"/>
-                        <TranslateTransform X="-0.01" Y="0.071"/>
-                    </TransformGroup>
-                </Image.RenderTransform>
-            </Image>
-            <Image x:Name="image_Copy" Margin="22,76,252,177" RenderTransformOrigin="1.077,0.636" Source="fa-line-chart.png">
-                <Image.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform Angle="0.261"/>
-                        <TranslateTransform X="-0.01" Y="0.071"/>
-                    </TransformGroup>
-                </Image.RenderTransform>
-            </Image>
-            <Image x:Name="image_Copy1" Margin="21,99,253,154" RenderTransformOrigin="1.077,0.636" Source="fa-logout.png">
-                <Image.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform Angle="0.261"/>
-                        <TranslateTransform X="-0.01" Y="0.071"/>
-                    </TransformGroup>
-                </Image.RenderTransform>
-            </Image>
-            <Image x:Name="image_Copy2" Margin="22,27,252,226" RenderTransformOrigin="1.077,0.636" Source="fa-profile.png">
-                <Image.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform Angle="0.261"/>
-                        <TranslateTransform X="-0.01" Y="0.071"/>
-                    </TransformGroup>
-                </Image.RenderTransform>
-            </Image>
+            
         </Grid>
         <Grid HorizontalAlignment="Left" Height="126" Margin="123,59,0,0" VerticalAlignment="Top" Width="155" Background="#FFFBF7F7">
             <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="126" VerticalAlignment="Top" Width="153">
-                <Image x:Name="image1" Margin="43,9,42,71" Source="fa-profile.png"/>
+                <Image x:Name="image1" Margin="43,9,42,71" Source="Images/fa-profile.png"/>
             </Border>
         </Grid>
 
