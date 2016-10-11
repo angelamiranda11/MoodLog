@@ -154,6 +154,16 @@
   <ItemGroup>
     <Resource Include="Images\MoodLog.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\fa-line-chart.png" />
+    <Resource Include="Images\fa-logout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\fa-entries.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\fa-profile.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
