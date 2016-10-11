@@ -39,7 +39,7 @@
         <Button x:Name="button" Content="Button" Grid.Row="9" Grid.Column="1" Margin="0,0.333,0,0"/>
         <Image x:Name="image" Grid.Column="1" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100" Source="Images/MoodLog.png"/>
         <StackPanel Grid.Column="1" HorizontalAlignment="Left" Height="25" Margin="10,10.333,0,0" Grid.Row="7" VerticalAlignment="Top" Width="330" Orientation="Horizontal">
-            <RadioButton x:Name="radioButton" Content="Male"/>
+            <RadioButton x:Name="radioButton" Content="Male" IsChecked="True"/>
             <RadioButton x:Name="radioButton1" Content="Female"/>
         </StackPanel>
 
