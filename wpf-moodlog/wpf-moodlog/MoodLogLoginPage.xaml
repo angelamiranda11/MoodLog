@@ -9,6 +9,10 @@
       Title="MoodLogLoginPage">
 
     <Grid>
-        
+        <Image x:Name="image" HorizontalAlignment="Left" Height="100" Margin="102,10,0,0" VerticalAlignment="Top" Width="100" Source="Images/mood.png"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="92,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="textBox_Copy" HorizontalAlignment="Left" Height="23" Margin="92,168,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="92,216,0,0" VerticalAlignment="Top" Width="120" Height="25"/>
+
     </Grid>
 </Page>

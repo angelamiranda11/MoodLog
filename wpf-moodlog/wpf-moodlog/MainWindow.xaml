@@ -6,4 +6,5 @@
         xmlns:local="clr-namespace:wpf_moodlog"
         mc:Ignorable="d"
         Title="MoodLog" Height="640" Width="960" Icon="Images/MoodLog.ico">
+        <Frame Source="MoodLogLoginPage.xaml"/>
 </Window>
