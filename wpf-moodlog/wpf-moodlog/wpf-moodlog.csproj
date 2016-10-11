@@ -58,6 +58,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="MoodLogProfilePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -66,12 +70,43 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="MoodLogProfilePage.xaml.cs">
+      <DependentUpon>MoodLogProfilePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MoodLogEntriesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MoodLogLoginPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MoodLogSignUpPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MoodLogStatsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MoodLogEntriesPage.xaml.cs">
+      <DependentUpon>MoodLogEntriesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MoodLogLoginPage.xaml.cs">
+      <DependentUpon>MoodLogLoginPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MoodLogSignUpPage.xaml.cs">
+      <DependentUpon>MoodLogSignUpPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MoodLogStatsPage.xaml.cs">
+      <DependentUpon>MoodLogStatsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -112,6 +147,30 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\bow-algorithm-reference.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\MoodLog.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\MoodLog.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\fa-line-chart.png" />
+    <Resource Include="Images\fa-logout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\fa-entries.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\fa-profile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\EmoticonAnger.png" />
+    <Resource Include="Images\EmoticonDisgust.png" />
+    <Resource Include="Images\EmoticonFear.png" />
+    <Resource Include="Images\EmoticonJoy.png" />
+    <Resource Include="Images\EmoticonSadness.png" />
+    <Resource Include="Images\EmoticonSurprised.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
