@@ -24,5 +24,10 @@ namespace wpf_moodlog.Images
         {
             InitializeComponent();
         }
+
+        private void button_Copy2_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

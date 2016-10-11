@@ -155,12 +155,14 @@
     <Resource Include="Images\MoodLog.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\EmoticonAnger.png" />
-    <Resource Include="Images\EmoticonDisgust.png" />
-    <Resource Include="Images\EmoticonFear.png" />
-    <Resource Include="Images\EmoticonJoy.png" />
-    <Resource Include="Images\EmoticonSadness.png" />
-    <Resource Include="Images\EmoticonSurprised.png" />
+    <Resource Include="Images\fa-line-chart.png" />
+    <Resource Include="Images\fa-logout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\fa-entries.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\fa-profile.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
