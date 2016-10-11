@@ -27,7 +27,9 @@ namespace wpf_moodlog
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-
+            // View Sign Up page
+            MoodLogSignUpPage moodLogSignUpPage = new MoodLogSignUpPage();
+            this.NavigationService.Navigate(moodLogSignUpPage);
         }
     }
 }
