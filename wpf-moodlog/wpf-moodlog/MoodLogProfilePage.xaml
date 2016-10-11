@@ -9,11 +9,36 @@
       Title="MoodLogProfilePage">
 
     <Grid>
-        <Grid HorizontalAlignment="Left" Height="33" VerticalAlignment="Top" Width="300" Background="#FFD6B9ED">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="109"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32"/>
+            <RowDefinition Height="268"/>
+            <RowDefinition Height="0*"/>
+        </Grid.RowDefinitions>
+        <Grid HorizontalAlignment="Left" Height="33" VerticalAlignment="Top" Width="300" Background="#FFD6B9ED" Grid.RowSpan="2" Grid.ColumnSpan="2">
             <Label x:Name="label" Content="Oct 30" HorizontalAlignment="Left" Margin="133,8,0,0" VerticalAlignment="Top" FontFamily="Calibri"/>
         </Grid>
-        <Grid HorizontalAlignment="Left" Height="267" Margin="0,33,0,0" VerticalAlignment="Top" Width="300" Background="#FFFFFBFB">
-            <Grid HorizontalAlignment="Left" Height="100" Margin="10,22,0,0" VerticalAlignment="Top" Width="100" Background="#FFFDFBFB">
+        <Grid HorizontalAlignment="Left" Height="228" Margin="10,22,0,0" VerticalAlignment="Top" Width="162" Background="#FFFBF7F7" Grid.Row="1" Grid.Column="1">
+
+            <Image x:Name="image1" Margin="64,10,50,176" Source="Images/fa-profile.png"/>
+            <Label x:Name="label1_Copy" Content="First Name:" HorizontalAlignment="Left" Margin="17,97,0,0" VerticalAlignment="Top" Height="23" Width="71" RenderTransformOrigin="0.778,0.613" FontFamily="Calibri"/>
+            <Label x:Name="label1_Copy1" Content="Gender:" HorizontalAlignment="Left" Margin="17,123,0,0" VerticalAlignment="Top" Height="23" Width="71" RenderTransformOrigin="0.778,0.613" FontFamily="Calibri"/>
+            <Label x:Name="label1_Copy2" Content="Birthday:" HorizontalAlignment="Left" Margin="17,147,0,0" VerticalAlignment="Top" Height="23" Width="71" RenderTransformOrigin="0.778,0.613" FontFamily="Calibri"/>
+            <Label x:Name="label1_Copy3" Content="Username:" HorizontalAlignment="Left" Margin="17,170,0,0" VerticalAlignment="Top" Height="23" Width="71" RenderTransformOrigin="0.778,0.613" FontFamily="Calibri"/>
+            <Label x:Name="label1_Copy4" Content="Password:" HorizontalAlignment="Left" Margin="17,193,0,0" VerticalAlignment="Top" Height="23" Width="71" RenderTransformOrigin="0.778,0.613" FontFamily="Calibri"/>
+
+
+
+        </Grid>
+        <Grid HorizontalAlignment="Left" Height="267" Margin="0,1,0,0" VerticalAlignment="Top" Width="300" Grid.Row="1" Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0*"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid HorizontalAlignment="Left" Height="100" Margin="10,22,0,0" VerticalAlignment="Top" Width="100" Background="#FFFDFBFB" Grid.RowSpan="2">
                 <Button x:Name="button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="24" Background="#FF9D53B3" BorderThickness="0">
                     <StackPanel>
                         <Image Source="Images/fa-profile.png" Height="20"/>
@@ -35,12 +60,9 @@
                     </StackPanel>
                 </Button>
             </Grid>
-            
-        </Grid>
-        <Grid HorizontalAlignment="Left" Height="126" Margin="123,59,0,0" VerticalAlignment="Top" Width="155" Background="#FFFBF7F7">
-            <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="126" VerticalAlignment="Top" Width="153">
-                <Image x:Name="image1" Margin="43,9,42,71" Source="Images/fa-profile.png"/>
-            </Border>
+            <Label x:Name="label1" Content="Last Name:" HorizontalAlignment="Left" Margin="136,92,0,0" VerticalAlignment="Top" Height="23" Width="71" RenderTransformOrigin="0.778,0.613" FontFamily="Calibri" Grid.RowSpan="2"/>
+
+
         </Grid>
 
     </Grid>
