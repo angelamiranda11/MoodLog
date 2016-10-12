@@ -15,13 +15,13 @@
         </Grid.RowDefinitions>
         <StackPanel Width="320" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Image x:Name="image" Height="100" Source="Images/MoodLog.png" Margin="10,10,10,40"/>
-            <TextBox x:Name="textBox" Height="25" TextWrapping="Wrap" Text="Username" Width="200" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center" VerticalContentAlignment="Center"/>
-            <TextBox x:Name="textBox1" Height="25" TextWrapping="Wrap" Text="Password" Width="200" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center" VerticalContentAlignment="Center"/>
-            <Button x:Name="button" Content="LOG IN" Width="200" Margin="10" Height="25" VerticalAlignment="Center" HorizontalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+            <TextBox x:Name="usernameTextBox" Height="25" TextWrapping="Wrap" Text="Username" Width="200" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center" VerticalContentAlignment="Center"/>
+            <TextBox x:Name="passwordTextBox" Height="25" TextWrapping="Wrap" Text="Password" Width="200" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center" VerticalContentAlignment="Center"/>
+            <Button x:Name="loginButton" Content="LOG IN" Width="200" Margin="10" Height="25" VerticalAlignment="Center" HorizontalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
         </StackPanel>
         <StackPanel Grid.Row="1">
             <Label x:Name="label" Content="Don't have an account yet?" Width="200" Height="25" Margin="10" HorizontalContentAlignment="Center" FontStyle="Italic"/>
-            <Button x:Name="button1" Content="SIGN UP" Width="200" Height="25" Margin="10"/>
+            <Button x:Name="signupButton" Content="SIGN UP" Width="200" Height="25" Margin="10"/>
         </StackPanel>
     </Grid>
 </Page>
