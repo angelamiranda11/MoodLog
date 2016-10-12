@@ -5,27 +5,23 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:wpf_moodlog"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
+      d:DesignHeight="640" d:DesignWidth="960"
       Title="MoodLogLoginPage">
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="25*"/>
-            <RowDefinition Height="30*"/>
-            <RowDefinition Height="26*"/>
-            <RowDefinition Height="29*"/>
-            <RowDefinition Height="20*"/>
-            <RowDefinition Height="16*"/>
-            <RowDefinition Height="21*"/>
-            <RowDefinition Height="23*"/>
+            <RowDefinition Height="480"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Image x:Name="image" HorizontalAlignment="Left" Height="100" Margin="103,10,0,0" VerticalAlignment="Top" Width="100" Source="Images/MoodLog.png"/>
-        <TextBox x:Name="textBox" TextWrapping="Wrap" Grid.Row="2"/>
-        <TextBox x:Name="textBox_Copy" TextWrapping="Wrap" Grid.Row="3"/>
-        <Button x:Name="button" Content="Login" FontFamily="Calibri" BorderThickness="0" Grid.Row="4"/>
-        <Label x:Name="label" Content="Don't have an account yet?" FontFamily="Calibri" Grid.Row="7" Grid.RowSpan="2"/>
-        <Button x:Name="button1" Content="Sign Up" Click="button1_Click" Grid.Row="8"/>
-
+        <StackPanel Width="320" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Image x:Name="image" Height="100" Source="Images/MoodLog.png" Margin="10,10,10,40"/>
+            <TextBox x:Name="textBox" Height="25" TextWrapping="Wrap" Text="Username" Width="200" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center" VerticalContentAlignment="Center"/>
+            <TextBox x:Name="textBox1" Height="25" TextWrapping="Wrap" Text="Password" Width="200" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center" VerticalContentAlignment="Center"/>
+            <Button x:Name="button" Content="LOG IN" Width="200" Margin="10" Height="25" VerticalAlignment="Center" HorizontalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1">
+            <Label x:Name="label" Content="Don't have an account yet?" Width="200" Height="25" Margin="10" HorizontalContentAlignment="Center" FontStyle="Italic"/>
+            <Button x:Name="button1" Content="SIGN UP" Width="200" Height="25" Margin="10"/>
+        </StackPanel>
     </Grid>
 </Page>

@@ -32,7 +32,7 @@
                     <RowDefinition Height="53*"/>
                 </Grid.RowDefinitions>
                 <StackPanel HorizontalAlignment="Left" Height="100" Margin="25,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="500">
-                    <TextBox x:Name="textBox" Height="55" TextWrapping="Wrap" Text="How are you feeling today?" TextChanged="textBox_TextChanged"/>
+                    <TextBox x:Name="textBox" Height="55" TextWrapping="Wrap" Text="How are you feeling today?"/>
                     <StackPanel Height="30" Orientation="Horizontal">
                         <Button x:Name="button4">
                             <TextBlock>&#x0023;</TextBlock>
