@@ -21,7 +21,7 @@
         </StackPanel>
         <StackPanel Grid.Row="1">
             <Label x:Name="label" Content="Don't have an account yet?" Width="200" Height="25" Margin="10" HorizontalContentAlignment="Center" FontStyle="Italic"/>
-            <Button x:Name="signupButton" Content="SIGN UP" Width="200" Height="25" Margin="10"/>
+            <Button x:Name="signupButton" Content="SIGN UP" Width="200" Height="25" Margin="10" Click="signupButton_Click"/>
         </StackPanel>
     </Grid>
 </Page>

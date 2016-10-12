@@ -25,7 +25,7 @@ namespace wpf_moodlog
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, RoutedEventArgs e)
+        private void signupButton_Click(object sender, RoutedEventArgs e)
         {
             // View Sign Up page
             MoodLogSignUpPage moodLogSignUpPage = new MoodLogSignUpPage();
