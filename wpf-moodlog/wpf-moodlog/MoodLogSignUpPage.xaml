@@ -24,21 +24,21 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Label x:Name="label" Content="Last Name" Margin="10" Height="25" Grid.Row="1"/>
-        <TextBox x:Name="lastNameSignUp" TextWrapping="Wrap" Grid.Column="1" Margin="10" Height="25" Grid.Row="1" VerticalContentAlignment="Center" Padding="5,0"/>
+        <TextBox x:Name="lastNameTextBox" TextWrapping="Wrap" Grid.Column="1" Margin="10" Height="25" Grid.Row="1" VerticalContentAlignment="Center" Padding="5,0"/>
         <Label x:Name="label_Copy" Content="First Name" Margin="10" Height="25" Grid.Row="2"/>
-        <TextBox x:Name="firstNameSignUp" TextWrapping="Wrap" Grid.Column="1" Margin="10" Height="25" Grid.Row="2" VerticalContentAlignment="Center" Padding="5,0"/>
+        <TextBox x:Name="firstNameTextBox" TextWrapping="Wrap" Grid.Column="1" Margin="10" Height="25" Grid.Row="2" VerticalContentAlignment="Center" Padding="5,0"/>
         <Label x:Name="label_Copy1" Content="Username" Margin="10" Height="25" Grid.Row="3"/>
-        <TextBox x:Name="usernameSignUp" TextWrapping="Wrap" Grid.Column="1" Margin="10" TextChanged="username_TextChanged" Height="25" Grid.Row="3" VerticalContentAlignment="Center" Padding="5,0"/>
+        <TextBox x:Name="usernameTextBox" TextWrapping="Wrap" Grid.Column="1" Margin="10" TextChanged="username_TextChanged" Height="25" Grid.Row="3" VerticalContentAlignment="Center" Padding="5,0"/>
         <Label x:Name="label_Copy2" Content="Password" Margin="10" Height="25" Grid.Row="4"/>
-        <TextBox x:Name="passwordSignUp" TextWrapping="Wrap" Grid.Column="1" Margin="10" Height="25" Grid.Row="4" VerticalContentAlignment="Center" Padding="5,0"/>
+        <TextBox x:Name="passwordTextBox" TextWrapping="Wrap" Grid.Column="1" Margin="10" Height="25" Grid.Row="4" VerticalContentAlignment="Center" Padding="5,0"/>
         <Label x:Name="label_Copy3" Content="Birthday" Margin="10" Height="25" Grid.Row="5"/>
-        <TextBox x:Name="birthdaySignUp" TextWrapping="Wrap" Grid.Column="1" Margin="10" Height="25" Grid.Row="5" VerticalContentAlignment="Center" Padding="5,0"/>
+        <TextBox x:Name="birthdayTextBox" TextWrapping="Wrap" Grid.Column="1" Margin="10" Height="25" Grid.Row="5" VerticalContentAlignment="Center" Padding="5,0"/>
         <Label x:Name="label_Copy4" Content="Gender" Margin="10" Height="25" Grid.Row="6"/>
-        <Button x:Name="submitSignUp" Content="SUBMIT" Grid.Column="1" Margin="10,20,10,10" Height="25" Grid.Row="7"/>
+        <Button x:Name="submitButton" Content="SUBMIT" Grid.Column="1" Margin="10,20,10,10" Height="25" Grid.Row="7"/>
         <Image x:Name="image" HorizontalAlignment="Left" Height="100" VerticalAlignment="Bottom" Width="100" Source="Images/MoodLog.png" Margin="10,10,10,50" Grid.Column="1"/>
         <StackPanel HorizontalAlignment="Left" Height="25" Margin="10" VerticalAlignment="Top" Width="243" Orientation="Horizontal" Grid.Row="6" Grid.Column="1">
-            <RadioButton x:Name="maleSignUp" Content="Male" IsChecked="True" VerticalContentAlignment="Center"/>
-            <RadioButton x:Name="femaleSignUp" Content="Female" VerticalContentAlignment="Center" Margin="10,0,0,0"/>
+            <RadioButton x:Name="maleRadioButton" Content="Male" IsChecked="True" VerticalContentAlignment="Center"/>
+            <RadioButton x:Name="femaleRadioButton" Content="Female" VerticalContentAlignment="Center" Margin="10,0,0,0"/>
         </StackPanel>
 
     </Grid>
