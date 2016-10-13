@@ -17,7 +17,7 @@
             <Image x:Name="image" Height="100" Source="Images/MoodLog.png" Margin="10,10,10,40"/>
             <TextBox x:Name="usernameTextBox" Height="25" TextWrapping="NoWrap" Text="Username" Width="200" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center" VerticalContentAlignment="Center" Padding="5,0"/>
             <TextBox x:Name="passwordTextBox" Height="25" TextWrapping="NoWrap" Text="Password" Width="200" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center" VerticalContentAlignment="Center" Padding="5,0"/>
-            <Button x:Name="loginButton" Content="LOG IN" Width="200" Margin="10" Height="25" VerticalAlignment="Center" HorizontalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+            <Button x:Name="loginButton" Content="LOG IN" Width="200" Margin="10" Height="25" VerticalAlignment="Center" HorizontalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="loginButton_Click"/>
         </StackPanel>
         <StackPanel Grid.Row="1">
             <Label x:Name="label" Content="Don't have an account yet?" Width="200" Height="25" Margin="10" HorizontalContentAlignment="Center" FontStyle="Italic"/>

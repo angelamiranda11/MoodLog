@@ -13,51 +13,74 @@
             <RowDefinition/>
             <RowDefinition Height="15*"/>
         </Grid.RowDefinitions>
-        <Grid HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="960" Background="#FFD6B9ED"/>
+        <Grid Height="40" VerticalAlignment="Top" Background="#FFD6B9ED">
+            <Label x:Name="label" Content="Oct 30" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" FontSize="14"/>
+        </Grid>
         <Grid HorizontalAlignment="Left" Height="600" Grid.Row="1" VerticalAlignment="Top" Width="960">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="17*"/>
-                <ColumnDefinition Width="79*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <StackPanel HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="170" Margin="0,35,0,0">
-                <Button x:Name="button" Content="PROFILE"/>
-                <Button x:Name="button1" Content="ENTRIES"/>
-                <Button x:Name="button2" Content="STATS"/>
-                <Button x:Name="button3" Content="LOGOUT"/>
+            <StackPanel x:Name="___No_Name_" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,40,0,0" Height="240" Width="220">
+                <Button x:Name="button" Margin="10" Width="200" Background="#FF9D53B3">
+                    <StackPanel Orientation="Horizontal" Width="100">
+                        <Image Source="Images/fa-profile.png" Height="15" Width="15" Margin="5"/>
+                        <Label Content="PROFILE" Margin="5" Foreground="White"/>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="button1" Margin="10" Width="200" Background="#FF9C7EFD">
+                    <StackPanel Orientation="Horizontal" Width="100">
+                        <Image Source="Images/fa-entries.png" Height="15" Width="15" Margin="5"/>
+                        <Label Content="ENTRIES" Margin="5" Foreground="White"/>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="button2" Margin="10" Width="200" Background="#FFD6B9ED">
+                    <StackPanel Orientation="Horizontal" Width="100">
+                        <Image Source="Images/fa-line-chart.png" Height="15" Width="15" Margin="5"/>
+                        <Label Content="STATS" Margin="5" Foreground="White"/>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="button3" Margin="10" Width="200" Background="#FFA3E88A">
+                    <StackPanel Orientation="Horizontal" Width="100">
+                        <Image Source="Images/fa-logout.png" Height="15" Width="15" Margin="5"/>
+                        <Label Content="LOGOUT" Margin="5" Foreground="White"/>
+                    </StackPanel>
+                </Button>
             </StackPanel>
-            <Grid HorizontalAlignment="Left" Height="415" VerticalAlignment="Top" Width="535" Grid.Column="1" Margin="10,10,0,0">
+            <Grid HorizontalAlignment="Left" Height="415" VerticalAlignment="Top" Width="535" Grid.Column="1" Margin="9.333,10,0,0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="4*"/>
-                    <RowDefinition Height="26*"/>
-                    <RowDefinition Height="53*"/>
+                    <RowDefinition Height="6*"/>
+                    <RowDefinition Height="48*"/>
+                    <RowDefinition Height="29*"/>
                 </Grid.RowDefinitions>
-                <StackPanel HorizontalAlignment="Left" Height="100" Margin="25,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="500">
-                    <TextBox x:Name="textBox" Height="55" TextWrapping="Wrap" Text="How are you feeling today?"/>
+                <StackPanel HorizontalAlignment="Left" Height="220" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="500">
+                    <TextBox x:Name="textBox" TextWrapping="Wrap" Text="How are you feeling today?" Height="150" Padding="5"/>
                     <StackPanel Height="30" Orientation="Horizontal">
-                        <Button x:Name="button4">
-                            <TextBlock>&#x0023;</TextBlock>
+                        <Button x:Name="button4" Style="{StaticResource emoticonButtonStyle}" FontSize="20" FontWeight="Bold">
+                            <TextBlock Foreground="Blue" Margin="2">&#x0023;</TextBlock>
                         </Button>
-                        <Button x:Name="button5">
-                            <Image Source="Images/EmoticonJoy.png"/>
+                        <Button x:Name="button5" Style="{StaticResource emoticonButtonStyle}">
+                            <Image Source="Images/EmoticonJoy.png" Margin="2"/>
                         </Button>
-                        <Button x:Name="button6">
-                            <Image Source="Images/EmoticonSadness.png"/>
+                        <Button x:Name="button6" Style="{StaticResource emoticonButtonStyle}">
+                            <Image Source="Images/EmoticonSadness.png" Margin="2"/>
                         </Button>
-                        <Button x:Name="button7">
-                            <Image Source="Images/EmoticonDisgust.png"/>
+                        <Button x:Name="button7" Style="{StaticResource emoticonButtonStyle}">
+                            <Image Source="Images/EmoticonDisgust.png" Margin="2"/>
                         </Button>
-                        <Button x:Name="button8">
-                            <Image Source="Images/EmoticonAnger.png"/>
+                        <Button x:Name="button8" Style="{StaticResource emoticonButtonStyle}">
+                            <Image Source="Images/EmoticonAnger.png" Margin="2"/>
                         </Button>
-                        <Button x:Name="button9">
-                            <Image Source="Images/EmoticonSurprised.png"/>
+                        <Button x:Name="button9" Style="{StaticResource emoticonButtonStyle}">
+                            <Image Source="Images/EmoticonSurprised.png" Margin="2"/>
                         </Button>
-                        <Button x:Name="button10">
-                            <Image Source="Images/EmoticonFear.png"/>
+                        <Button x:Name="button10" Style="{StaticResource emoticonButtonStyle}">
+                            <Image Source="Images/EmoticonFear.png" Margin="2"/>
                         </Button>
-                        <Button x:Name="button11" Content="ADD ENTRY"/>
+                        <Button x:Name="button11" Content="ADD ENTRY" Width="131" HorizontalContentAlignment="Center" Padding="5,1"/>
                     </StackPanel>
                 </StackPanel>
+                <Label x:Name="label1" Content="Hi, Yedda" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,7,0,7" Padding="0" Height="16" Width="51"/>
             </Grid>
         </Grid>
 

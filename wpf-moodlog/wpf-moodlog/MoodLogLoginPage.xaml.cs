@@ -31,5 +31,12 @@ namespace wpf_moodlog
             MoodLogSignUpPage moodLogSignUpPage = new MoodLogSignUpPage();
             this.NavigationService.Navigate(moodLogSignUpPage);
         }
+
+        private void loginButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Temporary code
+            MoodLogEntriesPage moodLogEntriesPage = new MoodLogEntriesPage();
+            this.NavigationService.Navigate(moodLogEntriesPage);
+        }
     }
 }

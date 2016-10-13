@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:wpf_moodlog.Images"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
+      d:DesignHeight="640" d:DesignWidth="960"
       Title="MoodLogProfilePage">
 
     <Grid>
@@ -38,28 +38,29 @@
                 <RowDefinition Height="0*"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Grid HorizontalAlignment="Left" Height="100" Margin="10,22,0,0" VerticalAlignment="Top" Width="100" Background="#FFFDFBFB" Grid.RowSpan="2">
+            <StackPanel HorizontalAlignment="Left" Height="100" Margin="10,22,0,0" VerticalAlignment="Top" Width="100" Background="#FFFDFBFB" Grid.RowSpan="2">
                 <Button x:Name="profileButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="24" Background="#FF9D53B3" BorderThickness="0">
-                    <StackPanel>
-                        <Image Source="Images/fa-profile.png" Height="20"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Image Source="Images/fa-profile.png" Height="20" Margin="5,0"/>
+                        <Label Content="Profile" Margin="5,0"/>
                     </StackPanel>
                 </Button>
-                <Button x:Name="entriesButton"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="24" Background="#FF9C7EFD" BorderThickness="0" Margin="0,24,0,0">
+                <Button x:Name="entriesButton"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="24" Background="#FF9C7EFD" BorderThickness="0">
                     <StackPanel>
                         <Image Source="Images/fa-entries.png" Height="20"/>
                     </StackPanel>
                 </Button>
-                <Button x:Name="statsButton"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="24" Background="#FFD6B9ED" BorderThickness="0" Margin="0,48,0,0">
+                <Button x:Name="statsButton"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="24" Background="#FFD6B9ED" BorderThickness="0">
                     <StackPanel>
                         <Image Source="Images/fa-line-chart.png" Height="20"/>
                     </StackPanel>
                 </Button>
-                <Button x:Name="logoutButton"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="24" Background="#FFA3E88A" BorderThickness="0" Margin="0,72,0,0" Click="button_Copy2_Click">
+                <Button x:Name="logoutButton"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="24" Background="#FFA3E88A" BorderThickness="0" Click="button_Copy2_Click">
                     <StackPanel>
                         <Image Source="Images/fa-logout.png" Height="20"/>
                     </StackPanel>
                 </Button>
-            </Grid>
+            </StackPanel>
             <Label x:Name="label1" Content="Last Name:" HorizontalAlignment="Left" Margin="136,92,0,0" VerticalAlignment="Top" Height="23" Width="71" RenderTransformOrigin="0.778,0.613" FontFamily="Calibri" Grid.RowSpan="2"/>
 
 
