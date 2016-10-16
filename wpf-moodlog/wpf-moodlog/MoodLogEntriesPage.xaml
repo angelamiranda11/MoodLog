@@ -89,7 +89,7 @@
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Button x:Name="hashtagButton" FontSize="20" FontWeight="Bold" Padding="0" Grid.Column="0" Width="50" Height="40">
+                        <Button x:Name="hashtagButton" FontSize="20" FontWeight="Bold" Padding="0" Grid.Column="0" Width="50" Height="40" Click="hashtagButton_Click">
                             <TextBlock Foreground="Blue" Margin="2" FontSize="24"><Run Text="#"/></TextBlock>
                         </Button>
                         <Button x:Name="joyButton" ToolTip="Joy" Padding="0" Grid.Column="1" Width="50" Height="40">

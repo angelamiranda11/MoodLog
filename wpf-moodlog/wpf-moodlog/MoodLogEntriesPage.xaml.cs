@@ -45,5 +45,10 @@ namespace wpf_moodlog
             MoodLogProfilePage moodLogProfilePage = new MoodLogProfilePage();
             this.NavigationService.Navigate(moodLogProfilePage);
         }
+
+        private void hashtagButton_Click(object sender, RoutedEventArgs e)
+        {
+            entryTextBox.Text += "#";
+        }
     }
 }

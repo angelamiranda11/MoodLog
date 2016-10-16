@@ -23,6 +23,7 @@ namespace wpf_moodlog
         public MoodLogLoginPage()
         {
             InitializeComponent();
+            usernameTextBox.Focus();
         }
 
         private void signupButton_Click(object sender, RoutedEventArgs e)
