@@ -14,7 +14,7 @@
             <RowDefinition Height="15*"/>
         </Grid.RowDefinitions>
         <Grid Height="40" VerticalAlignment="Top" Background="#FFD6B9ED">
-            <Label x:Name="label" Content="Oct 30" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" FontSize="14"/>
+            <Label x:Name="dateTodayLabel" Content="Oct 30" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" FontSize="14"/>
         </Grid>
         <Grid HorizontalAlignment="Left" Height="600" Grid.Row="1" VerticalAlignment="Top" Width="960">
             <Grid.ColumnDefinitions>

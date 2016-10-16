@@ -23,7 +23,11 @@ namespace wpf_moodlog
         public MoodLogEntriesPage()
         {
             InitializeComponent();
+
+            // Set value of dateTodayLabel
+            // setDateTodayLabel();
         }
+
 
         private void profileButton_Click(object sender, RoutedEventArgs e)
         {
