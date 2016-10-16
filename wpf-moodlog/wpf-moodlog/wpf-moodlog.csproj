@@ -152,9 +152,6 @@
     <Resource Include="Images\MoodLog.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\MoodLog.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\fa-line-chart.png" />
     <Resource Include="Images\fa-logout.png" />
   </ItemGroup>
@@ -175,6 +172,9 @@
   <ItemGroup>
     <Resource Include="Images\fa-entries-white.png" />
     <Resource Include="Images\fa-user-white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\MoodLog.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

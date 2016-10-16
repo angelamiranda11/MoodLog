@@ -35,7 +35,7 @@
         <TextBox x:Name="birthdayTextBox" TextWrapping="Wrap" Grid.Column="1" Margin="10" Height="25" Grid.Row="5" VerticalContentAlignment="Center" Padding="5,0"/>
         <Label x:Name="label_Copy4" Content="Gender" Margin="10" Height="25" Grid.Row="6"/>
         <Button x:Name="submitButton" Content="SUBMIT" Grid.Column="1" Margin="10,20,10,10" Height="25" Grid.Row="7"/>
-        <Image x:Name="image" HorizontalAlignment="Left" Height="100" VerticalAlignment="Bottom" Width="100" Source="Images/MoodLog.png" Margin="10,10,10,50" Grid.Column="1"/>
+        <Image x:Name="image" HorizontalAlignment="Left" Height="100" VerticalAlignment="Bottom" Width="100" Source="Images/MoodLog.png" Margin="25,0,0,50" Grid.Column="1"/>
         <StackPanel HorizontalAlignment="Left" Height="25" Margin="10" VerticalAlignment="Top" Width="243" Orientation="Horizontal" Grid.Row="6" Grid.Column="1">
             <RadioButton x:Name="maleRadioButton" Content="Male" IsChecked="True" VerticalContentAlignment="Center"/>
             <RadioButton x:Name="femaleRadioButton" Content="Female" VerticalContentAlignment="Center" Margin="10,0,0,0"/>
