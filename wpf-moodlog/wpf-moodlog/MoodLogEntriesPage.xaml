@@ -92,22 +92,22 @@
                         <Button x:Name="hashtagButton" FontSize="20" FontWeight="Bold" Padding="0" Grid.Column="0" Width="50" Height="40">
                             <TextBlock Foreground="Blue" Margin="2" FontSize="24"><Run Text="#"/></TextBlock>
                         </Button>
-                        <Button x:Name="joyButton" Padding="0" Grid.Column="1" Width="50" Height="40">
+                        <Button x:Name="joyButton" ToolTip="Joy" Padding="0" Grid.Column="1" Width="50" Height="40">
                             <Image Source="Images/EmoticonJoy.png" Margin="2"/>
                         </Button>
-                        <Button x:Name="sadnessButton" Padding="0" Grid.Column="2" Width="50" Height="40">
+                        <Button x:Name="sadnessButton" ToolTip="Sadness" Padding="0" Grid.Column="2" Width="50" Height="40">
                             <Image Source="Images/EmoticonSadness.png" Margin="2"/>
                         </Button>
-                        <Button x:Name="disgustButton" Padding="0" Grid.Column="3" Width="50" Height="40">
+                        <Button x:Name="disgustButton" ToolTip="Disgust" Padding="0" Grid.Column="3" Width="50" Height="40">
                             <Image Source="Images/EmoticonDisgust.png" Margin="2"/>
                         </Button>
-                        <Button x:Name="angerButton" Padding="0" Grid.Column="4" Width="50" Height="40">
+                        <Button x:Name="angerButton" ToolTip="Anger" Padding="0" Grid.Column="4" Width="50" Height="40">
                             <Image Source="Images/EmoticonAnger.png" Margin="2"/>
                         </Button>
-                        <Button x:Name="surpriseButton" Padding="0" Grid.Column="5" Width="50" Height="40">
+                        <Button x:Name="surpriseButton" ToolTip="Surprise" Padding="0" Grid.Column="5" Width="50" Height="40">
                             <Image Source="Images/EmoticonSurprised.png" Margin="2"/>
                         </Button>
-                        <Button x:Name="fearButton" Padding="0" Grid.Column="6" Width="50" Height="40">
+                        <Button x:Name="fearButton" ToolTip="Fear" Padding="0" Grid.Column="6" Width="50" Height="40">
                             <Image Source="Images/EmoticonFear.png" Margin="2"/>
                         </Button>
                         <Button x:Name="addEntryButton" Content="ADD ENTRY" HorizontalContentAlignment="Center" Padding="0" Grid.Column="7" Height="40"/>
