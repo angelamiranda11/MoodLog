@@ -49,6 +49,8 @@ namespace wpf_moodlog
         private void hashtagButton_Click(object sender, RoutedEventArgs e)
         {
             entryTextBox.Text += "#";
+            entryTextBox.Focus();
+            entryTextBox.Select(entryTextBox.Text.Length, 0);
         }
     }
 }
