@@ -20,12 +20,22 @@ namespace wpf_moodlog
     /// </summary>
     public partial class MoodLogEntriesPage : Page
     {
+        public static DateTime Today { get; }
+
         public MoodLogEntriesPage()
         {
             InitializeComponent();
 
-            // Set value of dateTodayLabel
-            // setDateTodayLabel();
+            setDateTodayLabel();
+            // loadPreviousEntries();
+        }
+
+        private void setDateTodayLabel()
+        {
+            // Get the current date.
+            DateTime thisDay = DateTime.Today;
+
+            dateTodayLabel.Content = thisDay.ToString("MMM d");
         }
 
 

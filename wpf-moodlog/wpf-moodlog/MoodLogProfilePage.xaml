@@ -14,7 +14,7 @@
             <RowDefinition Height="15*"/>
         </Grid.RowDefinitions>
         <Grid Height="40" VerticalAlignment="Top" Background="#FFD6B9ED">
-            <Label x:Name="label" Content="Oct 30" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" FontSize="14"/>
+            <Label x:Name="dateTodayLabel" Content="Oct 30" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" FontSize="14"/>
         </Grid>
         <Grid HorizontalAlignment="Left" Height="600" Grid.Row="1" VerticalAlignment="Top" Width="960">
             <Grid.ColumnDefinitions>
@@ -28,7 +28,7 @@
                         <Label Content="PROFILE" Margin="5" Foreground="White" TextOptions.TextHintingMode="Animated"/>
                     </StackPanel>
                 </Button>
-                <Button x:Name="entriesButton" Margin="10" Width="200" Background="#FF9C7EFD">
+                <Button x:Name="entriesButton" Margin="10" Width="200" Background="#FF9C7EFD" Click="entriesButton_Click">
                     <StackPanel Orientation="Horizontal" Width="100">
                         <Image Source="Images/fa-entries-white.png" Height="15" Width="15" Margin="5"/>
                         <Label Content="ENTRIES" Margin="5" Foreground="White" TextOptions.TextHintingMode="Animated"/>
