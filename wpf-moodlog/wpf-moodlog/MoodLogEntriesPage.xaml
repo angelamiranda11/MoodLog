@@ -10,18 +10,18 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition Height="15*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="90*"/>
         </Grid.RowDefinitions>
-        <Grid Height="40" VerticalAlignment="Top" Background="#FFD6B9ED">
+        <Grid Background="#FFD6B9ED">
             <Label x:Name="dateTodayLabel" Content="Oct 30" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" FontSize="14"/>
         </Grid>
-        <Grid HorizontalAlignment="Left" Height="600" Grid.Row="1" VerticalAlignment="Top" Width="960">
+        <Grid Grid.Row="1" VerticalAlignment="Stretch" Width="960">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <StackPanel x:Name="___No_Name_" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,40,0,0" Height="240" Width="220">
+            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,30,0,0">
                 <Button x:Name="profileButton" Margin="10" Width="200" Background="#FF9D53B3" Click="profileButton_Click">
                     <StackPanel Orientation="Horizontal" Width="100">
                         <Image Source="Images/fa-user-white.png" Height="15" Width="15" Margin="5"/>
@@ -47,14 +47,14 @@
                     </StackPanel>
                 </Button>
             </StackPanel>
-            <Grid HorizontalAlignment="Left" Height="415" VerticalAlignment="Top" Grid.Column="1" Margin="9.333,10,0,0" Width="650">
+            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1" Margin="30,15,40,0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="6*"/>
-                    <RowDefinition Height="48*"/>
-                    <RowDefinition Height="29*"/>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="50*"/>
+                    <RowDefinition Height="45*"/>
                 </Grid.RowDefinitions>
-                <StackPanel Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top">
-                    <TextBox x:Name="entryTextBox" TextWrapping="Wrap" Height="150" Padding="5" HorizontalContentAlignment="Stretch">
+                <StackPanel Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+                    <TextBox x:Name="entryTextBox" TextWrapping="Wrap" Height="145" Padding="5">
                         <TextBox.Style>
                             <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
                                 <Style.Resources>
@@ -78,7 +78,7 @@
                             </Style>
                         </TextBox.Style>
                     </TextBox>
-                    <Grid>
+                    <Grid Background="#FFECF0F1">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="Auto"/>
@@ -89,31 +89,34 @@
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Button x:Name="hashtagButton" FontSize="20" FontWeight="Bold" Padding="0" Grid.Column="0" Width="50" Height="40" Click="hashtagButton_Click">
+                        <Button x:Name="hashtagButton" FontSize="20" FontWeight="Bold" Padding="0" Grid.Column="0" Width="50" Height="40" Click="hashtagButton_Click" HorizontalAlignment="Right" Background="{x:Null}" BorderThickness="0,0,1,0">
                             <TextBlock Foreground="Blue" Margin="2" FontSize="24"><Run Text="#"/></TextBlock>
                         </Button>
-                        <Button x:Name="joyButton" ToolTip="Joy" Padding="0" Grid.Column="1" Width="50" Height="40">
+                        <Button x:Name="joyButton" ToolTip="Joy" Padding="0" Grid.Column="1" Width="50" Height="40" Click="joyButton_Click" Background="{x:Null}" BorderThickness="0,0,1,0">
                             <Image Source="Images/EmoticonJoy.png" Margin="2"/>
                         </Button>
-                        <Button x:Name="sadnessButton" ToolTip="Sadness" Padding="0" Grid.Column="2" Width="50" Height="40">
+                        <Button x:Name="sadnessButton" ToolTip="Sadness" Padding="0" Grid.Column="2" Width="50" Height="40" Background="{x:Null}" BorderThickness="0,0,1,0" Click="sadnessButton_Click">
                             <Image Source="Images/EmoticonSadness.png" Margin="2"/>
                         </Button>
-                        <Button x:Name="disgustButton" ToolTip="Disgust" Padding="0" Grid.Column="3" Width="50" Height="40">
+                        <Button x:Name="disgustButton" ToolTip="Disgust" Padding="0" Grid.Column="3" Width="50" Height="40" Background="{x:Null}" BorderThickness="0,0,1,0" Click="disgustButton_Click">
                             <Image Source="Images/EmoticonDisgust.png" Margin="2"/>
                         </Button>
-                        <Button x:Name="angerButton" ToolTip="Anger" Padding="0" Grid.Column="4" Width="50" Height="40">
+                        <Button x:Name="angerButton" ToolTip="Anger" Padding="0" Grid.Column="4" Width="50" Height="40" Background="{x:Null}" BorderThickness="0,0,1,0" Click="angerButton_Click">
                             <Image Source="Images/EmoticonAnger.png" Margin="2"/>
                         </Button>
-                        <Button x:Name="surpriseButton" ToolTip="Surprise" Padding="0" Grid.Column="5" Width="50" Height="40">
+                        <Button x:Name="surpriseButton" ToolTip="Surprise" Padding="0" Grid.Column="5" Width="50" Height="40" Background="{x:Null}" BorderThickness="0,0,1,0" Click="surpriseButton_Click">
                             <Image Source="Images/EmoticonSurprised.png" Margin="2"/>
                         </Button>
-                        <Button x:Name="fearButton" ToolTip="Fear" Padding="0" Grid.Column="6" Width="50" Height="40">
+                        <Button x:Name="fearButton" ToolTip="Fear" Padding="0" Grid.Column="6" Width="50" Height="40" Background="{x:Null}" BorderThickness="0,0,1,0" Click="fearButton_Click">
                             <Image Source="Images/EmoticonFear.png" Margin="2"/>
                         </Button>
-                        <Button x:Name="addEntryButton" Content="ADD ENTRY" HorizontalContentAlignment="Center" Padding="0" Grid.Column="7" Height="40" Foreground="#FF9D53B3"/>
+                        <Button x:Name="addEntryButton" Content="ADD ENTRY" Padding="10"  Width="Auto" HorizontalAlignment="Right" Grid.Column="7" Height="40" Foreground="#FF9D53B3" BorderBrush="{x:Null}" Background="{x:Null}"/>
                     </Grid>
+                    <StackPanel x:Name="subEmoticonsPanel" Orientation="Horizontal" Height="Auto">
+                        
+                    </StackPanel>
                 </StackPanel>
-                <Label x:Name="label1" Content="Hi, Yedda" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,7,0,7" Padding="0" Height="16" Width="51"/>
+                <Label x:Name="hiUserLabel" Content="Hi, Yedda" HorizontalAlignment="Left" VerticalAlignment="Center" Height="25"/>
             </Grid>
         </Grid>
 
