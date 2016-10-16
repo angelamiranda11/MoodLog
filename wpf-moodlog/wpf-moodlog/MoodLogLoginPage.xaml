@@ -15,8 +15,55 @@
         </Grid.RowDefinitions>
         <StackPanel Width="320" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Image x:Name="image" Height="100" Source="Images/MoodLog.png" Margin="10,10,10,40"/>
-            <TextBox x:Name="usernameTextBox" Height="25" TextWrapping="NoWrap" Text="Username" Width="200" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center" VerticalContentAlignment="Center" Padding="5,0"/>
-            <TextBox x:Name="passwordTextBox" Height="25" TextWrapping="NoWrap" Text="Password" Width="200" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center" VerticalContentAlignment="Center" Padding="5,0"/>
+            <TextBox x:Name="usernameTextBox" Height="25" TextWrapping="NoWrap" Width="200" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center" VerticalContentAlignment="Center" Padding="5,0">
+                <TextBox.Style>
+                    <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                        <Style.Resources>
+                            <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                                <VisualBrush.Visual>
+                                    <Label Content="Username" Foreground="LightGray" />
+                                </VisualBrush.Visual>
+                            </VisualBrush>
+                        </Style.Resources>
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="Text" Value="{x:Null}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter Property="Background" Value="White" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+            <PasswordBox x:Name="passwordBox" Height="25" Width="200" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center" VerticalContentAlignment="Center" Padding="5,0">
+                <PasswordBox.Style>
+                    <Style TargetType="PasswordBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                        <Style.Resources>
+                            <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                                <VisualBrush.Visual>
+                                    <Label Content="Password" Foreground="LightGray" />
+                                </VisualBrush.Visual>
+                            </VisualBrush>
+                        </Style.Resources>
+                        <Style.Triggers>
+                            <!--<Trigger Property="Password" Value="{x:Static sys:String.Empty}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="Password" Value="{x:Null}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter Property="Background" Value="White" />
+                            </Trigger>-->
+                        </Style.Triggers>
+                    </Style>
+                </PasswordBox.Style>
+            </PasswordBox>
+
             <Button x:Name="loginButton" Content="LOG IN" Width="200" Margin="10" Height="25" VerticalAlignment="Center" HorizontalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="loginButton_Click"/>
         </StackPanel>
         <StackPanel Grid.Row="1">

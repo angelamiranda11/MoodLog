@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace wpf_moodlog.Images
+namespace wpf_moodlog
 {
     /// <summary>
     /// Interaction logic for MoodLogProfilePage.xaml
@@ -23,11 +23,6 @@ namespace wpf_moodlog.Images
         public MoodLogProfilePage()
         {
             InitializeComponent();
-        }
-
-        private void button_Copy2_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

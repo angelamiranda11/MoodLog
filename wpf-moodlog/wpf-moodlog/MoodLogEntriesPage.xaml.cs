@@ -24,5 +24,12 @@ namespace wpf_moodlog
         {
             InitializeComponent();
         }
+
+        private void profileButton_Click(object sender, RoutedEventArgs e)
+        {
+            // View Profile page
+            MoodLogProfilePage moodLogProfilePage = new MoodLogProfilePage();
+            this.NavigationService.Navigate(moodLogProfilePage);
+        }
     }
 }

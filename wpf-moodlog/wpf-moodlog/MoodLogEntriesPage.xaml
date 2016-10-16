@@ -22,28 +22,28 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <StackPanel x:Name="___No_Name_" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,40,0,0" Height="240" Width="220">
-                <Button x:Name="profileButton" Margin="10" Width="200" Background="#FF9D53B3">
+                <Button x:Name="profileButton" Margin="10" Width="200" Background="#FF9D53B3" Click="profileButton_Click">
                     <StackPanel Orientation="Horizontal" Width="100">
-                        <Image Source="Images/fa-profile.png" Height="15" Width="15" Margin="5"/>
-                        <Label Content="PROFILE" Margin="5" Foreground="White"/>
+                        <Image Source="Images/fa-user-white.png" Height="15" Width="15" Margin="5"/>
+                        <Label Content="PROFILE" Margin="5" Foreground="White" TextOptions.TextHintingMode="Animated"/>
                     </StackPanel>
                 </Button>
                 <Button x:Name="entriesButton" Margin="10" Width="200" Background="#FF9C7EFD">
                     <StackPanel Orientation="Horizontal" Width="100">
-                        <Image Source="Images/fa-entries.png" Height="15" Width="15" Margin="5"/>
-                        <Label Content="ENTRIES" Margin="5" Foreground="White"/>
+                        <Image Source="Images/fa-entries-white.png" Height="15" Width="15" Margin="5"/>
+                        <Label Content="ENTRIES" Margin="5" Foreground="White" TextOptions.TextHintingMode="Animated"/>
                     </StackPanel>
                 </Button>
                 <Button x:Name="statsButton" Margin="10" Width="200" Background="#FFD6B9ED">
                     <StackPanel Orientation="Horizontal" Width="100">
                         <Image Source="Images/fa-line-chart.png" Height="15" Width="15" Margin="5"/>
-                        <Label Content="STATS" Margin="5" Foreground="White"/>
+                        <Label Content="STATS" Margin="5" Foreground="Black" TextOptions.TextHintingMode="Animated"/>
                     </StackPanel>
                 </Button>
                 <Button x:Name="logoutButton" Margin="10" Width="200" Background="#FFA3E88A">
                     <StackPanel Orientation="Horizontal" Width="100">
                         <Image Source="Images/fa-logout.png" Height="15" Width="15" Margin="5"/>
-                        <Label Content="LOGOUT" Margin="5" Foreground="White"/>
+                        <Label Content="LOGOUT" Margin="5" Foreground="Black" TextOptions.TextHintingMode="Animated"/>
                     </StackPanel>
                 </Button>
             </StackPanel>
@@ -54,7 +54,30 @@
                     <RowDefinition Height="29*"/>
                 </Grid.RowDefinitions>
                 <StackPanel Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top">
-                    <TextBox x:Name="entryTextBox" TextWrapping="Wrap" Text="How are you feeling today?" Height="150" Padding="5" HorizontalContentAlignment="Stretch"/>
+                    <TextBox x:Name="entryTextBox" TextWrapping="Wrap" Height="150" Padding="5" HorizontalContentAlignment="Stretch">
+                        <TextBox.Style>
+                            <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                                <Style.Resources>
+                                    <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Top" Stretch="None">
+                                        <VisualBrush.Visual>
+                                            <Label Content="How are you feeling today?" Foreground="LightGray" />
+                                        </VisualBrush.Visual>
+                                    </VisualBrush>
+                                </Style.Resources>
+                                <Style.Triggers>
+                                    <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                        <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                                    </Trigger>
+                                    <Trigger Property="Text" Value="{x:Null}">
+                                        <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                                    </Trigger>
+                                    <Trigger Property="IsKeyboardFocused" Value="True">
+                                        <Setter Property="Background" Value="White" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBox.Style>
+                    </TextBox>
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
