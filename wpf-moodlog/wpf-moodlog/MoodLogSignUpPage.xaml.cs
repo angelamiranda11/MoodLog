@@ -23,11 +23,8 @@ namespace wpf_moodlog
         public MoodLogSignUpPage()
         {
             InitializeComponent();
-        }
-
-        private void username_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
+            lastNameTextBox.Focus();
+            birthdayDatePicker.DisplayDateEnd = DateTime.Today;
         }
     }
 }
