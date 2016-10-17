@@ -61,42 +61,6 @@ namespace POC_MoodLog.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to abduction,2.76,5.53
-        ///abortion,3.5,5.39
-        ///absurd,4.26,4.36
-        ///abundance,6.59,5.51
-        ///abuse,1.8,6.83
-        ///acceptance,7.98,5.4
-        ///accident,2.05,6.26
-        ///ace,6.88,5.5
-        ///ache,2.46,5
-        ///achievement,7.89,5.53
-        ///activate,5.46,4.86
-        ///addict,2.48,5.66
-        ///addicted,2.51,4.81
-        ///admired,7.74,6.11
-        ///adorable,7.81,5.12
-        ///adult,6.49,4.76
-        ///advantage,6.95,4.76
-        ///adventure,7.6,6.98
-        ///affection,8.39,6.21
-        ///afraid,2,6.67
-        ///aggressive,5.1,5.83
-        ///agility,6.46,4.85
-        ///agony,2.43,6.06
-        ///agreement,7.08,5.02
-        ///air,6.34,4.12
-        ///alcoholic,2.84,5.69
-        ///alert,6.2,6.85
-        ///alien [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string anewReference {
-            get {
-                return ResourceManager.GetString("anewReference", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to abduction
         ///abortion
         ///absurd
@@ -293,7 +257,82 @@ namespace POC_MoodLog.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sadly, I have not ate today. I am very sad..
+        ///   Looks up a localized string similar to aback	anger	 
+        ///aback	disgust	 
+        ///aback	fear	 
+        ///aback	joy	 
+        ///aback	sadness	 
+        ///aback	surprise	 
+        ///abacus	anger	 
+        ///abacus	disgust	 
+        ///abacus	fear	 
+        ///abacus	joy	 
+        ///abacus	sadness	 
+        ///abacus	surprise	 
+        ///abandon	anger	 
+        ///abandon	disgust	 
+        ///abandon	fear	  
+        ///abandon	joy	 
+        ///abandon	sadness	  
+        ///abandon	surprise	 
+        ///abandoned	anger	  
+        ///abandoned	disgust	 
+        ///abandoned	fear	  
+        ///abandoned	joy	 
+        ///abandoned	sadness	  
+        ///abandoned	surprise	 
+        ///abandonment	anger	  
+        ///abandonment	disgust	 
+        ///abandonment	fear	  
+        ///abandonment	joy	 
+        ///abandonment	sadness	  
+        ///abandonme [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string NRC_emotion {
+            get {
+                return ResourceManager.GetString("NRC_emotion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to and,+
+        ///best,+
+        ///can,+
+        ///cannot,-
+        ///can&apos;t,-
+        ///could,+
+        ///couldn&apos;t,-
+        ///did,+
+        ///didn&apos;t,-
+        ///do,+
+        ///does,+
+        ///doesn&apos;t,-
+        ///don&apos;t,-
+        ///either,+
+        ///every,+
+        ///more,+
+        ///must,+
+        ///never,-
+        ///no,-
+        ///not,-
+        ///overly,+
+        ///perfectly,+
+        ///simply,+
+        ///so,+
+        ///too,+
+        ///totally,+
+        ///truly,+
+        ///very,+
+        ///was,-.
+        /// </summary>
+        internal static string PrepRef {
+            get {
+                return ResourceManager.GetString("PrepRef", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I am happy to know that I made the MSP Program though it was very hard during the interview, I think I did well..
         /// </summary>
         internal static string SampleIn {
             get {
