@@ -24,7 +24,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Image x:Name="image" HorizontalAlignment="Center" Height="250" VerticalAlignment="Top" Width="250" Margin="0,50,0,0" Source="Images/MoodLog.png"/>
+            <Image x:Name="image" HorizontalAlignment="Center" Height="300" VerticalAlignment="Top" Width="300" Margin="0,50,0,0" Source="Images/MoodLog.png"/>
             <Image x:Name="image1" HorizontalAlignment="Center" Height="60" Margin="10" VerticalAlignment="Center" Width="100" Source="Images/hat.png" Grid.Row="1"/>
             <Image x:Name="image2" HorizontalAlignment="Center" Height="50" Margin="0,0,0,50" VerticalAlignment="Top" Width="100" Source="Images/mustache.png" Grid.Row="4"/>
             <TextBlock x:Name="textBlock" HorizontalAlignment="Center" Margin="5" TextWrapping="Wrap" Text="GAMBOA • MIRANDA " VerticalAlignment="Center" Foreground="White" Grid.Row="2"/>
