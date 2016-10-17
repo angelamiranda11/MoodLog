@@ -38,18 +38,25 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="30*"/>
                 <ColumnDefinition Width="70*"/>
             </Grid.ColumnDefinitions>
-            <TextBox x:Name="usernameTextBox" TextWrapping="Wrap" Grid.Column="1" Height="25" VerticalContentAlignment="Center" Margin="10" Padding="5,0"/>
-            <Button x:Name="loginButton" Content="LOG IN" Grid.Column="1" Grid.Row="2" Height="25" VerticalContentAlignment="Center" Margin="10,20,10,10" Click="loginButton_Click"/>
-            <Button x:Name="signupButton" Content="SIGN UP" Grid.Column="1" Grid.Row="4" Height="25" VerticalContentAlignment="Center" Margin="10" Click="signupButton_Click"/>
-            <Label x:Name="label" Content="Username" Height="25" VerticalContentAlignment="Center" Margin="10"/>
-            <Label x:Name="label_Copy" Content="Password" Grid.Row="1" Height="25" VerticalContentAlignment="Center" Margin="10"/>
-            <PasswordBox x:Name="passwordBox" Grid.Column="1" Grid.Row="1" Height="25" VerticalContentAlignment="Center" Margin="10" Padding="5,0"/>
-            <Label x:Name="label1" Content="Don't have an account yet?" Grid.Column="1" Grid.Row="3" Height="25" VerticalContentAlignment="Center" Margin="10,100,10,0" HorizontalContentAlignment="Center" FontStyle="Italic"/>
+            
+            <TextBlock Padding="10" HorizontalAlignment="Stretch" Text="The username and/or password you entered is invalid" Margin="10" Foreground="Red" Background="Pink" Grid.Row="0" Grid.ColumnSpan="2" TextAlignment="Center" Visibility="Hidden"/>
+
+            <Label x:Name="label" Content="Username" Height="25" VerticalContentAlignment="Center" Margin="10" Grid.Row="1" Grid.Column="0"/>
+            <TextBox x:Name="usernameTextBox" TextWrapping="Wrap" Height="25" VerticalContentAlignment="Center" Margin="10" Padding="5,0" Grid.Row="1" Grid.Column="1"/>
+
+            <Label x:Name="label_Copy" Content="Password" Height="25" VerticalContentAlignment="Center" Margin="10" Grid.Row="2" Grid.Column="0"/>
+            <PasswordBox x:Name="passwordBox" Height="25" VerticalContentAlignment="Center" Margin="10" Padding="5,0" Grid.Row="2" Grid.Column="1"/>
+            
+            <Button x:Name="loginButton" Content="LOG IN" Grid.Column="1" Grid.Row="3" Height="25" VerticalContentAlignment="Center" Margin="10,20,10,10" Click="loginButton_Click"/>
+
+            <Label x:Name="label1" Content="Don't have an account yet?" Grid.Column="1" Grid.Row="4" Height="25" VerticalContentAlignment="Center" Margin="10,100,10,0" HorizontalContentAlignment="Center" FontStyle="Italic"/>
+            <Button x:Name="signupButton" Content="SIGN UP" Grid.Column="1" Grid.Row="5" Height="25" VerticalContentAlignment="Center" Margin="10" Click="signupButton_Click"/>
         </Grid>
     </Grid>
 </Page>
