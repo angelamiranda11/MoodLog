@@ -10,54 +10,114 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition Height="15*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="90*"/>
         </Grid.RowDefinitions>
-        <Grid HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="960" Background="#FFD6B9ED"/>
-        <Grid HorizontalAlignment="Left" Height="600" Grid.Row="1" VerticalAlignment="Top" Width="960">
+        <Grid Background="#FFD6B9ED">
+            <Label x:Name="dateTodayLabel" Content="Oct 30" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" FontSize="14"/>
+        </Grid>
+        <Grid Grid.Row="1" VerticalAlignment="Stretch" Width="960">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="17*"/>
-                <ColumnDefinition Width="79*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <StackPanel HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="170" Margin="0,35,0,0">
-                <Button x:Name="button" Content="PROFILE"/>
-                <Button x:Name="button1" Content="ENTRIES"/>
-                <Button x:Name="button2" Content="STATS"/>
-                <Button x:Name="button3" Content="LOGOUT"/>
+            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,30,0,0">
+                <Button x:Name="profileButton" Margin="10" Width="200" Background="#FF9D53B3" Click="profileButton_Click">
+                    <StackPanel Orientation="Horizontal" Width="100">
+                        <Image Source="Images/fa-user-white.png" Height="15" Width="15" Margin="5"/>
+                        <Label Content="PROFILE" Margin="5" Foreground="White" TextOptions.TextHintingMode="Animated"/>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="entriesButton" Margin="10" Width="200" Background="#FF9C7EFD">
+                    <StackPanel Orientation="Horizontal" Width="100">
+                        <Image Source="Images/fa-entries-white.png" Height="15" Width="15" Margin="5"/>
+                        <Label Content="ENTRIES" Margin="5" Foreground="White" TextOptions.TextHintingMode="Animated"/>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="statsButton" Margin="10" Width="200" Background="#FFD6B9ED">
+                    <StackPanel Orientation="Horizontal" Width="100">
+                        <Image Source="Images/fa-line-chart.png" Height="15" Width="15" Margin="5"/>
+                        <Label Content="STATS" Margin="5" Foreground="Black" TextOptions.TextHintingMode="Animated"/>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="logoutButton" Margin="10" Width="200" Background="#FFA3E88A">
+                    <StackPanel Orientation="Horizontal" Width="100">
+                        <Image Source="Images/fa-logout.png" Height="15" Width="15" Margin="5"/>
+                        <Label Content="LOGOUT" Margin="5" Foreground="Black" TextOptions.TextHintingMode="Animated"/>
+                    </StackPanel>
+                </Button>
             </StackPanel>
-            <Grid HorizontalAlignment="Left" Height="415" VerticalAlignment="Top" Width="535" Grid.Column="1" Margin="10,10,0,0">
+            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1" Margin="30,15,40,0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="4*"/>
-                    <RowDefinition Height="26*"/>
-                    <RowDefinition Height="53*"/>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="45*"/>
+                    <RowDefinition Height="50*"/>
                 </Grid.RowDefinitions>
-                <StackPanel HorizontalAlignment="Left" Height="100" Margin="25,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="500">
-                    <TextBox x:Name="textBox" Height="55" TextWrapping="Wrap" Text="How are you feeling today?" TextChanged="textBox_TextChanged"/>
-                    <StackPanel Height="30" Orientation="Horizontal">
-                        <Button x:Name="button4">
-                            <TextBlock>&#x0023;</TextBlock>
+                <StackPanel Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+                    <TextBox x:Name="entryTextBox" TextWrapping="Wrap" Height="145" Padding="5">
+                        <TextBox.Style>
+                            <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                                <Style.Resources>
+                                    <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Top" Stretch="None">
+                                        <VisualBrush.Visual>
+                                            <Label Content="How are you feeling today?" Foreground="LightGray" />
+                                        </VisualBrush.Visual>
+                                    </VisualBrush>
+                                </Style.Resources>
+                                <Style.Triggers>
+                                    <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                        <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                                    </Trigger>
+                                    <Trigger Property="Text" Value="{x:Null}">
+                                        <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                                    </Trigger>
+                                    <Trigger Property="IsKeyboardFocused" Value="True">
+                                        <Setter Property="Background" Value="White" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBox.Style>
+                    </TextBox>
+                    <Grid Background="#FFECF0F1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="hashtagButton" FontSize="20" FontWeight="Bold" Padding="0" Grid.Column="0" Width="50" Height="40" Click="hashtagButton_Click" HorizontalAlignment="Right" Background="{x:Null}" BorderThickness="0,0,1,0">
+                            <TextBlock Foreground="Blue" Margin="2" FontSize="24"><Run Text="#"/></TextBlock>
                         </Button>
-                        <Button x:Name="button5">
-                            <Image Source="Images/EmoticonJoy.png"/>
+                        <Button x:Name="joyButton" ToolTip="Joy" Padding="0" Grid.Column="1" Width="50" Height="40" Click="joyButton_Click" Background="{x:Null}" BorderThickness="0,0,1,0">
+                            <Image Source="Images/EmoticonJoy.png" Margin="2"/>
                         </Button>
-                        <Button x:Name="button6">
-                            <Image Source="Images/EmoticonSadness.png"/>
+                        <Button x:Name="sadnessButton" ToolTip="Sadness" Padding="0" Grid.Column="2" Width="50" Height="40" Background="{x:Null}" BorderThickness="0,0,1,0" Click="sadnessButton_Click">
+                            <Image Source="Images/EmoticonSadness.png" Margin="2"/>
                         </Button>
-                        <Button x:Name="button7">
-                            <Image Source="Images/EmoticonDisgust.png"/>
+                        <Button x:Name="disgustButton" ToolTip="Disgust" Padding="0" Grid.Column="3" Width="50" Height="40" Background="{x:Null}" BorderThickness="0,0,1,0" Click="disgustButton_Click">
+                            <Image Source="Images/EmoticonDisgust.png" Margin="2"/>
                         </Button>
-                        <Button x:Name="button8">
-                            <Image Source="Images/EmoticonAnger.png"/>
+                        <Button x:Name="angerButton" ToolTip="Anger" Padding="0" Grid.Column="4" Width="50" Height="40" Background="{x:Null}" BorderThickness="0,0,1,0" Click="angerButton_Click">
+                            <Image Source="Images/EmoticonAnger.png" Margin="2"/>
                         </Button>
-                        <Button x:Name="button9">
-                            <Image Source="Images/EmoticonSurprised.png"/>
+                        <Button x:Name="surpriseButton" ToolTip="Surprise" Padding="0" Grid.Column="5" Width="50" Height="40" Background="{x:Null}" BorderThickness="0,0,1,0" Click="surpriseButton_Click">
+                            <Image Source="Images/EmoticonSurprised.png" Margin="2"/>
                         </Button>
-                        <Button x:Name="button10">
-                            <Image Source="Images/EmoticonFear.png"/>
+                        <Button x:Name="fearButton" ToolTip="Fear" Padding="0" Grid.Column="6" Width="50" Height="40" Background="{x:Null}" BorderThickness="0,0,1,0" Click="fearButton_Click">
+                            <Image Source="Images/EmoticonFear.png" Margin="2"/>
                         </Button>
-                        <Button x:Name="button11" Content="ADD ENTRY"/>
+                        <Button x:Name="addEntryButton" Content="ADD ENTRY" Padding="10"  Width="Auto" HorizontalAlignment="Right" Grid.Column="7" Height="40" Foreground="#FF9D53B3" BorderBrush="{x:Null}" Background="{x:Null}" Click="addEntryButton_Click"/>
+                    </Grid>
+                    <StackPanel x:Name="subEmoticonsPanel" Orientation="Horizontal" Height="Auto">
+                        
                     </StackPanel>
                 </StackPanel>
+                <Label x:Name="hiUserLabel" Content="Hi, Yedda" HorizontalAlignment="Left" VerticalAlignment="Center" Height="25"/>
+                <StackPanel x:Name="entriesStackPanel" Margin="0" Grid.Row="2" VerticalAlignment="Top"/>
             </Grid>
         </Grid>
 

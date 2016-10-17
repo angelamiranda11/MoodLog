@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace wpf_moodlog.Images
+namespace wpf_moodlog
 {
     /// <summary>
     /// Interaction logic for MoodLogProfilePage.xaml
@@ -23,11 +23,23 @@ namespace wpf_moodlog.Images
         public MoodLogProfilePage()
         {
             InitializeComponent();
+
+            setDateTodayLabel();
         }
 
-        private void button_Copy2_Click(object sender, RoutedEventArgs e)
+        private void setDateTodayLabel()
         {
+            // Get the current date.
+            DateTime thisDay = DateTime.Today;
 
+            dateTodayLabel.Content = thisDay.ToString("MMM d");
+        }
+
+        private void entriesButton_Click(object sender, RoutedEventArgs e)
+        {
+            // View Entries page
+            MoodLogEntriesPage moodLogEntriesPage = new MoodLogEntriesPage();
+            this.NavigationService.Navigate(moodLogEntriesPage);
         }
     }
 }
