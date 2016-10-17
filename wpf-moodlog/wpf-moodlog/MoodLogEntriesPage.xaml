@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:wpf_moodlog"
+      xmlns:toolkit="clr-namespace:Xceed.Wpf.Toolkit.Converters;assembly=Xceed.Wpf.Toolkit"
       mc:Ignorable="d" 
       d:DesignHeight="640" d:DesignWidth="960"
       Title="MoodLogEntriesPage">
@@ -54,7 +55,7 @@
                     <RowDefinition Height="50*"/>
                 </Grid.RowDefinitions>
                 <StackPanel Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Top">
-                    <TextBox x:Name="entryTextBox" TextWrapping="Wrap" Height="145" Padding="5">
+                    <TextBox x:Name="entryTextBox" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True" Height="145" Padding="5">
                         <TextBox.Style>
                             <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
                                 <Style.Resources>
