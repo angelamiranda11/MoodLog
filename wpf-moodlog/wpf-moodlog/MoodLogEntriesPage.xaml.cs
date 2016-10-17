@@ -249,5 +249,10 @@ namespace wpf_moodlog
 
             return brush;
         }
+
+        private void textBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

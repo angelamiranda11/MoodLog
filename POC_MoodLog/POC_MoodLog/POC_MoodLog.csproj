@@ -136,6 +136,12 @@
   <ItemGroup>
     <None Include="Resources\anewReference.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PrepRef.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NRC-emotion-lexicon-wordlevel-alphabetized-v0.92 %281%29.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
