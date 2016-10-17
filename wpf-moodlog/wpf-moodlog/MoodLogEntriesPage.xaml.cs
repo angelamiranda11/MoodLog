@@ -46,11 +46,16 @@ namespace wpf_moodlog
             this.NavigationService.Navigate(moodLogProfilePage);
         }
 
-        private void hashtagButton_Click(object sender, RoutedEventArgs e)
+        private void addToEntryTextBox(String str)
         {
-            entryTextBox.Text += "#";
+            entryTextBox.Text += str;
             entryTextBox.Focus();
             entryTextBox.Select(entryTextBox.Text.Length, 0);
+        }
+
+        private void hashtagButton_Click(object sender, RoutedEventArgs e)
+        {
+            addToEntryTextBox("#");
         }
 
         private void disableAllEmoticonButtonsExcept(Button emoticonButton)
@@ -78,26 +83,40 @@ namespace wpf_moodlog
         }
 
 
-        private void showSubEmoticonsPanel(String[] uris)
+        private void showSubEmoticonsPanel(String[] subEmoticonNames)
         {
             resetSubEmoticonsPanel();
 
-            foreach (String uri in uris)
+            foreach (String subEmoticonName in subEmoticonNames)
             {
                 Button subEmoticonButton = new Button();
-
-                BitmapImage emoticonBitmap = new BitmapImage(new Uri("Images/" + uri, UriKind.Relative));
-                Image subEmoticonImage = new Image();
-                subEmoticonImage.Source = emoticonBitmap;
    
-                subEmoticonButton.Content = subEmoticonImage;
+                subEmoticonButton.Content = convertUriToImage(new Uri("Images/" + subEmoticonName + ".png", UriKind.Relative));
                 subEmoticonButton.Width = 50;
                 subEmoticonButton.Height = 40;
                 subEmoticonButton.Background = null;
                 subEmoticonButton.BorderThickness = new Thickness(0, 0, 1, 0);
+                subEmoticonButton.ToolTip = subEmoticonName.Replace('-', ' ');
+                subEmoticonButton.Name = subEmoticonName;
+                subEmoticonButton.Click += new RoutedEventHandler(subEmoticonButton_Click);
 
                 subEmoticonsPanel.Children.Add(subEmoticonButton);
             }
+        }
+
+        private void subEmoticonButton_Click(object sender, RoutedEventArgs e)
+        {
+            Button subEmoticonButton = e.Source as Button;
+            addToEntryTextBox(":" + subEmoticonButton.Name + ":");
+        }
+
+        private Image convertUriToImage(Uri uri)
+        {
+            BitmapImage bitmapImage = new BitmapImage(uri);
+            Image image = new Image();
+            image.Source = bitmapImage;
+
+            return image;
         }
 
         private void resetSubEmoticonsPanel()
@@ -110,102 +129,125 @@ namespace wpf_moodlog
         {
             disableAllEmoticonButtonsExcept(joyButton);
 
-            String[] uris = {
-                "EmoticonJoy.png",
-                "EmoticonJoy.png",
-                "EmoticonJoy.png",
-                "EmoticonJoy.png",
-                "EmoticonJoy.png",
-                "EmoticonJoy.png",
-                "EmoticonJoy.png",
+            String[] joyEmoticonNames = {
+                "EmoticonJoy",
+                "EmoticonJoy",
+                "EmoticonJoy",
+                "EmoticonJoy",
+                "EmoticonJoy",
+                "EmoticonJoy",
+                "EmoticonJoy",
             };
 
-            showSubEmoticonsPanel(uris);
+            showSubEmoticonsPanel(joyEmoticonNames);
         }
 
         private void sadnessButton_Click(object sender, RoutedEventArgs e)
         {
             disableAllEmoticonButtonsExcept(sadnessButton);
 
-            String[] uris = {
-                "EmoticonSadness.png",
-                "EmoticonSadness.png",
-                "EmoticonSadness.png",
-                "EmoticonSadness.png",
-                "EmoticonSadness.png",
-                "EmoticonSadness.png",
-                "EmoticonSadness.png",
+            String[] sadnessEmoticonNames = {
+                "EmoticonSadness",
+                "EmoticonSadness",
+                "EmoticonSadness",
+                "EmoticonSadness",
+                "EmoticonSadness",
+                "EmoticonSadness",
+                "EmoticonSadness",
             };
 
-            showSubEmoticonsPanel(uris);
+            showSubEmoticonsPanel(sadnessEmoticonNames);
         }
 
         private void disgustButton_Click(object sender, RoutedEventArgs e)
         {
             disableAllEmoticonButtonsExcept(disgustButton);
 
-            String[] uris = {
-                "EmoticonDisgust.png",
-                "EmoticonDisgust.png",
-                "EmoticonDisgust.png",
-                "EmoticonDisgust.png",
-                "EmoticonDisgust.png",
-                "EmoticonDisgust.png",
-                "EmoticonDisgust.png",
+            String[] disgustEmoticonNames = {
+                "EmoticonDisgust",
+                "EmoticonDisgust",
+                "EmoticonDisgust",
+                "EmoticonDisgust",
+                "EmoticonDisgust",
+                "EmoticonDisgust",
+                "EmoticonDisgust",
             };
 
-            showSubEmoticonsPanel(uris);
+            showSubEmoticonsPanel(disgustEmoticonNames);
         }
 
         private void angerButton_Click(object sender, RoutedEventArgs e)
         {
             disableAllEmoticonButtonsExcept(angerButton);
 
-            String[] uris = {
-                "EmoticonAnger.png",
-                "EmoticonAnger.png",
-                "EmoticonAnger.png",
-                "EmoticonAnger.png",
-                "EmoticonAnger.png",
-                "EmoticonAnger.png",
-                "EmoticonAnger.png",
+            String[] angerEmoticonNames = {
+                "EmoticonAnger",
+                "EmoticonAnger",
+                "EmoticonAnger",
+                "EmoticonAnger",
+                "EmoticonAnger",
+                "EmoticonAnger",
+                "EmoticonAnger",
             };
 
-            showSubEmoticonsPanel(uris);
+            showSubEmoticonsPanel(angerEmoticonNames);
         }
 
         private void surpriseButton_Click(object sender, RoutedEventArgs e)
         {
             disableAllEmoticonButtonsExcept(surpriseButton);
 
-            String[] uris = {
-                "EmoticonSurprised.png",
-                "EmoticonSurprised.png",
-                "EmoticonSurprised.png",
-                "EmoticonSurprised.png",
-                "EmoticonSurprised.png",
-                "EmoticonSurprised.png",
-                "EmoticonSurprised.png",
+            String[] surprisedEmoticonNames = {
+                "EmoticonSurprised",
+                "EmoticonSurprised",
+                "EmoticonSurprised",
+                "EmoticonSurprised",
+                "EmoticonSurprised",
+                "EmoticonSurprised",
+                "EmoticonSurprised",
             };
 
-            showSubEmoticonsPanel(uris);
+            showSubEmoticonsPanel(surprisedEmoticonNames);
         }
 
         private void fearButton_Click(object sender, RoutedEventArgs e)
         {
             disableAllEmoticonButtonsExcept(fearButton);
 
-            String[] uris = {
-                "EmoticonFear.png",
-                "EmoticonFear.png",
-                "EmoticonFear.png",
-                "EmoticonFear.png",
-                "EmoticonFear.png",
-                "EmoticonFear.png",
-                "EmoticonFear.png",
+            String[] fearEmoticonNames = {
+                "EmoticonFear",
+                "EmoticonFear",
+                "EmoticonFear",
+                "EmoticonFear",
+                "EmoticonFear",
+                "EmoticonFear",
+                "EmoticonFear",
             };
 
-            showSubEmoticonsPanel(uris);
+            showSubEmoticonsPanel(fearEmoticonNames);
+        }
+
+        private void addEntryButton_Click(object sender, RoutedEventArgs e)
+        {
+            DockPanel newEntry = new DockPanel();
+
+            newEntry.Background = convertHexToBrush("#ecf0f1");
+
+            TextBlock content = new TextBlock();
+            content.Text = entryTextBox.Text;
+
+            newEntry.Children.Add(content);
+
+            entriesStackPanel.Children.Add(newEntry);
+        }
+
+        private Brush convertHexToBrush(String hex)
+        {
+            BrushConverter brushConverter = new BrushConverter();
+            Brush brush = (Brush)brushConverter.ConvertFrom(hex);
+            brush.Freeze();
+
+            return brush;
         }
     }
 }

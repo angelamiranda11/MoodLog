@@ -50,8 +50,8 @@
             <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1" Margin="30,15,40,0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="5*"/>
-                    <RowDefinition Height="50*"/>
                     <RowDefinition Height="45*"/>
+                    <RowDefinition Height="50*"/>
                 </Grid.RowDefinitions>
                 <StackPanel Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Top">
                     <TextBox x:Name="entryTextBox" TextWrapping="Wrap" Height="145" Padding="5">
@@ -110,13 +110,14 @@
                         <Button x:Name="fearButton" ToolTip="Fear" Padding="0" Grid.Column="6" Width="50" Height="40" Background="{x:Null}" BorderThickness="0,0,1,0" Click="fearButton_Click">
                             <Image Source="Images/EmoticonFear.png" Margin="2"/>
                         </Button>
-                        <Button x:Name="addEntryButton" Content="ADD ENTRY" Padding="10"  Width="Auto" HorizontalAlignment="Right" Grid.Column="7" Height="40" Foreground="#FF9D53B3" BorderBrush="{x:Null}" Background="{x:Null}"/>
+                        <Button x:Name="addEntryButton" Content="ADD ENTRY" Padding="10"  Width="Auto" HorizontalAlignment="Right" Grid.Column="7" Height="40" Foreground="#FF9D53B3" BorderBrush="{x:Null}" Background="{x:Null}" Click="addEntryButton_Click"/>
                     </Grid>
                     <StackPanel x:Name="subEmoticonsPanel" Orientation="Horizontal" Height="Auto">
                         
                     </StackPanel>
                 </StackPanel>
                 <Label x:Name="hiUserLabel" Content="Hi, Yedda" HorizontalAlignment="Left" VerticalAlignment="Center" Height="25"/>
+                <StackPanel x:Name="entriesStackPanel" Margin="0" Grid.Row="2" VerticalAlignment="Top"/>
             </Grid>
         </Grid>
 
