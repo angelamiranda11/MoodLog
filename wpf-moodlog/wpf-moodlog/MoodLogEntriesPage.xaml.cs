@@ -20,8 +20,6 @@ namespace wpf_moodlog
     /// </summary>
     public partial class MoodLogEntriesPage : Page
     {
-        public static DateTime Today { get; }
-
         public MoodLogEntriesPage()
         {
             InitializeComponent();
@@ -245,16 +243,44 @@ namespace wpf_moodlog
 
         private void addEntryButton_Click(object sender, RoutedEventArgs e)
         {
-            DockPanel newEntry = new DockPanel();
-
-            newEntry.Background = convertHexToBrush("#ecf0f1");
-
-            TextBlock content = new TextBlock();
-            content.Text = entryTextBox.Text;
-
-            newEntry.Children.Add(content);
+            Border newEntry = createNewEntryFrom(entryTextBox.Text);
 
             entriesStackPanel.Children.Add(newEntry);
+        }
+
+        private Border createNewEntryFrom(String text)
+        {
+            Border myBorder = new Border();
+            myBorder.BorderBrush = Brushes.Black;
+            myBorder.BorderThickness = new Thickness(1);
+            myBorder.Padding = new Thickness(10);
+
+            // Get the current date.
+            DateTime thisDay = DateTime.Now;
+
+            TextBlock dateTodayContent = new TextBlock();
+            dateTodayContent.Text = thisDay.ToString("dddd, MMMM dd");
+
+            TextBlock timeTodayContent = new TextBlock();
+            timeTodayContent.Text = thisDay.ToString("h:mm tt");
+
+            TextBlock textContent = new TextBlock();
+            textContent.Text = text;
+
+            DockPanel.SetDock(dateTodayContent, Dock.Top);
+            DockPanel.SetDock(timeTodayContent, Dock.Top);
+            DockPanel.SetDock(textContent, Dock.Top);
+
+            DockPanel newEntry = new DockPanel();
+            newEntry.Children.Add(dateTodayContent);
+            newEntry.Children.Add(timeTodayContent);
+            newEntry.Children.Add(textContent);
+
+            myBorder.Child = newEntry;
+            myBorder.LayoutTransform = new RotateTransform(180);
+            myBorder.Margin = new Thickness(0, 10, 0, 10);
+
+            return myBorder;
         }
 
     }
