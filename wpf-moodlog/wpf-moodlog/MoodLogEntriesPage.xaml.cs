@@ -36,12 +36,12 @@ namespace wpf_moodlog
 
             showSubEmoticons(new string[] {
                 "EmoticonJoy",
-                "EmoticonJoy",
-                "EmoticonJoy",
-                "EmoticonJoy",
-                "EmoticonJoy",
-                "EmoticonJoy",
-                "EmoticonJoy",
+                "EmoticonJoyAngel",
+                "EmoticonJoyEyeHeart",
+                "EmoticonJoyEyeSmile",
+                "EmoticonJoyGrin",
+                "EmoticonJoyLOL",
+                "EmoticonJoyHeart",
             });
         }
 
@@ -51,12 +51,12 @@ namespace wpf_moodlog
 
             showSubEmoticons(new string[] {
                 "EmoticonSadness",
-                "EmoticonSadness",
-                "EmoticonSadness",
-                "EmoticonSadness",
-                "EmoticonSadness",
-                "EmoticonSadness",
-                "EmoticonSadness",
+                "EmoticonSadnessCry",
+                "EmoticonSadnessCry2",
+                "EmoticonSadnessGloomy",
+                "EmoticonSadnessGloomy2",
+                "EmoticonSadnessPout",
+                "EmoticonSadnessHeartBroken",
             });
         }
 
@@ -66,7 +66,7 @@ namespace wpf_moodlog
 
             showSubEmoticons(new string[] {
                 "EmoticonDisgust",
-                "EmoticonDisgust",
+                "EmoticonDisgust2",
                 "EmoticonDisgust",
                 "EmoticonDisgust",
                 "EmoticonDisgust",
@@ -81,7 +81,7 @@ namespace wpf_moodlog
 
             showSubEmoticons(new string[] {
                 "EmoticonAnger",
-                "EmoticonAnger",
+                "EmoticonAngerSuper",
                 "EmoticonAnger",
                 "EmoticonAnger",
                 "EmoticonAnger",
@@ -96,10 +96,10 @@ namespace wpf_moodlog
 
             showSubEmoticons(new string[] {
                 "EmoticonSurprised",
-                "EmoticonSurprised",
-                "EmoticonSurprised",
-                "EmoticonSurprised",
-                "EmoticonSurprised",
+                "EmoticonSurprisedSlight",
+                "EmoticonSurprisedQuite",
+                "EmoticonSurprisedSuper",
+                "EmoticonSurprisedOMG",
                 "EmoticonSurprised",
                 "EmoticonSurprised",
             });
