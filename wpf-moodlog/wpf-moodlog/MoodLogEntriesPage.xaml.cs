@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.DataVisualization.Charting;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -15,11 +16,38 @@ using System.Windows.Shapes;
 
 namespace wpf_moodlog
 {
+    public enum Emotion { Joy, Surprised, Sadness, Disgust, Anger, Fear };
+
+    public static class Extensions
+    {
+        public static SolidColorBrush GetColor(this Emotion e)
+        {
+            switch (e)
+            {
+                case Emotion.Joy:
+                    return Brushes.Green;
+                case Emotion.Surprised:
+                    return Brushes.DarkGoldenrod;
+                case Emotion.Sadness:
+                    return Brushes.Blue;
+                case Emotion.Disgust:
+                    return Brushes.Purple;
+                case Emotion.Anger:
+                    return Brushes.Red;
+                case Emotion.Fear:
+                    return Brushes.DarkSlateGray;
+                default:
+                    return Brushes.Black;
+            }
+        }
+    }
     /// <summary>
     /// Interaction logic for MoodLogEntriesPage.xaml
     /// </summary>
     public partial class MoodLogEntriesPage : Page
     {
+        
+
         public MoodLogEntriesPage()
         {
             InitializeComponent();
@@ -148,6 +176,8 @@ namespace wpf_moodlog
         {
             entryTextBox.Text += str;
             entryTextBox.Focus();
+
+            // Place cursor on end of text
             entryTextBox.Select(entryTextBox.Text.Length, 0);
         }
 
@@ -184,14 +214,19 @@ namespace wpf_moodlog
 
         private void showSubEmoticons(String[] subEmoticonNames)
         {
-            resetSubEmoticonsPanel();
+            resetSubEmoticons();
 
             foreach (String subEmoticonName in subEmoticonNames)
             {
                 Button subEmoticonButton = createSubEmoticonButtonWithName(subEmoticonName);
 
-                subEmoticonsPanel.Children.Add(subEmoticonButton);
+                showSubEmoticon(subEmoticonButton);
             }
+        }
+
+        private void showSubEmoticon(Button subEmoticonButton)
+        {
+            subEmoticonsPanel.Children.Add(subEmoticonButton);
         }
 
         private Button createSubEmoticonButtonWithName(String subEmoticonName)
@@ -226,16 +261,16 @@ namespace wpf_moodlog
             return image;
         }
 
-        private void resetSubEmoticonsPanel()
+        private void resetSubEmoticons()
         {
             subEmoticonsPanel.Children.Clear();
             subEmoticonsPanel.Background = Brushes.DarkGray;
         }
 
-        private Brush convertHexToBrush(String hex)
+        private SolidColorBrush convertHexToBrush(String hex)
         {
             BrushConverter brushConverter = new BrushConverter();
-            Brush brush = (Brush)brushConverter.ConvertFrom(hex);
+            SolidColorBrush brush = (SolidColorBrush)brushConverter.ConvertFrom(hex);
             brush.Freeze();
 
             return brush;
@@ -243,44 +278,225 @@ namespace wpf_moodlog
 
         private void addEntryButton_Click(object sender, RoutedEventArgs e)
         {
-            Border newEntry = createNewEntryFrom(entryTextBox.Text);
+            Border newEntry = createEntryFrom(entryTextBox.Text);
 
             entriesStackPanel.Children.Add(newEntry);
         }
 
-        private Border createNewEntryFrom(String text)
+        private Border addBorderToPanel(StackPanel panel)
         {
-            Border myBorder = new Border();
-            myBorder.BorderBrush = Brushes.Black;
-            myBorder.BorderThickness = new Thickness(1);
-            myBorder.Padding = new Thickness(10);
+            Border borderedPanel = createBorderedPanel();
 
-            // Get the current date.
+            borderedPanel.Child = panel;
+
+            return borderedPanel;
+        }
+
+        private Border createBorderedPanel()
+        {
+            Border borderedPanel = new Border();
+
+            setPropertiesOfBorderedPanel(borderedPanel);
+
+            return borderedPanel;
+        }
+
+        private void setPropertiesOfBorderedPanel(Border borderedPanel)
+        {
+            borderedPanel.BorderBrush = Brushes.Black;
+            borderedPanel.BorderThickness = new Thickness(1);
+            borderedPanel.Padding = new Thickness(3);
+        }
+
+        private StackPanel combineSummaryAndContentOfEntry(DockPanel summary, TextBlock content)
+        {
+            StackPanel entry = new StackPanel();
+            entry.Children.Add(summary);
+            entry.Children.Add(content);
+
+            return entry;
+        }
+
+        private TextBlock createSummaryDateTime()
+        {
             DateTime thisDay = DateTime.Now;
 
-            TextBlock dateTodayContent = new TextBlock();
-            dateTodayContent.Text = thisDay.ToString("dddd, MMMM dd");
+            TextBlock summaryDateTime = new TextBlock();
+            summaryDateTime.Text = thisDay.ToString("dddd, MMMM dd h:mm tt");
 
-            TextBlock timeTodayContent = new TextBlock();
-            timeTodayContent.Text = thisDay.ToString("h:mm tt");
+            return summaryDateTime;
+        }
 
-            TextBlock textContent = new TextBlock();
-            textContent.Text = text;
+        private Dictionary<Emotion, double> getEmotionsFrom(String text)
+        {
+            var emotions = new Dictionary<Emotion, double>();
 
-            DockPanel.SetDock(dateTodayContent, Dock.Top);
-            DockPanel.SetDock(timeTodayContent, Dock.Top);
-            DockPanel.SetDock(textContent, Dock.Top);
+            // temporary code
+            emotions.Add(Emotion.Joy, 0.3);
+            emotions.Add(Emotion.Surprised, 0.4);
+            emotions.Add(Emotion.Sadness, 0.1);
+            emotions.Add(Emotion.Disgust, 0.1);
+            emotions.Add(Emotion.Anger, 0.05);
+            emotions.Add(Emotion.Fear, 0.05);
 
-            DockPanel newEntry = new DockPanel();
-            newEntry.Children.Add(dateTodayContent);
-            newEntry.Children.Add(timeTodayContent);
-            newEntry.Children.Add(textContent);
+            return emotions;
+        }
 
-            myBorder.Child = newEntry;
-            myBorder.LayoutTransform = new RotateTransform(180);
-            myBorder.Margin = new Thickness(0, 10, 0, 10);
+        private TextBlock createSummaryDominantEmotionFrom(Dictionary<Emotion, double> emotions)
+        {
+            Emotion dominantEmotion = getDominantEmotionIn(emotions);
 
-            return myBorder;
+            TextBlock summaryDominantEmotion = new TextBlock()
+            {
+                Text = Enum.GetName(typeof(Emotion), dominantEmotion).ToUpper(),
+                Foreground = dominantEmotion.GetColor(),
+                FontWeight = FontWeights.Bold
+            };
+
+            return summaryDominantEmotion;
+            
+        }
+
+        private PieSeries createSummaryEmotionsChartFrom(Dictionary<Emotion, double> emotions)
+        {
+            // Code in progress
+            var allEmotionsChart = new Chart();
+            var pieSeries = new PieSeries()
+            {
+                ItemsSource = emotions.ToList(),
+                IndependentValueBinding = new Binding("Key"),
+                DependentValueBinding = new Binding("Value"),
+                Height = 50,
+                Width = 50,
+                Margin = new Thickness(5,0,10,0)
+            };
+
+            allEmotionsChart.Series.Add(pieSeries);
+
+            return pieSeries;
+        }
+
+        private Emotion getDominantEmotionIn(Dictionary<Emotion, double> emotions)
+        {
+            Emotion maxEmotion = 0;
+            double maxValue = 0;
+
+            foreach (var x in emotions)
+            {
+                if (x.Value > maxValue)
+                {
+                    maxEmotion = x.Key;
+                    maxValue = x.Value;
+                }
+            }
+
+            return maxEmotion;
+        }
+
+        private Grid createCircleWithText(string str, SolidColorBrush color)
+        {
+            Grid circleWithText = new Grid();
+
+            var ellipse = new Ellipse() {
+                Width = 25,
+                Height = 25,
+                Fill = color
+            };
+
+            var text = new Label()
+            {
+                Content = str,
+                Foreground = Brushes.White,
+                FontSize = 8,
+                Width = 25,
+                HorizontalContentAlignment = HorizontalAlignment.Center,
+                VerticalContentAlignment = VerticalAlignment.Center
+            };
+
+            circleWithText.Children.Add(ellipse);
+            circleWithText.Children.Add(text);
+
+            return circleWithText;
+        }
+
+        private StackPanel createSummaryEmotionsTextFrom(Dictionary<Emotion, double> emotions)
+        {
+            StackPanel summaryEmotionsText = new StackPanel()
+            {
+                Orientation = Orientation.Horizontal,
+                Margin = new Thickness(0,1,0,5)
+            };
+
+            foreach(var x in emotions)
+            {
+                var valueInCircle = createCircleWithText((x.Value) * 100 + "%", x.Key.GetColor());
+                var emotionInText = new TextBlock()
+                {
+                    Text = Enum.GetName(typeof(Emotion), x.Key),
+                    Margin = new Thickness(3,0,20,0),
+                    VerticalAlignment = VerticalAlignment.Center
+                };
+
+                summaryEmotionsText.Children.Add(valueInCircle);
+                summaryEmotionsText.Children.Add(emotionInText);
+            }
+
+            return summaryEmotionsText;
+        }
+
+        private DockPanel createEntrySummaryFrom(String text)
+        {
+            DockPanel summary = new DockPanel()
+            {
+                Background = convertHexToBrush("#ecf0f1")
+            };
+
+            Dictionary<Emotion, double> emotions = getEmotionsFrom(text);
+
+            PieSeries allEmotionsChart = createSummaryEmotionsChartFrom(emotions);
+            TextBlock dateTime = createSummaryDateTime();
+            TextBlock dominantEmotion = createSummaryDominantEmotionFrom(emotions);
+            StackPanel allEmotionsText = createSummaryEmotionsTextFrom(emotions);
+
+            DockPanel.SetDock(allEmotionsChart, Dock.Left);
+            DockPanel.SetDock(dateTime, Dock.Top);
+            DockPanel.SetDock(dominantEmotion, Dock.Top);
+            DockPanel.SetDock(allEmotionsText, Dock.Top);
+
+            summary.Children.Add(allEmotionsChart);
+            summary.Children.Add(dateTime);
+            summary.Children.Add(dominantEmotion);
+            summary.Children.Add(allEmotionsText);
+
+            return summary;
+        }
+
+        private TextBlock createEntryContentFrom(String text)
+        {
+            TextBlock content = new TextBlock();
+            content.Text = text;
+
+            return content;
+        }
+
+        private void setPropertiesOfEntryWithBorder(Border entryWithBorder)
+        {
+            entryWithBorder.LayoutTransform = new RotateTransform(180);
+            entryWithBorder.Margin = new Thickness(0, 10, 0, 10);
+        }
+
+        private Border createEntryFrom(String text)
+        {
+            DockPanel summary = createEntrySummaryFrom(text);
+            TextBlock content = createEntryContentFrom(text);
+
+            StackPanel newEntry = combineSummaryAndContentOfEntry(summary, content);
+
+            Border newEntryWithBorder = addBorderToPanel(newEntry);
+
+            setPropertiesOfEntryWithBorder(newEntryWithBorder);
+
+            return newEntryWithBorder;  
         }
 
     }
