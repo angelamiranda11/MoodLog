@@ -285,6 +285,27 @@
   <ItemGroup>
     <Resource Include="Images\hat.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\EmoticonAngerSuper.png" />
+    <Resource Include="Images\EmoticonDisgust2.png" />
+    <Resource Include="Images\EmoticonJoyAngel.png" />
+    <Resource Include="Images\EmoticonJoyEyeHeart.png" />
+    <Resource Include="Images\EmoticonJoyEyeSmile.png" />
+    <Resource Include="Images\EmoticonJoyGrin.png" />
+    <Resource Include="Images\EmoticonJoyHeart.png" />
+    <Resource Include="Images\EmoticonJoyLOL.png" />
+    <Resource Include="Images\EmoticonJoyWideSmile.png" />
+    <Resource Include="Images\EmoticonSadnessCry.png" />
+    <Resource Include="Images\EmoticonSadnessCry2.png" />
+    <Resource Include="Images\EmoticonSadnessGloomy.png" />
+    <Resource Include="Images\EmoticonSadnessGloomy2.png" />
+    <Resource Include="Images\EmoticonSadnessHeartBroken.png" />
+    <Resource Include="Images\EmoticonSadnessPout.png" />
+    <Resource Include="Images\EmoticonSurprisedOMG.png" />
+    <Resource Include="Images\EmoticonSurprisedQuite.png" />
+    <Resource Include="Images\EmoticonSurprisedSlight.png" />
+    <Resource Include="Images\EmoticonSurprisedSuper.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
