@@ -118,7 +118,7 @@
                         </Grid>
                         <StackPanel x:Name="subEmoticonsPanel" Orientation="Horizontal" Height="Auto"/>
                     </StackPanel>
-                    <StackPanel x:Name="entriesStackPanel" Margin="0" Grid.Row="2" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5" Height="Auto">
+                    <StackPanel x:Name="entriesStackPanel" Margin="0,5,0,0" Grid.Row="2" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5" Height="Auto">
                         <StackPanel.LayoutTransform>
                             <TransformGroup>
                                 <ScaleTransform/>

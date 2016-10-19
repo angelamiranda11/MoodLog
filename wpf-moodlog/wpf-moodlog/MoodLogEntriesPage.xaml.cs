@@ -281,6 +281,13 @@ namespace wpf_moodlog
             Border newEntry = createEntryFrom(entryTextBox.Text);
 
             entriesStackPanel.Children.Add(newEntry);
+
+            resetEntryTextBox();
+        }
+
+        private void resetEntryTextBox()
+        {
+            entryTextBox.Text = "";
         }
 
         private Border addBorderToPanel(StackPanel panel)
@@ -366,9 +373,9 @@ namespace wpf_moodlog
                 ItemsSource = emotions.ToList(),
                 IndependentValueBinding = new Binding("Key"),
                 DependentValueBinding = new Binding("Value"),
-                Height = 50,
-                Width = 50,
-                Margin = new Thickness(5,0,10,0)
+                Height = 65,
+                Width = 65,
+                Margin = new Thickness(5, 0, 20, 0)
             };
 
             allEmotionsChart.Series.Add(pieSeries);
@@ -424,15 +431,15 @@ namespace wpf_moodlog
             StackPanel summaryEmotionsText = new StackPanel()
             {
                 Orientation = Orientation.Horizontal,
-                Margin = new Thickness(0,1,0,5)
+                Margin = new Thickness(0,5,0,10)
             };
 
-            foreach(var x in emotions)
+            foreach(var emotion in emotions)
             {
-                var valueInCircle = createCircleWithText((x.Value) * 100 + "%", x.Key.GetColor());
+                var valueInCircle = createCircleWithText((emotion.Value) * 100 + "%", emotion.Key.GetColor());
                 var emotionInText = new TextBlock()
                 {
-                    Text = Enum.GetName(typeof(Emotion), x.Key),
+                    Text = Enum.GetName(typeof(Emotion), emotion.Key),
                     Margin = new Thickness(3,0,20,0),
                     VerticalAlignment = VerticalAlignment.Center
                 };
@@ -473,7 +480,11 @@ namespace wpf_moodlog
 
         private TextBlock createEntryContentFrom(String text)
         {
-            TextBlock content = new TextBlock();
+            TextBlock content = new TextBlock()
+            {
+                Margin = new Thickness(5),
+                TextWrapping = TextWrapping.WrapWithOverflow
+            };
             content.Text = text;
 
             return content;
