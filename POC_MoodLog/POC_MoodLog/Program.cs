@@ -31,6 +31,7 @@ namespace POC_MoodLog
         static ArrayList memWord = new ArrayList();
         static ArrayList wordCommaEmotion = new ArrayList();
         static ArrayList prepEmotion = new ArrayList();
+        static ArrayList hashSegmented = new ArrayList();
 
         static void Main(string[] args)
         {
@@ -72,6 +73,18 @@ namespace POC_MoodLog
                     input = input.Remove(input.IndexOf(item[0]), item.Length);
                 }
             }
+
+            foreach(String seg in hashtagCollection)
+            {
+                String[] temp = seg.Split();
+                foreach(String temp2 in temp)
+                {
+                    if (bowreference.Contains(temp2))
+                    {
+                        memWord.Add(temp2.ToLower());
+                    }
+                }
+            }
             var gcc2 = input.Split(punctuations);
             foreach (var item2 in gcc2)
             {
@@ -80,7 +93,6 @@ namespace POC_MoodLog
                     sentences.Add(item2);
                 }
             }
-
 
             foreach (String item in sentences)
             {
@@ -108,18 +120,16 @@ namespace POC_MoodLog
                                 {
                                     if (!finalBoW.Contains(item))
                                     {
-                                        Debug.WriteLine("Adding " + item);
-                                        memWord.Add(item2);
-                                        finalBoW.Add(item);
+                                        memWord.Add(item2.ToLower());
+                                        finalBoW.Add(item.ToLower());
                                     }  
                                 }
                                 else if (prepNInter.Contains(item2) && Array.IndexOf(temp3, item2) == 0 && bowreference.Contains(temp3[1]))
                                 {
                                     if (!finalBoW.Contains(item))
                                     {
-                                        Debug.WriteLine("Adding " + item);
-                                        memWord.Add(temp3[1]);
-                                        finalBoW.Add(item);
+                                        memWord.Add(temp3[1].ToLower());
+                                        finalBoW.Add(item.ToLower());
                                     }
                                 }
                             }
@@ -196,75 +206,84 @@ namespace POC_MoodLog
             
             foreach (String temp in finalBoW)
             {
-                String runtemp = POC_MoodLog.Properties.Resources.PrepRef.Split()[2];
+                String[] runtemp = POC_MoodLog.Properties.Resources.PrepRef.Split();
                 String prepositionPlace = temp.Split()[0];
-                char effect = Convert.ToChar(runtemp.Split(',')[1]);
-                float effectValue = Convert.ToSingle(runtemp.Split(',')[2]);
-                if (prepNInter.Contains(prepositionPlace))
+                char effect=' ';
+                float effectValue = 0;
+                foreach (String i in runtemp)
                 {
-                    String emotion = getEmotion(temp.Split()[1], wordCommaEmotion);
-                    switch (emotion)
+                    if (i != "")
                     {
-                        case "joy":
-                            if (effect == '+')
+                        String checker = i.Split(',')[0];
+                        if (prepositionPlace.Trim().ToLower() == checker.Trim())
+                        {
+                            effect = Convert.ToChar(i.Split(',')[1]);
+                            effectValue = Convert.ToSingle(i.Split(',')[2]);
+                            String emotion = getEmotion(temp.Split()[1], wordCommaEmotion);
+                            switch (emotion)
                             {
-                                joy[0] += effectValue;
+                                case "joy":
+                                    if (effect == '+')
+                                    {
+                                        joy[0] += effectValue;
+                                    }
+                                    else if (effect == '-')
+                                    {
+                                        joy[1] += effectValue;
+                                    }
+                                    break;
+                                case "surprise":
+                                    if (effect == '+')
+                                    {
+                                        surprise[0] += effectValue;
+                                    }
+                                    else if (effect == '-')
+                                    {
+                                        surprise[1] += effectValue;
+                                    }
+                                    break;
+                                case "fear":
+                                    if (effect == '+')
+                                    {
+                                        fear[0] += effectValue;
+                                    }
+                                    else if (effect == '-')
+                                    {
+                                        fear[1] += effectValue;
+                                    }
+                                    break;
+                                case "anger":
+                                    if (effect == '+')
+                                    {
+                                        anger[0] += effectValue;
+                                    }
+                                    else if (effect == '-')
+                                    {
+                                        anger[1] += effectValue;
+                                    }
+                                    break;
+                                case "disgust":
+                                    if (effect == '+')
+                                    {
+                                        disgust[0] += effectValue;
+                                    }
+                                    else if (effect == '-')
+                                    {
+                                        disgust[1] += effectValue;
+                                    }
+                                    break;
+                                case "sad":
+                                    if (effect == '+')
+                                    {
+                                        sad[0] += effectValue;
+                                    }
+                                    else if (effect == '-')
+                                    {
+                                        sad[1] += effectValue;
+                                    }
+                                    break;
                             }
-                            else if (effect == '-')
-                            {
-                                joy[1] += effectValue;
-                            }
-                            break;
-                        case "surprise":
-                            if (effect == '+')
-                            {
-                                surprise[0] += effectValue;
-                            }
-                            else if (effect == '-')
-                            {
-                                surprise[1] += effectValue;
-                            }
-                            break;
-                        case "fear":
-                            if (effect == '+')
-                            {
-                                fear[0] += effectValue;
-                            }
-                            else if (effect == '-')
-                            {
-                                fear[1] += effectValue;
-                            }
-                            break;
-                        case "anger":
-                            if (effect == '+')
-                            {
-                                anger[0] += effectValue;
-                            }
-                            else if (effect == '-')
-                            {
-                                anger[1] += effectValue;
-                            }
-                            break;
-                        case "disgust":
-                            if (effect == '+')
-                            {
-                                disgust[0] += effectValue;
-                            }
-                            else if (effect == '-')
-                            {
-                                disgust[1] += effectValue;
-                            }
-                            break;
-                        case "sad":
-                            if (effect == '+')
-                            {
-                                sad[0] += effectValue;
-                            }
-                            else if (effect == '-')
-                            {
-                                sad[1] += effectValue;
-                            }
-                            break;
+                        }
                     }
                 }
             }
