@@ -156,7 +156,7 @@ namespace POC_MoodLog
                                 if ((Math.Atan2(y, x) * (180 / Math.PI) + 180) >= 180 && (Math.Atan2(y, x) * (180 / Math.PI) + 180) <= 270)
                                 {
                                     wordCommaEmotion.Add(word + "," + "sad");
-                                    //sad[0] += 1;
+                                    sad[0] += 1;
                                 }
                             }
                             else if (y > 5 && y <= 10)
@@ -164,17 +164,17 @@ namespace POC_MoodLog
                                 if ((Math.Atan2(y, x) * (180 / Math.PI) + 90) >= 90 && (Math.Atan2(y, x) * (180 / Math.PI) + 90) <= 120)
                                 {
                                     wordCommaEmotion.Add(word + "," + "disgust");
-                                    //disgust[0] += 1;
+                                    disgust[0] += 1;
                                 }
                                 if ((Math.Atan2(y, x) * (180 / Math.PI) + 90) >= 120 && (Math.Atan2(y, x) * (180 / Math.PI) + 90) <= 150)
                                 {
                                     wordCommaEmotion.Add(word + "," + "anger");
-                                    //anger[0] += 1;
+                                    anger[0] += 1;
                                 }
                                 if ((Math.Atan2(y, x) * (180 / Math.PI) + 90) >= 150 && (Math.Atan2(y, x) * (180 / Math.PI) + 90) <= 180)
                                 {
                                     wordCommaEmotion.Add(word + "," + "fear");
-                                    //fear[0] += 1;
+                                    fear[0] += 1;
                                 }
                             }
                         }
@@ -189,12 +189,12 @@ namespace POC_MoodLog
                                 if ((Math.Atan2(y, x) * (180 / Math.PI) + 0) >= 30 && (Math.Atan2(y, x) * (180 / Math.PI) + 0) <= 60)
                                 {
                                     wordCommaEmotion.Add(word + "," + "joy");
-                                    //joy[0] += 1;
+                                    joy[0] += 1;
                                 }
                                 if ((Math.Atan2(y, x) * (180 / Math.PI) + 0) >= 60 && (Math.Atan2(y, x) * (180 / Math.PI) + 0) <= 90)
                                 {
                                     wordCommaEmotion.Add(word + "," + "surprise");
-                                    //surprise[0] += 1;
+                                    surprise[0] += 1;
                                 }
                             }
                         }
@@ -278,16 +278,6 @@ namespace POC_MoodLog
                                     else if (effect == '-')
                                     {
                                         sad[1] += effectValue;
-                                    }
-                                    break;
-                                default: switch (emotion)
-                                    {
-                                        case "joy": joy[0] += 1; break;
-                                        case "surprise": surprise[0] += 1; break;
-                                        case "fear": fear[0] += 1; break;
-                                        case "anger": anger[0] += 1; break;
-                                        case "disgust": disgust[0] += 1; break;
-                                        case "sad": sad[0] += 1; break;
                                     }
                                     break;
                             }
