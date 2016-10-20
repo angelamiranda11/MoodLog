@@ -26,24 +26,36 @@ namespace POC_MoodLog
         static ArrayList hashtagCollection = new ArrayList();
         static ArrayList finalBoW = new ArrayList();
         static int[] emotionInt = { 0, 0, 0, 0, 0, 0 };
-        private static string outStr;
-        private static string outEmo;
-        private static string outHash;
-        private static string outprob2;
         static ArrayList nrc_emotion = new ArrayList();
         private static string outProb2;
+        static ArrayList memWord = new ArrayList();
+        static ArrayList wordCommaEmotion = new ArrayList();
+        static ArrayList prepEmotion = new ArrayList();
 
         static void Main(string[] args)
         {
             init();
+            // 0,1 for yes and no respectively
+            float[] joy = new float[2];
+            float[] sad = new float[2];
+            float[] anger = new float[2];
+            float[] surprise = new float[2];
+            float[] disgust = new float[2];
+            float[] fear = new float[2];
 
+            //Enter Freq count here
+            //Populate yes emotion[0]
+            ArrayList tempa = new ArrayList();
+            tempa.AddRange(POC_MoodLog.Properties.Resources.NRC_emotion.Split('\n'));
+            ArrayList prep = new ArrayList();
+            prep.AddRange(POC_MoodLog.Properties.Resources.PrepRef.Split('\n'));
             String input = POC_MoodLog.Properties.Resources.SampleIn;
             ArrayList ngram = new ArrayList();
                         
             var inSplit = input.Split();
             foreach (String item in inSplit)
             {
-                if (item.IndexOf('#')==0)
+                if (item.IndexOf('#')==0 && item!="")
                 {
                     String segmented = doSegment(item);
                     char[] arr = segmented.ToCharArray();
@@ -54,7 +66,7 @@ namespace POC_MoodLog
                     hashtagCollection.Add(segmented);
                     input = input.Remove(input.IndexOf(item[0]), item.Length);
                 }
-                else if (emoticons.Contains(item))
+                else if (emoticons.Contains(item) && item!="")
                 {
                     emoticonCollection.Add(item);
                     input = input.Remove(input.IndexOf(item[0]), item.Length);
@@ -76,6 +88,7 @@ namespace POC_MoodLog
                 ngramCollection.Add(bigram);
             }
 
+            
             for (int j = 0; j < ngramCollection.Count; j++)
             {
                 String temp = Convert.ToString(ngramCollection[j]);
@@ -93,11 +106,21 @@ namespace POC_MoodLog
                             {
                                 if (bowreference.Contains(item2) && Array.IndexOf(temp3, item2) == 1)
                                 {
-                                    finalBoW.Add(item);
+                                    if (!finalBoW.Contains(item))
+                                    {
+                                        Debug.WriteLine("Adding " + item);
+                                        memWord.Add(item2);
+                                        finalBoW.Add(item);
+                                    }  
                                 }
                                 else if (prepNInter.Contains(item2) && Array.IndexOf(temp3, item2) == 0 && bowreference.Contains(temp3[1]))
                                 {
-                                    finalBoW.Add(item);
+                                    if (!finalBoW.Contains(item))
+                                    {
+                                        Debug.WriteLine("Adding " + item);
+                                        memWord.Add(temp3[1]);
+                                        finalBoW.Add(item);
+                                    }
                                 }
                             }
                         }
@@ -105,47 +128,160 @@ namespace POC_MoodLog
 
                 }
             }
-            float[] joy = new float[2];
-            float[] sad = new float[2];
-            float[] anger = new float[2];
-            float[] surprise = new float[2];
-            float[] disgust = new float[2];
-            float[] fear = new float[2];
+            foreach (String words in memWord)
+            {
+                foreach (string temp2 in tempa)
+                {
+                    if (temp2 == "")
+                    {
+                        break;
+                    }
+                    Double x = Convert.ToDouble(temp2.Split(',')[1]);
+                    Double y = Convert.ToDouble(temp2.Split(',')[2]);
+                    String word = temp2.Split(',')[0];
+                    if(word == words)
+                    {
+                        if (x < 5 && x >= 0)
+                        {
+                            if (y < 5 && y >= 0)
+                            {
+                                if ((Math.Atan2(y, x) * (180 / Math.PI) + 180) >= 180 && (Math.Atan2(y, x) * (180 / Math.PI) + 180) <= 270)
+                                {
+                                    wordCommaEmotion.Add(word + "," + "sad");
+                                    sad[0] += 1;
+                                }
+                            }
+                            else if (y > 5 && y <= 10)
+                            {
+                                if ((Math.Atan2(y, x) * (180 / Math.PI) + 90) >= 90 && (Math.Atan2(y, x) * (180 / Math.PI) + 90) <= 120)
+                                {
+                                    wordCommaEmotion.Add(word + "," + "disgust");
+                                    disgust[0] += 1;
+                                }
+                                if ((Math.Atan2(y, x) * (180 / Math.PI) + 90) >= 120 && (Math.Atan2(y, x) * (180 / Math.PI) + 90) <= 150)
+                                {
+                                    wordCommaEmotion.Add(word + "," + "anger");
+                                    anger[0] += 1;
+                                }
+                                if ((Math.Atan2(y, x) * (180 / Math.PI) + 90) >= 150 && (Math.Atan2(y, x) * (180 / Math.PI) + 90) <= 180)
+                                {
+                                    wordCommaEmotion.Add(word + "," + "fear");
+                                    fear[0] += 1;
+                                }
+                            }
+                        }
+                        else if (x > 5 && x <= 10 || x == 5)
+                        {
+                            if (y < 5 && y >= 0 || x == 5)
+                            {
+                                wordCommaEmotion.Add(word + "," + "neutral");
+                            }
+                            else if (y > 5 && y <= 10)
+                            {
+                                if ((Math.Atan2(y, x) * (180 / Math.PI) + 0) >= 30 && (Math.Atan2(y, x) * (180 / Math.PI) + 0) <= 60)
+                                {
+                                    wordCommaEmotion.Add(word + "," + "joy");
+                                    joy[0] += 1;
+                                }
+                                if ((Math.Atan2(y, x) * (180 / Math.PI) + 0) >= 60 && (Math.Atan2(y, x) * (180 / Math.PI) + 0) <= 90)
+                                {
+                                    wordCommaEmotion.Add(word + "," + "surprise");
+                                    surprise[0] += 1;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            
+            foreach (String temp in finalBoW)
+            {
+                String runtemp = POC_MoodLog.Properties.Resources.PrepRef.Split()[2];
+                String prepositionPlace = temp.Split()[0];
+                char effect = Convert.ToChar(runtemp.Split(',')[1]);
+                float effectValue = Convert.ToSingle(runtemp.Split(',')[2]);
+                if (prepNInter.Contains(prepositionPlace))
+                {
+                    String emotion = getEmotion(temp.Split()[1], wordCommaEmotion);
+                    switch (emotion)
+                    {
+                        case "joy":
+                            if (effect == '+')
+                            {
+                                joy[0] += effectValue;
+                            }
+                            else if (effect == '-')
+                            {
+                                joy[1] += effectValue;
+                            }
+                            break;
+                        case "surprise":
+                            if (effect == '+')
+                            {
+                                surprise[0] += effectValue;
+                            }
+                            else if (effect == '-')
+                            {
+                                surprise[1] += effectValue;
+                            }
+                            break;
+                        case "fear":
+                            if (effect == '+')
+                            {
+                                fear[0] += effectValue;
+                            }
+                            else if (effect == '-')
+                            {
+                                fear[1] += effectValue;
+                            }
+                            break;
+                        case "anger":
+                            if (effect == '+')
+                            {
+                                anger[0] += effectValue;
+                            }
+                            else if (effect == '-')
+                            {
+                                anger[1] += effectValue;
+                            }
+                            break;
+                        case "disgust":
+                            if (effect == '+')
+                            {
+                                disgust[0] += effectValue;
+                            }
+                            else if (effect == '-')
+                            {
+                                disgust[1] += effectValue;
+                            }
+                            break;
+                        case "sad":
+                            if (effect == '+')
+                            {
+                                sad[0] += effectValue;
+                            }
+                            else if (effect == '-')
+                            {
+                                sad[1] += effectValue;
+                            }
+                            break;
+                    }
+                }
+            }
 
-            //Enter Freq count here
-            joy[0] = 1;
-            joy[1] = 1;
-            sad[0] = 2;
-            sad[1] = 2;
+            Console.WriteLine("Joy: " + joy[0] + " " + joy[1]);
+            Console.WriteLine("Sad: " + sad[0] + " " + sad[1]);
+            Console.WriteLine("Anger: " + anger[0] + " " + anger[1]);
+            Console.WriteLine("Surprise: " + surprise[0] + " " + surprise[1]);
+            Console.WriteLine("Disgust: " + disgust[0] + " " + disgust[1]);
+            Console.WriteLine("Fear: " + fear[0] + " " + fear[1]);
 
             //Population of other important variables
             float allYes = joy[0] + sad[0] + anger[0] + surprise[0] + disgust[0] + fear[0];
             float allNo = joy[1] + sad[1] + anger[1] + surprise[1] + disgust[1] + fear[1];
             float totalFreq = allYes + allNo;
             Array[] outProb=posteriorProbability(joy, sad, anger, surprise, disgust, fear, allYes,allNo,totalFreq);
-
-            // Display purpose, final arrays finalBoW, emoticonCollection, hashtagCollection
-           Console.Write("\nStrings remaining: ");
-           foreach (var item in finalBoW)
-           {
-               outStr += item + " ";
-           }
-            Console.WriteLine(outStr);
-
-            Console.Write("\nEmoticons: ");
-            foreach (var item in emoticonCollection)
-            {
-               outEmo += item+" ";
-            }
-            Console.WriteLine(outEmo);
-            
-            Console.Write("\nHashtags: ");
-            foreach (var item in hashtagCollection)
-            {
-                outHash += item + " ";
-            }
-            Console.WriteLine(outHash+"\n");
-
+            Console.WriteLine("\nResults: ");
             foreach (float[] item in outProb)
             {
                 outProb2 += item[0] + "," + item[1] + "\n";
@@ -247,11 +383,26 @@ namespace POC_MoodLog
             return sixEmotions;
         }
 
+        public static String getEmotion(String intext, ArrayList ar)
+        {
+            String emotion = null;
+            foreach(String entry in ar)
+            {
+                String[] entryAr = entry.Split(',');
+                if (intext == entryAr[0])
+                {
+                    emotion = entryAr[1];
+                }
+            }
+            return emotion;
+        }
+
         public static void init()
         {
             bowreference.AddRange(POC_MoodLog.Properties.Resources.bow_algorithm_reference.Split());
             emoticons.AddRange(POC_MoodLog.Properties.Resources.emoticons.Split());
             nrc_emotion.AddRange(POC_MoodLog.Properties.Resources.NRC_emotion.Split());
+            prepNInter.AddRange(POC_MoodLog.Properties.Resources.ngrams1.Split());
         }
     }
 }
