@@ -32,28 +32,19 @@ namespace POC_MoodLog
         static ArrayList wordCommaEmotion = new ArrayList();
         static ArrayList prepEmotion = new ArrayList();
         static ArrayList hashSegmented = new ArrayList();
-
+        static float[] joy = new float[2];
+        static float[] sad = new float[2];
+        static float[] anger = new float[2];
+        static float[] surprise = new float[2];
+        static float[] disgust = new float[2];
+        static float[] fear = new float[2];
+        static ArrayList tempa = new ArrayList();
+        static ArrayList prep = new ArrayList();
+        static String input = POC_MoodLog.Properties.Resources.SampleIn;
+        static ArrayList ngram = new ArrayList();
         static void Main(string[] args)
         {
             init();
-            // 0,1 for yes and no respectively
-            float[] joy = new float[2];
-            float[] sad = new float[2];
-            float[] anger = new float[2];
-            float[] surprise = new float[2];
-            float[] disgust = new float[2];
-            float[] fear = new float[2];
-
-            //Enter Freq count here
-            //Populate yes emotion[0]
-            ArrayList tempa = new ArrayList();
-            tempa.AddRange(POC_MoodLog.Properties.Resources.NRC_emotion.Split('\n'));
-            ArrayList prep = new ArrayList();
-            prep.AddRange(POC_MoodLog.Properties.Resources.PrepRef.Split('\n'));
-            String input = POC_MoodLog.Properties.Resources.SampleIn;
-            ArrayList ngram = new ArrayList();
-
-            input = input.ToLower();            
             var inSplit = input.Split();
             foreach (String item in inSplit)
             {
@@ -420,6 +411,9 @@ namespace POC_MoodLog
             emoticons.AddRange(POC_MoodLog.Properties.Resources.emoticons.Split());
             nrc_emotion.AddRange(POC_MoodLog.Properties.Resources.NRC_emotion.Split());
             prepNInter.AddRange(POC_MoodLog.Properties.Resources.ngrams1.Split());
+            tempa.AddRange(POC_MoodLog.Properties.Resources.NRC_emotion.Split('\n'));
+            prep.AddRange(POC_MoodLog.Properties.Resources.PrepRef.Split('\n'));
+            input = input.ToLower();
         }
     }
 }
