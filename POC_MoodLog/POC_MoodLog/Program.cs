@@ -52,7 +52,8 @@ namespace POC_MoodLog
             prep.AddRange(POC_MoodLog.Properties.Resources.PrepRef.Split('\n'));
             String input = POC_MoodLog.Properties.Resources.SampleIn;
             ArrayList ngram = new ArrayList();
-                        
+
+            input = input.ToLower();            
             var inSplit = input.Split();
             foreach (String item in inSplit)
             {
@@ -76,14 +77,9 @@ namespace POC_MoodLog
 
             foreach(String seg in hashtagCollection)
             {
-                String[] temp = seg.Split();
-                foreach(String temp2 in temp)
-                {
-                    if (bowreference.Contains(temp2))
-                    {
-                        memWord.Add(temp2.ToLower());
-                    }
-                }
+                String bigram = String.Join(",", makeBigrams(seg));
+                Debug.WriteLine(bigram);
+                ngramCollection.Add(bigram);
             }
             var gcc2 = input.Split(punctuations);
             foreach (var item2 in gcc2)
@@ -99,28 +95,32 @@ namespace POC_MoodLog
                 String bigram = String.Join(",", makeBigrams(item));
                 ngramCollection.Add(bigram);
             }
-
+            
             
             for (int j = 0; j < ngramCollection.Count; j++)
             {
                 String temp = Convert.ToString(ngramCollection[j]);
+                
                 String[] temp2 = temp.Split(',');
                 foreach (String item in temp2)
                 {
+                    
                     String[] temp3 = item.Split();
                     foreach (String item2 in temp3)
                     {
+                        
                         //if item2 is in the BoW ref or has interjection/preposition + BoW Approved 
-                        if (bowreference.Contains(item2) || prepNInter.Contains(item2))
+                        if (bowreference.Contains(item2.ToLower()) || prepNInter.Contains(item2.ToLower()))
                         {
                             if ((bowreference.Contains(item2) && Array.IndexOf(temp3, item2) == 1) ||
-                                (prepNInter.Contains(item2) && Array.IndexOf(temp3, item2) == 0))
+                                (prepNInter.Contains(item2) && Array.IndexOf(temp3, item2) == 0) || bowreference.Contains(item2))
                             {
-                                if (bowreference.Contains(item2) && Array.IndexOf(temp3, item2) == 1)
+                                if ((bowreference.Contains(item2) && Array.IndexOf(temp3, item2) == 1)||bowreference.Contains(item2))
                                 {
                                     if (!finalBoW.Contains(item))
                                     {
                                         memWord.Add(item2.ToLower());
+                                        Debug.WriteLine("Adding " + item2);
                                         finalBoW.Add(item.ToLower());
                                     }  
                                 }
@@ -129,6 +129,7 @@ namespace POC_MoodLog
                                     if (!finalBoW.Contains(item))
                                     {
                                         memWord.Add(temp3[1].ToLower());
+                                        Debug.WriteLine("Adding " + temp3[1]);
                                         finalBoW.Add(item.ToLower());
                                     }
                                 }
@@ -142,10 +143,7 @@ namespace POC_MoodLog
             {
                 foreach (string temp2 in tempa)
                 {
-                    if (temp2 == "")
-                    {
-                        break;
-                    }
+                    if (temp2 == "") break;
                     Double x = Convert.ToDouble(temp2.Split(',')[1]);
                     Double y = Convert.ToDouble(temp2.Split(',')[2]);
                     String word = temp2.Split(',')[0];
@@ -158,7 +156,7 @@ namespace POC_MoodLog
                                 if ((Math.Atan2(y, x) * (180 / Math.PI) + 180) >= 180 && (Math.Atan2(y, x) * (180 / Math.PI) + 180) <= 270)
                                 {
                                     wordCommaEmotion.Add(word + "," + "sad");
-                                    sad[0] += 1;
+                                    //sad[0] += 1;
                                 }
                             }
                             else if (y > 5 && y <= 10)
@@ -166,17 +164,17 @@ namespace POC_MoodLog
                                 if ((Math.Atan2(y, x) * (180 / Math.PI) + 90) >= 90 && (Math.Atan2(y, x) * (180 / Math.PI) + 90) <= 120)
                                 {
                                     wordCommaEmotion.Add(word + "," + "disgust");
-                                    disgust[0] += 1;
+                                    //disgust[0] += 1;
                                 }
                                 if ((Math.Atan2(y, x) * (180 / Math.PI) + 90) >= 120 && (Math.Atan2(y, x) * (180 / Math.PI) + 90) <= 150)
                                 {
                                     wordCommaEmotion.Add(word + "," + "anger");
-                                    anger[0] += 1;
+                                    //anger[0] += 1;
                                 }
                                 if ((Math.Atan2(y, x) * (180 / Math.PI) + 90) >= 150 && (Math.Atan2(y, x) * (180 / Math.PI) + 90) <= 180)
                                 {
                                     wordCommaEmotion.Add(word + "," + "fear");
-                                    fear[0] += 1;
+                                    //fear[0] += 1;
                                 }
                             }
                         }
@@ -191,12 +189,12 @@ namespace POC_MoodLog
                                 if ((Math.Atan2(y, x) * (180 / Math.PI) + 0) >= 30 && (Math.Atan2(y, x) * (180 / Math.PI) + 0) <= 60)
                                 {
                                     wordCommaEmotion.Add(word + "," + "joy");
-                                    joy[0] += 1;
+                                    //joy[0] += 1;
                                 }
                                 if ((Math.Atan2(y, x) * (180 / Math.PI) + 0) >= 60 && (Math.Atan2(y, x) * (180 / Math.PI) + 0) <= 90)
                                 {
                                     wordCommaEmotion.Add(word + "," + "surprise");
-                                    surprise[0] += 1;
+                                    //surprise[0] += 1;
                                 }
                             }
                         }
@@ -208,13 +206,13 @@ namespace POC_MoodLog
             {
                 String[] runtemp = POC_MoodLog.Properties.Resources.PrepRef.Split();
                 String prepositionPlace = temp.Split()[0];
-                char effect=' ';
                 float effectValue = 0;
                 foreach (String i in runtemp)
                 {
                     if (i != "")
                     {
                         String checker = i.Split(',')[0];
+                        char effect = ' ';
                         if (prepositionPlace.Trim().ToLower() == checker.Trim())
                         {
                             effect = Convert.ToChar(i.Split(',')[1]);
@@ -280,6 +278,16 @@ namespace POC_MoodLog
                                     else if (effect == '-')
                                     {
                                         sad[1] += effectValue;
+                                    }
+                                    break;
+                                default: switch (emotion)
+                                    {
+                                        case "joy": joy[0] += 1; break;
+                                        case "surprise": surprise[0] += 1; break;
+                                        case "fear": fear[0] += 1; break;
+                                        case "anger": anger[0] += 1; break;
+                                        case "disgust": disgust[0] += 1; break;
+                                        case "sad": sad[0] += 1; break;
                                     }
                                     break;
                             }
