@@ -62,12 +62,13 @@ namespace wpf_moodlog
 
             showSubEmoticons(new string[] {
                 "EmoticonJoy",
-                "EmoticonJoyAngel",
-                "EmoticonJoyEyeHeart",
-                "EmoticonJoyEyeSmile",
-                "EmoticonJoyGrin",
-                "EmoticonJoyLOL",
-                "EmoticonJoyHeart",
+                "smiling_face_with_open_mouth",
+                "smiling_face_with_halo",
+                "smiling_face_with_heart_shaped_eyes",
+                "smiling_face_with_smiling_eyes",
+                "grinning_face_with_smiling_eyes",
+                "face_with_tears_of_joy",
+                "heavy_black_heart",
             });
         }
 
@@ -77,12 +78,12 @@ namespace wpf_moodlog
 
             showSubEmoticons(new string[] {
                 "EmoticonSadness",
-                "EmoticonSadnessCry",
-                "EmoticonSadnessCry2",
-                "EmoticonSadnessGloomy",
-                "EmoticonSadnessGloomy2",
-                "EmoticonSadnessPout",
-                "EmoticonSadnessHeartBroken",
+                "worried_face",
+                "pensive_face",
+                "crying_face",
+                "loudly_crying_face",
+                "disappointed_face",
+                "broken_hearts",
             });
         }
 
@@ -92,12 +93,8 @@ namespace wpf_moodlog
 
             showSubEmoticons(new string[] {
                 "EmoticonDisgust",
-                "EmoticonDisgust2",
-                "EmoticonDisgust",
-                "EmoticonDisgust",
-                "EmoticonDisgust",
-                "EmoticonDisgust",
-                "EmoticonDisgust",
+                "face_with_stucked-out_tongue_and_tightly-closed_eyes",
+                
             });
         }
 
@@ -107,12 +104,8 @@ namespace wpf_moodlog
 
             showSubEmoticons(new string[] {
                 "EmoticonAnger",
-                "EmoticonAngerSuper",
-                "EmoticonAnger",
-                "EmoticonAnger",
-                "EmoticonAnger",
-                "EmoticonAnger",
-                "EmoticonAnger",
+                "face_with_look_of_triumph",
+                
             });
         }
 
@@ -122,12 +115,10 @@ namespace wpf_moodlog
 
             showSubEmoticons(new string[] {
                 "EmoticonSurprised",
-                "EmoticonSurprisedSlight",
-                "EmoticonSurprisedQuite",
-                "EmoticonSurprisedSuper",
-                "EmoticonSurprisedOMG",
-                "EmoticonSurprised",
-                "EmoticonSurprised",
+                "hushed_face",
+                "astonished_face",
+                "face_screaming_in_fear",
+                
             });
         }
 
