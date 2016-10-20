@@ -93,7 +93,7 @@ namespace wpf_moodlog
 
             showSubEmoticons(new string[] {
                 "EmoticonDisgust",
-                "face_with_stucked-out_tongue_and_tightly-closed_eyes",
+                "EmoticonDisgust2",
                 
             });
         }
