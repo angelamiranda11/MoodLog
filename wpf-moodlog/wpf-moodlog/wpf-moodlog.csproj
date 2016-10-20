@@ -264,7 +264,7 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\EmoticonAnger.png" />
-    <Resource Include="Images\EmoticonDisgust.png" />
+    <Resource Include="Images\face_with_stucked-out_tongue_and_tightly-closed_eyes.png" />
     <Resource Include="Images\EmoticonFear.png" />
     <Resource Include="Images\EmoticonJoy.png" />
     <Resource Include="Images\EmoticonSadness.png" />
@@ -284,25 +284,25 @@
     <Resource Include="Images\hat.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\EmoticonAngerSuper.png" />
-    <Resource Include="Images\EmoticonDisgust2.png" />
-    <Resource Include="Images\EmoticonJoyAngel.png" />
-    <Resource Include="Images\EmoticonJoyEyeHeart.png" />
-    <Resource Include="Images\EmoticonJoyEyeSmile.png" />
-    <Resource Include="Images\EmoticonJoyGrin.png" />
-    <Resource Include="Images\EmoticonJoyHeart.png" />
-    <Resource Include="Images\EmoticonJoyLOL.png" />
-    <Resource Include="Images\EmoticonJoyWideSmile.png" />
-    <Resource Include="Images\EmoticonSadnessCry.png" />
-    <Resource Include="Images\EmoticonSadnessCry2.png" />
-    <Resource Include="Images\EmoticonSadnessGloomy.png" />
-    <Resource Include="Images\EmoticonSadnessGloomy2.png" />
-    <Resource Include="Images\EmoticonSadnessHeartBroken.png" />
-    <Resource Include="Images\EmoticonSadnessPout.png" />
-    <Resource Include="Images\EmoticonSurprisedOMG.png" />
-    <Resource Include="Images\EmoticonSurprisedQuite.png" />
+    <Resource Include="Images\face_with_look_of_triumph.png" />
+    <Resource Include="Images\EmoticonDisgust.png" />
+    <Resource Include="Images\smiling_face_with_halo.png" />
+    <Resource Include="Images\smiling_face_with_heart_shaped_eyes.png" />
+    <Resource Include="Images\smiling_face_with_smiling_eyes.png" />
+    <Resource Include="Images\grinning_face_with_smiling_eyes.png" />
+    <Resource Include="Images\heavy_black_heart.png" />
+    <Resource Include="Images\face_with_tears_of_joy.png" />
+    <Resource Include="Images\smiling_face_with_open_mouth.png" />
+    <Resource Include="Images\crying_face.png" />
+    <Resource Include="Images\loudly_crying_face.png" />
+    <Resource Include="Images\pensive_face.png" />
+    <Resource Include="Images\worried_face.png" />
+    <Resource Include="Images\broken_hearts.png" />
+    <Resource Include="Images\disappointed_face.png" />
+    <Resource Include="Images\face_screaming_in_fear.png" />
+    <Resource Include="Images\hushed_face.png" />
     <Resource Include="Images\EmoticonSurprisedSlight.png" />
-    <Resource Include="Images\EmoticonSurprisedSuper.png" />
+    <Resource Include="Images\astonished_face.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
