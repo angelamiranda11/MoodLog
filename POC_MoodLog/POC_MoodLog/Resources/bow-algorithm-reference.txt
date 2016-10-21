@@ -6,7 +6,6 @@ abuse
 acceptance
 accident
 ace
-ache
 achievement
 activate
 addict
@@ -63,7 +62,6 @@ bake
 bandage
 bankrupt
 banner
-bar
 barrel
 basket
 bastard
@@ -127,7 +125,6 @@ busybody
 butter
 butterfly
 cabinet
-cake
 cancer
 candy
 cane
@@ -209,7 +206,6 @@ cuisine
 curious
 curtains
 custom
-cut
 cute
 cyclone
 dagger
@@ -311,7 +307,6 @@ fabric
 face
 failure
 fall
-FALSE
 fame
 family
 famous
@@ -389,7 +384,6 @@ grenade
 grief
 grime
 grin
-gripe
 guillotine
 guilty
 gun
@@ -478,7 +472,6 @@ insane
 insect
 insecure
 insolent
-inspire
 inspired
 insult
 intellect
@@ -535,7 +528,6 @@ leprosy
 lesbian
 letter
 liberty
-lice
 lie
 life
 lightbulb
@@ -594,12 +586,10 @@ mighty
 mildew
 milk
 millionaire
-mind
 miracle
 mischief
 misery
 mistake
-mobility
 modest
 mold
 moment
@@ -798,7 +788,6 @@ sailboat
 saint
 salad
 salute
-sapphire
 satisfied
 save
 savior
@@ -809,7 +798,6 @@ scar
 scared
 scholar
 scissors
-scorching
 scorn
 scornful
 scorpion
@@ -960,7 +948,6 @@ truck
 trumpet
 trunk
 trust
-truth
 tumor
 tune
 twilight
@@ -1028,3 +1015,4 @@ yellow
 young
 youth
 zest
+FALSE
