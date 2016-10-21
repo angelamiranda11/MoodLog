@@ -266,7 +266,7 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\EmoticonAnger.png" />
-    <Resource Include="Images\EmoticonDisgust2.png" />
+    <Resource Include="Images\face_with_stucked_out_tongue_and_tightly_closed_eyes.png" />
     <Resource Include="Images\EmoticonFear.png" />
     <Resource Include="Images\EmoticonJoy.png" />
     <Resource Include="Images\EmoticonSadness.png" />

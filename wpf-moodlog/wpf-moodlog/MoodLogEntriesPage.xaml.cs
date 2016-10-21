@@ -40,6 +40,11 @@ namespace wpf_moodlog
                     return Brushes.Black;
             }
         }
+
+        public static string GetName(this Emotion e)
+        {
+            return Enum.GetName(typeof(Emotion), e);
+        }
     }
     /// <summary>
     /// Interaction logic for MoodLogEntriesPage.xaml
@@ -93,7 +98,7 @@ namespace wpf_moodlog
 
             showSubEmoticons(new string[] {
                 "EmoticonDisgust",
-                "EmoticonDisgust2",
+                "face_with_stucked_out_tongue_and_tightly_closed_eyes",
                 
             });
         }
@@ -272,6 +277,13 @@ namespace wpf_moodlog
             Border newEntry = createEntryFrom(entryTextBox.Text);
 
             entriesStackPanel.Children.Add(newEntry);
+
+            resetEntryTextBox();
+        }
+
+        private void resetEntryTextBox()
+        {
+            entryTextBox.Text = "";
         }
 
         private Border addBorderToPanel(StackPanel panel)
@@ -294,7 +306,7 @@ namespace wpf_moodlog
 
         private void setPropertiesOfBorderedPanel(Border borderedPanel)
         {
-            borderedPanel.BorderBrush = Brushes.Black;
+            borderedPanel.BorderBrush = Brushes.DarkGray;
             borderedPanel.BorderThickness = new Thickness(1);
             borderedPanel.Padding = new Thickness(3);
         }
@@ -339,27 +351,27 @@ namespace wpf_moodlog
 
             TextBlock summaryDominantEmotion = new TextBlock()
             {
-                Text = Enum.GetName(typeof(Emotion), dominantEmotion).ToUpper(),
+                FontWeight = FontWeights.Bold,
                 Foreground = dominantEmotion.GetColor(),
-                FontWeight = FontWeights.Bold
+                Text = dominantEmotion.GetName().ToUpper(),
             };
 
             return summaryDominantEmotion;
-            
         }
 
         private PieSeries createSummaryEmotionsChartFrom(Dictionary<Emotion, double> emotions)
         {
-            // Code in progress
+            // TO DO: Change chart color
+
             var allEmotionsChart = new Chart();
             var pieSeries = new PieSeries()
             {
-                ItemsSource = emotions.ToList(),
-                IndependentValueBinding = new Binding("Key"),
                 DependentValueBinding = new Binding("Value"),
-                Height = 50,
-                Width = 50,
-                Margin = new Thickness(5,0,10,0)
+                Height = 60,
+                IndependentValueBinding = new Binding("Key"),
+                ItemsSource = emotions.ToList(),
+                Margin = new Thickness(5, 0, 20, 0),
+                Width = 60,
             };
 
             allEmotionsChart.Series.Add(pieSeries);
@@ -389,19 +401,19 @@ namespace wpf_moodlog
             Grid circleWithText = new Grid();
 
             var ellipse = new Ellipse() {
-                Width = 25,
+                Fill = color,
                 Height = 25,
-                Fill = color
+                Width = 25,
             };
 
             var text = new Label()
             {
                 Content = str,
-                Foreground = Brushes.White,
                 FontSize = 8,
-                Width = 25,
+                Foreground = Brushes.White,
                 HorizontalContentAlignment = HorizontalAlignment.Center,
-                VerticalContentAlignment = VerticalAlignment.Center
+                VerticalContentAlignment = VerticalAlignment.Center,
+                Width = 25,
             };
 
             circleWithText.Children.Add(ellipse);
@@ -415,17 +427,17 @@ namespace wpf_moodlog
             StackPanel summaryEmotionsText = new StackPanel()
             {
                 Orientation = Orientation.Horizontal,
-                Margin = new Thickness(0,1,0,5)
+                Margin = new Thickness(0,5,0,10)
             };
 
-            foreach(var x in emotions)
+            foreach(var emotion in emotions)
             {
-                var valueInCircle = createCircleWithText((x.Value) * 100 + "%", x.Key.GetColor());
+                var valueInCircle = createCircleWithText((emotion.Value) * 100 + "%", emotion.Key.GetColor());
                 var emotionInText = new TextBlock()
                 {
-                    Text = Enum.GetName(typeof(Emotion), x.Key),
                     Margin = new Thickness(3,0,20,0),
-                    VerticalAlignment = VerticalAlignment.Center
+                    Text = emotion.Key.GetName(),
+                    VerticalAlignment = VerticalAlignment.Center,
                 };
 
                 summaryEmotionsText.Children.Add(valueInCircle);
@@ -439,7 +451,7 @@ namespace wpf_moodlog
         {
             DockPanel summary = new DockPanel()
             {
-                Background = convertHexToBrush("#ecf0f1")
+                Background = convertHexToBrush("#ecf0f1"),
             };
 
             Dictionary<Emotion, double> emotions = getEmotionsFrom(text);
@@ -464,8 +476,12 @@ namespace wpf_moodlog
 
         private TextBlock createEntryContentFrom(String text)
         {
-            TextBlock content = new TextBlock();
-            content.Text = text;
+            TextBlock content = new TextBlock()
+            {
+                Margin = new Thickness(5),
+                Text = text,
+                TextWrapping = TextWrapping.WrapWithOverflow,
+            };
 
             return content;
         }
