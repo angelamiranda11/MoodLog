@@ -69,7 +69,6 @@ namespace POC_MoodLog
             foreach(String seg in hashtagCollection)
             {
                 String bigram = String.Join(",", makeBigrams(seg));
-                Debug.WriteLine(bigram);
                 ngramCollection.Add(bigram);
             }
             var gcc2 = input.Split(punctuations);
@@ -288,12 +287,21 @@ namespace POC_MoodLog
             float allYes = joy[0] + sad[0] + anger[0] + surprise[0] + disgust[0] + fear[0];
             float allNo = joy[1] + sad[1] + anger[1] + surprise[1] + disgust[1] + fear[1];
             float totalFreq = allYes + allNo;
+            String[] sequence = {"Joy", "Sad" , "Anger" , "Surprise" , "Disgust" , "Fear" };
             Array[] outProb=posteriorProbability(joy, sad, anger, surprise, disgust, fear, allYes,allNo,totalFreq);
             Console.WriteLine("\nResults: ");
+            int k = 0;
             foreach (float[] item in outProb)
             {
-                outProb2 += item[0] + "," + item[1] + "\n";
+                if (float.IsNaN(item[0])){ item[0] = 0; }
+                if (float.IsNaN(item[1])) { item[1] = 0; }
+                outProb2 += sequence[k]+": "+(item[0])*100 + "%," + (item[1]) * 100 + "%\n";
+                k++;
             }
+            //outProb is the arraylist consisting of float arrays
+            //it is the list of final probabilities in specific sequence
+            // "Joy", "Sad" , "Anger" , "Surprise" , "Disgust" , "Fear" 
+
             Console.WriteLine(outProb2);
 
             Console.WriteLine("\nPress any key to exit");
