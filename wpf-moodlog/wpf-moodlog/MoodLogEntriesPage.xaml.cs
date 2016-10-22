@@ -200,12 +200,12 @@ namespace wpf_moodlog
 
         private void enableEmoticonButton(Button emoticonButton)
         {
-            emoticonButton.Background = null;
+            emoticonButton.Background = Brushes.Transparent;
         }
 
         private void disableEmoticonButton(Button emoticonButton)
         {
-            emoticonButton.Background = Brushes.DarkGray;
+            emoticonButton.Background = Brushes.LightGray;
         }
 
         private void showSubEmoticons(String[] subEmoticonNames)
@@ -239,7 +239,8 @@ namespace wpf_moodlog
             subEmoticonButton.Content = convertUriToImage(new Uri("Images/" + subEmoticonName + ".png", UriKind.Relative));
             subEmoticonButton.Width = 50;
             subEmoticonButton.Height = 40;
-            subEmoticonButton.Background = null;
+            subEmoticonButton.Background = Brushes.Transparent;
+            subEmoticonButton.BorderBrush = Brushes.DarkGray;
             subEmoticonButton.BorderThickness = new Thickness(0, 0, 1, 0);
             subEmoticonButton.ToolTip = subEmoticonName.Replace('-', ' ');
             subEmoticonButton.Name = subEmoticonName;
@@ -260,7 +261,6 @@ namespace wpf_moodlog
         private void resetSubEmoticons()
         {
             subEmoticonsPanel.Children.Clear();
-            subEmoticonsPanel.Background = Brushes.DarkGray;
         }
 
         private SolidColorBrush convertHexToBrush(String hex)
@@ -308,7 +308,6 @@ namespace wpf_moodlog
         {
             borderedPanel.BorderBrush = Brushes.DarkGray;
             borderedPanel.BorderThickness = new Thickness(1);
-            borderedPanel.Padding = new Thickness(3);
         }
 
         private StackPanel combineSummaryAndContentOfEntry(DockPanel summary, TextBlock content)
@@ -325,7 +324,7 @@ namespace wpf_moodlog
             DateTime thisDay = DateTime.Now;
 
             TextBlock summaryDateTime = new TextBlock();
-            summaryDateTime.Text = thisDay.ToString("dddd, MMMM dd h:mm tt");
+            summaryDateTime.Text = thisDay.ToString("dddd, MMMM dd, h:mm tt");
 
             return summaryDateTime;
         }
@@ -452,7 +451,7 @@ namespace wpf_moodlog
             DockPanel summary = new DockPanel()
             {
                 Background = convertHexToBrush("#ecf0f1"),
-            };
+            };  
 
             Dictionary<Emotion, double> emotions = getEmotionsFrom(text);
 
