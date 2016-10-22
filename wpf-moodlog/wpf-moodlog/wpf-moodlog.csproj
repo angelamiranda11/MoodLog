@@ -265,12 +265,11 @@
     <Resource Include="Images\fa-profile.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\EmoticonAnger.png" />
+    <Resource Include="Images\pouting_face.png" />
     <Resource Include="Images\face_with_stucked_out_tongue_and_tightly_closed_eyes.png" />
-    <Resource Include="Images\EmoticonFear.png" />
-    <Resource Include="Images\EmoticonJoy.png" />
-    <Resource Include="Images\EmoticonSadness.png" />
-    <Resource Include="Images\EmoticonSurprised.png" />
+    <Resource Include="Images\smiling_face.png" />
+    <Resource Include="Images\sad_face.png" />
+    <Resource Include="Images\face_with_open_mouth.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\fa-entries-white.png" />
@@ -287,7 +286,7 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\face_with_look_of_triumph.png" />
-    <Resource Include="Images\EmoticonDisgust.png" />
+    <Resource Include="Images\face_with_stucked_out_tongue.png" />
     <Resource Include="Images\smiling_face_with_halo.png" />
     <Resource Include="Images\smiling_face_with_heart_shaped_eyes.png" />
     <Resource Include="Images\smiling_face_with_smiling_eyes.png" />
@@ -303,7 +302,6 @@
     <Resource Include="Images\disappointed_face.png" />
     <Resource Include="Images\face_screaming_in_fear.png" />
     <Resource Include="Images\hushed_face.png" />
-    <Resource Include="Images\EmoticonSurprisedSlight.png" />
     <Resource Include="Images\astonished_face.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -66,14 +66,15 @@ namespace wpf_moodlog
             enableAllMainEmoticonButtonsExcept(joyButton);
 
             showSubEmoticons(new string[] {
-                "EmoticonJoy",
-                "smiling_face_with_open_mouth",
-                "smiling_face_with_halo",
-                "smiling_face_with_heart_shaped_eyes",
+                "smiling_face",
                 "smiling_face_with_smiling_eyes",
-                "grinning_face_with_smiling_eyes",
+                "smiling_face_with_heart_shaped_eyes",
                 "face_with_tears_of_joy",
+                "smiling_face_with_open_mouth",
+                "grinning_face_with_smiling_eyes",
+                "smiling_face_with_halo",
                 "heavy_black_heart",
+                "winking_face",
             });
         }
 
@@ -82,13 +83,14 @@ namespace wpf_moodlog
             enableAllMainEmoticonButtonsExcept(sadnessButton);
 
             showSubEmoticons(new string[] {
-                "EmoticonSadness",
-                "worried_face",
+                "sad_face",
                 "pensive_face",
-                "crying_face",
-                "loudly_crying_face",
                 "disappointed_face",
+                "loudly_crying_face",
+                "crying_face",
+                "worried_face",
                 "broken_hearts",
+                "purple_heart",
             });
         }
 
@@ -97,9 +99,8 @@ namespace wpf_moodlog
             enableAllMainEmoticonButtonsExcept(disgustButton);
 
             showSubEmoticons(new string[] {
-                "EmoticonDisgust",
+                "face_with_stucked_out_tongue",
                 "face_with_stucked_out_tongue_and_tightly_closed_eyes",
-                
             });
         }
 
@@ -108,9 +109,10 @@ namespace wpf_moodlog
             enableAllMainEmoticonButtonsExcept(angerButton);
 
             showSubEmoticons(new string[] {
-                "EmoticonAnger",
+                "pouting_face",
                 "face_with_look_of_triumph",
-                
+                "angry_face",
+                "smiling_face_with_horns"
             });
         }
 
@@ -119,9 +121,9 @@ namespace wpf_moodlog
             enableAllMainEmoticonButtonsExcept(surpriseButton);
 
             showSubEmoticons(new string[] {
-                "EmoticonSurprised",
-                "hushed_face",
+                "face_with_open_mouth",
                 "astonished_face",
+                "hushed_face",
                 "face_screaming_in_fear",
                 
             });
@@ -132,13 +134,9 @@ namespace wpf_moodlog
             enableAllMainEmoticonButtonsExcept(fearButton);
 
             showSubEmoticons(new string[] {
-                "EmoticonFear",
-                "EmoticonFear",
-                "EmoticonFear",
-                "EmoticonFear",
-                "EmoticonFear",
-                "EmoticonFear",
-                "EmoticonFear",
+                "face_screaming_in_fear",
+                "face_with_cold_sweat",
+                "fearful_face",
             });
         }
 

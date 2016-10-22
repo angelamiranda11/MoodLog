@@ -98,22 +98,22 @@
                                     <TextBlock Foreground="Blue" Margin="2" FontSize="24"><Run Text="#"/></TextBlock>
                                 </Button>
                                 <Button x:Name="joyButton" ToolTip="Joy" Padding="0" Grid.Column="1" Width="50" Height="40" Click="joyButton_Click" Background="{x:Null}" BorderThickness="0,0,1,0" BorderBrush="DarkGray">
-                                    <Image Source="Images/EmoticonJoy.png" Margin="2"/>
+                                    <Image Source="Images/smiling_face.png" Margin="2"/>
                                 </Button>
                                 <Button x:Name="sadnessButton" ToolTip="Sadness" Padding="0" Grid.Column="2" Width="50" Height="40" Background="{x:Null}" BorderThickness="0,0,1,0" Click="sadnessButton_Click" BorderBrush="DarkGray">
-                                    <Image Source="Images/EmoticonSadness.png" Margin="2"/>
+                                    <Image Source="Images/sad_face.png" Margin="2"/>
                                 </Button>
                                 <Button x:Name="disgustButton" ToolTip="Disgust" Padding="0" Grid.Column="3" Width="50" Height="40" Background="{x:Null}" BorderThickness="0,0,1,0" Click="disgustButton_Click" BorderBrush="DarkGray">
-                                    <Image Source="Images/EmoticonDisgust.png" Margin="2"/>
+                                    <Image Source="Images/face_with_stucked_out_tongue.png" Margin="2"/>
                                 </Button>
                                 <Button x:Name="angerButton" ToolTip="Anger" Padding="0" Grid.Column="4" Width="50" Height="40" Background="{x:Null}" BorderThickness="0,0,1,0" Click="angerButton_Click" BorderBrush="DarkGray">
-                                    <Image Source="Images/EmoticonAnger.png" Margin="2"/>
+                                    <Image Source="Images/pouting_face.png" Margin="2"/>
                                 </Button>
                                 <Button x:Name="surpriseButton" ToolTip="Surprise" Padding="0" Grid.Column="5" Width="50" Height="40" Background="{x:Null}" BorderThickness="0,0,1,0" Click="surpriseButton_Click" BorderBrush="DarkGray">
-                                    <Image Source="Images/EmoticonSurprised.png" Margin="2"/>
+                                    <Image Source="Images/face_with_open_mouth.png" Margin="2"/>
                                 </Button>
                                 <Button x:Name="fearButton" ToolTip="Fear" Padding="0" Grid.Column="6" Width="50" Height="40" Background="{x:Null}" BorderThickness="0,0,1,0" Click="fearButton_Click" BorderBrush="DarkGray">
-                                    <Image Source="Images/EmoticonFear.png" Margin="2"/>
+                                    <Image Source="Images/face_screaming_in_fear.png" Margin="2"/>
                                 </Button>
                                 <Button x:Name="addEntryButton" Content="ADD ENTRY" Padding="10"  Width="Auto" HorizontalAlignment="Right" Grid.Column="7" Height="40" Foreground="#FF9D53B3" BorderBrush="{x:Null}" Background="{x:Null}" Click="addEntryButton_Click"/>
                             </Grid>
