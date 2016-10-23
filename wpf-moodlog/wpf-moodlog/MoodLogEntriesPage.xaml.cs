@@ -359,8 +359,6 @@ namespace wpf_moodlog
 
         private PieSeries createSummaryEmotionsChartFrom(Dictionary<Emotion, double> emotions)
         {
-            // TO DO: Change chart color
-
             var allEmotionsChart = new Chart();
             var pieSeries = new PieSeries()
             {
