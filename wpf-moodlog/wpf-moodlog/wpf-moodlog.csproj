@@ -255,25 +255,11 @@
     <Resource Include="Images\MoodLog.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\fa-line-chart.png" />
-    <Resource Include="Images\fa-logout.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\fa-entries.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\fa-profile.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\pouting_face.png" />
     <Resource Include="Images\face_with_stucked_out_tongue_and_tightly_closed_eyes.png" />
     <Resource Include="Images\smiling_face.png" />
     <Resource Include="Images\sad_face.png" />
     <Resource Include="Images\face_with_open_mouth.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\fa-entries-white.png" />
-    <Resource Include="Images\fa-user-white.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\MoodLog.png" />
@@ -303,6 +289,16 @@
     <Resource Include="Images\face_screaming_in_fear.png" />
     <Resource Include="Images\hushed_face.png" />
     <Resource Include="Images\astonished_face.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\entries-black.png" />
+    <Resource Include="Images\entries-white.png" />
+    <Resource Include="Images\logout-black.png" />
+    <Resource Include="Images\logout-white.png" />
+    <Resource Include="Images\profile-black.png" />
+    <Resource Include="Images\profile-white.png" />
+    <Resource Include="Images\stats-black.png" />
+    <Resource Include="Images\stats-white.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -6,8 +6,8 @@
              xmlns:visualizationToolkit="clr-namespace:System.Windows.Controls.DataVisualization;assembly=System.Windows.Controls.DataVisualization.Toolkit" 
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <SolidColorBrush x:Key="DarkPurple" Color="#FF9D53B3"/>
-        <SolidColorBrush x:Key="DarkViolet" Color="#FF9C7EFD"/>
+        <SolidColorBrush x:Key="DarkPurple" Color="#9D53B3"/>
+        <SolidColorBrush x:Key="DarkViolet" Color="#9C7EFD"/>
         <SolidColorBrush x:Key="LightPurple" Color="#9B59B6"/>
         <SolidColorBrush x:Key="Green" Color="#2ECC71"/>
         <SolidColorBrush x:Key="Clouds" Color="#ECF0F1"/>
@@ -15,6 +15,8 @@
         <Style x:Key="ProfileButtonStyle" TargetType="{x:Type Button}">
             <Setter Property="BorderBrush" Value="{StaticResource DarkPurple}"/>
             <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Width" Value="200"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
@@ -26,8 +28,70 @@
             </Setter>
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="BorderBrush" Value="Transparent"/>
                     <Setter Property="Background" Value="{StaticResource DarkPurple}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="EntriesButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="BorderBrush" Value="{StaticResource DarkViolet}"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource DarkViolet}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="StatsButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="BorderBrush" Value="{StaticResource LightPurple}"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource LightPurple}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="LogoutButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="BorderBrush" Value="{StaticResource Green}"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource Green}"/>
                 </Trigger>
             </Style.Triggers>
         </Style>

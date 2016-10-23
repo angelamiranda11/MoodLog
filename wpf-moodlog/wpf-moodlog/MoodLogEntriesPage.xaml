@@ -24,28 +24,28 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,30,0,0">
-                <Button x:Name="profileButton" Margin="10" Width="200" Click="profileButton_Click" Style="{StaticResource ProfileButtonStyle}">
+                <Button x:Name="profileButton" MouseEnter="profileButton_MouseEnter" MouseLeave="profileButton_MouseLeave" Click="profileButton_Click" Style="{StaticResource ProfileButtonStyle}">
                     <StackPanel Orientation="Horizontal" Width="100">
-                        <Image Source="Images/fa-profile.png" Height="15" Width="15" Margin="5"/>
-                        <Label Content="PROFILE" Margin="5" Foreground="{DynamicResource DarkPurple}" TextOptions.TextHintingMode="Animated"/>
+                        <Image x:Name="profileImage" Source="Images/profile-black.png" Height="15" Width="15" Margin="5"/>
+                        <Label x:Name="profileLabel" Content="PROFILE" Margin="5" Foreground="{DynamicResource DarkPurple}" TextOptions.TextHintingMode="Animated"/>
                     </StackPanel>
                 </Button>
-                <Button x:Name="entriesButton" Margin="10" Width="200" BorderBrush="{DynamicResource DarkViolet}" Background="Transparent">
+                <Button x:Name="entriesButton" MouseEnter="entriesButton_MouseEnter" MouseLeave="entriesButton_MouseLeave" Style="{StaticResource EntriesButtonStyle}">
                     <StackPanel Orientation="Horizontal" Width="100">
-                        <Image Source="Images/fa-entries.png" Height="15" Width="15" Margin="5"/>
-                        <Label Content="ENTRIES" Margin="5" Foreground="{DynamicResource DarkViolet}" TextOptions.TextHintingMode="Animated"/>
+                        <Image x:Name="entriesImage" Source="Images/entries-black.png" Height="15" Width="15" Margin="5"/>
+                        <Label x:Name="entriesLabel" Content="ENTRIES" Margin="5" Foreground="{DynamicResource DarkViolet}" TextOptions.TextHintingMode="Animated"/>
                     </StackPanel>
                 </Button>
-                <Button x:Name="statsButton" Margin="10" Width="200" Background="#00000000" BorderBrush="{DynamicResource LightPurple}">
+                <Button x:Name="statsButton" MouseEnter="statsButton_MouseEnter" MouseLeave="statsButton_MouseLeave" Click="statsButton_Click" Style="{StaticResource StatsButtonStyle}">
                     <StackPanel Orientation="Horizontal" Width="100">
-                        <Image Source="Images/fa-line-chart.png" Height="15" Width="15" Margin="5"/>
-                        <Label Content="STATS" Margin="5" Foreground="{DynamicResource LightPurple}" TextOptions.TextHintingMode="Animated"/>
+                        <Image x:Name="statsImage" Source="Images/stats-black.png" Height="15" Width="15" Margin="5"/>
+                        <Label x:Name="statsLabel" Content="STATS" Margin="5" Foreground="{DynamicResource LightPurple}" TextOptions.TextHintingMode="Animated"/>
                     </StackPanel>
                 </Button>
-                <Button x:Name="logoutButton" Margin="10" Width="200" Background="#00000000" BorderBrush="{DynamicResource Green}">
+                <Button x:Name="logoutButton" MouseEnter="logoutButton_MouseEnter" MouseLeave="logoutButton_MouseLeave" Click="logoutButton_Click" Style="{StaticResource LogoutButtonStyle}">
                     <StackPanel Orientation="Horizontal" Width="100">
-                        <Image Source="Images/fa-logout.png" Height="15" Width="15" Margin="5"/>
-                        <Label Content="LOGOUT" Margin="5" Foreground="{DynamicResource Green}" TextOptions.TextHintingMode="Animated"/>
+                        <Image x:Name="logoutImage" Source="Images/logout-black.png" Height="15" Width="15" Margin="5"/>
+                        <Label x:Name="logoutLabel" Content="LOGOUT" Margin="5" Foreground="{DynamicResource Green}" TextOptions.TextHintingMode="Animated"/>
                     </StackPanel>
                 </Button>
             </StackPanel>
