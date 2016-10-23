@@ -2,6 +2,8 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:wpf_moodlog"
+             xmlns:chartingToolkit = "clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
+             xmlns:visualizationToolkit="clr-namespace:System.Windows.Controls.DataVisualization;assembly=System.Windows.Controls.DataVisualization.Toolkit" 
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <SolidColorBrush x:Key="DarkPurple" Color="#FF9D53B3"/>
@@ -29,5 +31,38 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+
+        <visualizationToolkit:ResourceDictionaryCollection x:Key="ChartPalette">
+            <ResourceDictionary>
+                <Style x:Key="DataPointStyle" TargetType="{x:Type Control}">
+                    <Setter Property="Background" Value="Green"/>
+                </Style>
+            </ResourceDictionary>
+            <ResourceDictionary>
+                <Style x:Key="DataPointStyle" TargetType="{x:Type Control}">
+                    <Setter Property="Background" Value="DarkGoldenrod"/>
+                </Style>
+            </ResourceDictionary>
+            <ResourceDictionary>
+                <Style x:Key="DataPointStyle" TargetType="{x:Type Control}">
+                    <Setter Property="Background" Value="Blue"/>
+                </Style>
+            </ResourceDictionary>
+            <ResourceDictionary>
+                <Style x:Key="DataPointStyle" TargetType="{x:Type Control}">
+                    <Setter Property="Background" Value="Purple"/>
+                </Style>
+            </ResourceDictionary>
+            <ResourceDictionary>
+                <Style x:Key="DataPointStyle" TargetType="{x:Type Control}">
+                    <Setter Property="Background" Value="Red"/>
+                </Style>
+            </ResourceDictionary>
+            <ResourceDictionary>
+                <Style x:Key="DataPointStyle" TargetType="{x:Type Control}">
+                    <Setter Property="Background" Value="DarkSlateGray"/>
+                </Style>
+            </ResourceDictionary>
+        </visualizationToolkit:ResourceDictionaryCollection>
     </Application.Resources>
 </Application>

@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.DataVisualization.Charting;
 using System.Windows.Data;
+using System.Collections.ObjectModel;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -369,6 +370,7 @@ namespace wpf_moodlog
                 ItemsSource = emotions.ToList(),
                 Margin = new Thickness(5, 0, 20, 0),
                 Width = 60,
+                Palette = Application.Current.Resources["ChartPalette"] as Collection<ResourceDictionary>,
             };
 
             allEmotionsChart.Series.Add(pieSeries);
