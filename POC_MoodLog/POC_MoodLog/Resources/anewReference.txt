@@ -311,7 +311,7 @@ fabric,5.3,4.14
 face,6.39,5.04
 failure,1.7,4.95
 fall,4.09,4.7
-FALSE,3.27,3.43
+false,3.27,3.43
 fame,7.93,6.55
 family,7.65,4.8
 famous,6.98,5.73
@@ -492,6 +492,7 @@ iron,4.9,3.76
 irritate,3.11,5.76
 item,5.26,3.24
 jail,1.95,5.49
+jealous,2.51,6.36
 jealousy,2.51,6.36
 jelly,5.66,3.7
 jewel,7,5.38
