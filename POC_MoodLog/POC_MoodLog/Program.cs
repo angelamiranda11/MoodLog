@@ -217,6 +217,7 @@ namespace POC_MoodLog
                                     }
                                     else if (effect == '-')
                                     {
+                                        joy[0] -= 1;
                                         joy[1] += effectValue;
                                     }
                                     break;
@@ -227,6 +228,7 @@ namespace POC_MoodLog
                                     }
                                     else if (effect == '-')
                                     {
+                                        surprise[0] -= 1;
                                         surprise[1] += effectValue;
                                     }
                                     break;
@@ -237,6 +239,7 @@ namespace POC_MoodLog
                                     }
                                     else if (effect == '-')
                                     {
+                                        fear[0] -= 1;
                                         fear[1] += effectValue;
                                     }
                                     break;
@@ -247,6 +250,7 @@ namespace POC_MoodLog
                                     }
                                     else if (effect == '-')
                                     {
+                                        anger[0] -= 1;
                                         anger[1] += effectValue;
                                     }
                                     break;
@@ -257,6 +261,7 @@ namespace POC_MoodLog
                                     }
                                     else if (effect == '-')
                                     {
+                                        disgust[0] -= 1;
                                         disgust[1] += effectValue;
                                     }
                                     break;
@@ -267,6 +272,7 @@ namespace POC_MoodLog
                                     }
                                     else if (effect == '-')
                                     {
+                                        sad[0] -= 1;
                                         sad[1] += effectValue;
                                     }
                                     break;
