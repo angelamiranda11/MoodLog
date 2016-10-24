@@ -413,7 +413,7 @@ namespace wpf_moodlog
         private Dictionary<Emotion, double> getEmotionsFrom(String text)
         {
             var emotions = new Dictionary<Emotion, double>();
-            processEntry(text);
+            processEntry(text.ToLower());
             // temporary code
             emotions.Add(Emotion.Joy, 0.3);
             emotions.Add(Emotion.Surprised, 0.4);
