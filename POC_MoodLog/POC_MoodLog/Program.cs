@@ -282,6 +282,7 @@ namespace POC_MoodLog
                 }
             }
 
+            //frequency of each word, yes is [0] and no is [1]
             Console.WriteLine("Joy: " + joy[0] + " " + joy[1]);
             Console.WriteLine("Sad: " + sad[0] + " " + sad[1]);
             Console.WriteLine("Anger: " + anger[0] + " " + anger[1]);
