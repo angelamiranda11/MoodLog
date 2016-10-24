@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.DataVisualization.Charting;
 using System.Windows.Data;
+using System.Collections.ObjectModel;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -61,19 +62,85 @@ namespace wpf_moodlog
             // loadPreviousEntries();
         }
 
+        private void profileButton_Click(object sender, RoutedEventArgs e)
+        {
+            // View Profile page
+            MoodLogProfilePage moodLogProfilePage = new MoodLogProfilePage();
+            this.NavigationService.Navigate(moodLogProfilePage);
+        }
+
+        private void profileButton_MouseEnter(object sender, RoutedEventArgs e)
+        {
+            profileLabel.Foreground = Brushes.White;
+            profileImage.Source = new BitmapImage(new Uri("Images/profile-white.png", UriKind.Relative));
+        }
+
+        private void profileButton_MouseLeave(object sender, RoutedEventArgs e)
+        { 
+            profileLabel.Foreground = App.Current.Resources["DarkPurple"] as SolidColorBrush;
+            profileImage.Source = new BitmapImage(new Uri("Images/profile-black.png", UriKind.Relative));
+        }
+
+        private void entriesButton_MouseEnter(object sender, RoutedEventArgs e)
+        {
+            entriesLabel.Foreground = Brushes.White;
+            entriesImage.Source = new BitmapImage(new Uri("Images/entries-white.png", UriKind.Relative));
+        }
+
+        private void entriesButton_MouseLeave(object sender, RoutedEventArgs e)
+        {
+            entriesLabel.Foreground = App.Current.Resources["DarkViolet"] as SolidColorBrush;
+            entriesImage.Source = new BitmapImage(new Uri("Images/entries-black.png", UriKind.Relative));
+        }
+
+        private void statsButton_Click(object sender, RoutedEventArgs e)
+        {
+            // View Stats page
+        }
+
+        private void statsButton_MouseEnter(object sender, RoutedEventArgs e)
+        {
+            statsLabel.Foreground = Brushes.White;
+            statsImage.Source = new BitmapImage(new Uri("Images/stats-white.png", UriKind.Relative));
+        }
+
+        private void statsButton_MouseLeave(object sender, RoutedEventArgs e)
+        {
+            statsLabel.Foreground = App.Current.Resources["LightPurple"] as SolidColorBrush;
+            statsImage.Source = new BitmapImage(new Uri("Images/stats-black.png", UriKind.Relative));
+        }
+
+        private void logoutButton_Click(object sender, RoutedEventArgs e)
+        {
+            // View Login page
+        }
+
+        private void logoutButton_MouseEnter(object sender, RoutedEventArgs e)
+        {
+            logoutLabel.Foreground = Brushes.White;
+            logoutImage.Source = new BitmapImage(new Uri("Images/logout-white.png", UriKind.Relative));
+        }
+
+        private void logoutButton_MouseLeave(object sender, RoutedEventArgs e)
+        {
+            logoutLabel.Foreground = App.Current.Resources["Green"] as SolidColorBrush;
+            logoutImage.Source = new BitmapImage(new Uri("Images/logout-black.png", UriKind.Relative));
+        }
+
         private void joyButton_Click(object sender, RoutedEventArgs e)
         {
             enableAllMainEmoticonButtonsExcept(joyButton);
 
             showSubEmoticons(new string[] {
-                "EmoticonJoy",
-                "smiling_face_with_open_mouth",
-                "smiling_face_with_halo",
-                "smiling_face_with_heart_shaped_eyes",
+                "smiling_face",
                 "smiling_face_with_smiling_eyes",
-                "grinning_face_with_smiling_eyes",
+                "smiling_face_with_heart_shaped_eyes",
                 "face_with_tears_of_joy",
+                "smiling_face_with_open_mouth",
+                "grinning_face_with_smiling_eyes",
+                "smiling_face_with_halo",
                 "heavy_black_heart",
+                "winking_face",
             });
         }
 
@@ -82,13 +149,14 @@ namespace wpf_moodlog
             enableAllMainEmoticonButtonsExcept(sadnessButton);
 
             showSubEmoticons(new string[] {
-                "EmoticonSadness",
-                "worried_face",
+                "sad_face",
                 "pensive_face",
-                "crying_face",
-                "loudly_crying_face",
                 "disappointed_face",
+                "loudly_crying_face",
+                "crying_face",
+                "worried_face",
                 "broken_hearts",
+                "purple_heart",
             });
         }
 
@@ -97,9 +165,8 @@ namespace wpf_moodlog
             enableAllMainEmoticonButtonsExcept(disgustButton);
 
             showSubEmoticons(new string[] {
-                "EmoticonDisgust",
+                "face_with_stucked_out_tongue",
                 "face_with_stucked_out_tongue_and_tightly_closed_eyes",
-                
             });
         }
 
@@ -108,9 +175,10 @@ namespace wpf_moodlog
             enableAllMainEmoticonButtonsExcept(angerButton);
 
             showSubEmoticons(new string[] {
-                "EmoticonAnger",
+                "pouting_face",
                 "face_with_look_of_triumph",
-                
+                "angry_face",
+                "smiling_face_with_horns"
             });
         }
 
@@ -119,9 +187,9 @@ namespace wpf_moodlog
             enableAllMainEmoticonButtonsExcept(surpriseButton);
 
             showSubEmoticons(new string[] {
-                "EmoticonSurprised",
-                "hushed_face",
+                "face_with_open_mouth",
                 "astonished_face",
+                "hushed_face",
                 "face_screaming_in_fear",
                 
             });
@@ -132,21 +200,10 @@ namespace wpf_moodlog
             enableAllMainEmoticonButtonsExcept(fearButton);
 
             showSubEmoticons(new string[] {
-                "EmoticonFear",
-                "EmoticonFear",
-                "EmoticonFear",
-                "EmoticonFear",
-                "EmoticonFear",
-                "EmoticonFear",
-                "EmoticonFear",
+                "face_screaming_in_fear",
+                "face_with_cold_sweat",
+                "fearful_face",
             });
-        }
-
-        private void profileButton_Click(object sender, RoutedEventArgs e)
-        {
-            // View Profile page
-            MoodLogProfilePage moodLogProfilePage = new MoodLogProfilePage();
-            this.NavigationService.Navigate(moodLogProfilePage);
         }
 
         private void hashtagButton_Click(object sender, RoutedEventArgs e)
@@ -200,12 +257,12 @@ namespace wpf_moodlog
 
         private void enableEmoticonButton(Button emoticonButton)
         {
-            emoticonButton.Background = null;
+            emoticonButton.Background = Brushes.Transparent;
         }
 
         private void disableEmoticonButton(Button emoticonButton)
         {
-            emoticonButton.Background = Brushes.DarkGray;
+            emoticonButton.Background = Brushes.LightGray;
         }
 
         private void showSubEmoticons(String[] subEmoticonNames)
@@ -239,7 +296,8 @@ namespace wpf_moodlog
             subEmoticonButton.Content = convertUriToImage(new Uri("Images/" + subEmoticonName + ".png", UriKind.Relative));
             subEmoticonButton.Width = 50;
             subEmoticonButton.Height = 40;
-            subEmoticonButton.Background = null;
+            subEmoticonButton.Background = Brushes.Transparent;
+            subEmoticonButton.BorderBrush = Brushes.DarkGray;
             subEmoticonButton.BorderThickness = new Thickness(0, 0, 1, 0);
             subEmoticonButton.ToolTip = subEmoticonName.Replace('-', ' ');
             subEmoticonButton.Name = subEmoticonName;
@@ -260,7 +318,6 @@ namespace wpf_moodlog
         private void resetSubEmoticons()
         {
             subEmoticonsPanel.Children.Clear();
-            subEmoticonsPanel.Background = Brushes.DarkGray;
         }
 
         private SolidColorBrush convertHexToBrush(String hex)
@@ -308,7 +365,6 @@ namespace wpf_moodlog
         {
             borderedPanel.BorderBrush = Brushes.DarkGray;
             borderedPanel.BorderThickness = new Thickness(1);
-            borderedPanel.Padding = new Thickness(3);
         }
 
         private StackPanel combineSummaryAndContentOfEntry(DockPanel summary, TextBlock content)
@@ -325,7 +381,7 @@ namespace wpf_moodlog
             DateTime thisDay = DateTime.Now;
 
             TextBlock summaryDateTime = new TextBlock();
-            summaryDateTime.Text = thisDay.ToString("dddd, MMMM dd h:mm tt");
+            summaryDateTime.Text = thisDay.ToString("dddd, MMMM dd, h:mm tt");
 
             return summaryDateTime;
         }
@@ -361,8 +417,6 @@ namespace wpf_moodlog
 
         private PieSeries createSummaryEmotionsChartFrom(Dictionary<Emotion, double> emotions)
         {
-            // TO DO: Change chart color
-
             var allEmotionsChart = new Chart();
             var pieSeries = new PieSeries()
             {
@@ -372,6 +426,7 @@ namespace wpf_moodlog
                 ItemsSource = emotions.ToList(),
                 Margin = new Thickness(5, 0, 20, 0),
                 Width = 60,
+                Palette = Application.Current.Resources["ChartPalette"] as Collection<ResourceDictionary>,
             };
 
             allEmotionsChart.Series.Add(pieSeries);
@@ -452,7 +507,7 @@ namespace wpf_moodlog
             DockPanel summary = new DockPanel()
             {
                 Background = convertHexToBrush("#ecf0f1"),
-            };
+            };  
 
             Dictionary<Emotion, double> emotions = getEmotionsFrom(text);
 
