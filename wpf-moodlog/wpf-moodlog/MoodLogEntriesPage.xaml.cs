@@ -2,18 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.DataVisualization.Charting;
 using System.Windows.Data;
 using System.Collections.ObjectModel;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Collections;
+using IronPython.Hosting;
+using Microsoft.Scripting.Hosting;
 
 namespace wpf_moodlog
 {
@@ -52,7 +51,32 @@ namespace wpf_moodlog
     /// </summary>
     public partial class MoodLogEntriesPage : Page
     {
-        
+        static ArrayList bowreference = new ArrayList();
+        static ArrayList emoticons = new ArrayList();
+        static char[] punctuations = { '.', '!', '?', ';' };
+        static ArrayList prepNInter = new ArrayList();
+        static ArrayList sentences = new ArrayList();
+        static ArrayList ngramCollection = new ArrayList();
+        static ArrayList emoticonCollection = new ArrayList();
+        static ArrayList hashtagCollection = new ArrayList();
+        static ArrayList finalBoW = new ArrayList();
+        static int[] emotionInt = { 0, 0, 0, 0, 0, 0 };
+        static ArrayList nrc_emotion = new ArrayList();
+        private static string outProb2;
+        static ArrayList memWord = new ArrayList();
+        static ArrayList wordCommaEmotion = new ArrayList();
+        static ArrayList prepEmotion = new ArrayList();
+        static ArrayList hashSegmented = new ArrayList();
+        static float[] joy = new float[2];
+        static float[] sad = new float[2];
+        static float[] anger = new float[2];
+        static float[] surprise = new float[2];
+        static float[] disgust = new float[2];
+        static float[] fear = new float[2];
+        static ArrayList tempa = new ArrayList();
+        static ArrayList prep = new ArrayList();
+        static ArrayList ngram = new ArrayList();
+
 
         public MoodLogEntriesPage()
         {
@@ -389,7 +413,7 @@ namespace wpf_moodlog
         private Dictionary<Emotion, double> getEmotionsFrom(String text)
         {
             var emotions = new Dictionary<Emotion, double>();
-
+            processEntry(text);
             // temporary code
             emotions.Add(Emotion.Joy, 0.3);
             emotions.Add(Emotion.Surprised, 0.4);
@@ -399,6 +423,11 @@ namespace wpf_moodlog
             emotions.Add(Emotion.Fear, 0.05);
 
             return emotions;
+        }
+
+        private void processEntry(string text)
+        {
+            throw new NotImplementedException();
         }
 
         private TextBlock createSummaryDominantEmotionFrom(Dictionary<Emotion, double> emotions)
@@ -559,6 +588,121 @@ namespace wpf_moodlog
             setPropertiesOfEntryWithBorder(newEntryWithBorder);
 
             return newEntryWithBorder;  
+        }
+        private static String doSegment(String item)
+        {
+            try
+            {
+                var engine = Python.CreateEngine();
+                ScriptSource source = engine.CreateScriptSourceFromString(wpf_moodlog.Properties.Resources.wordseg);
+                CompiledCode compiledCode = source.Compile();
+                ScriptScope scope = engine.CreateScope();
+                scope.SetVariable("x", item);
+                String result = compiledCode.Execute<String>(scope);
+                return result;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
+
+        }
+
+
+        public static IEnumerable<string> makeBigrams(string text)
+        {
+            int nGramSize = 2;
+            StringBuilder nGram = new StringBuilder();
+            Queue<int> wordLengths = new Queue<int>();
+
+            int wordCount = 0;
+            int lastWordLen = 0;
+
+            if (text != "" && char.IsLetterOrDigit(text[0]))
+            {
+                nGram.Append(text[0]);
+                lastWordLen++;
+            }
+
+            //generate ngrams
+            for (int i = 1; i < text.Length - 1; i++)
+            {
+                char before = text[i - 1];
+                char after = text[i + 1];
+
+                if (char.IsLetterOrDigit(text[i])
+                        ||
+                        (text[i] != ' '
+                        && (char.IsSeparator(text[i]) || char.IsPunctuation(text[i]))
+                        && (char.IsLetterOrDigit(before) && char.IsLetterOrDigit(after))
+                        )
+                    )
+                {
+                    nGram.Append(text[i]);
+                    lastWordLen++;
+                }
+                else
+                {
+                    if (lastWordLen > 0)
+                    {
+                        wordLengths.Enqueue(lastWordLen);
+                        lastWordLen = 0;
+                        wordCount++;
+
+                        if (wordCount >= nGramSize)
+                        {
+                            yield return nGram.ToString();
+                            nGram.Remove(0, wordLengths.Dequeue() + 1);
+                            wordCount -= 1;
+                        }
+
+                        nGram.Append(" ");
+                    }
+                }
+            }
+            nGram.Append(text.Last());
+            yield return nGram.ToString();
+        }
+
+        public static Array[] posteriorProbability(float[] joy, float[] sad, float[] anger, float[] surprise, float[] disgust, float[] fear, float allYes, float allNo, float totalFreq)
+        {
+            int count = 0;
+            Array[] sixEmotions = { joy, sad, anger, surprise, disgust, fear };
+
+            foreach (float[] temp in sixEmotions)
+            {
+                temp[0] = ((temp[0] / allYes) * (allYes / totalFreq)) / ((temp[0] + temp[1]) / totalFreq);
+                temp[1] = 1 - temp[0];
+                sixEmotions[count] = temp;
+                count++;
+            }
+            return sixEmotions;
+        }
+
+        public static String getEmotion(String intext, ArrayList ar)
+        {
+            String emotion = null;
+            foreach (String entry in ar)
+            {
+                String[] entryAr = entry.Split(',');
+                if (intext == entryAr[0])
+                {
+                    emotion = entryAr[1];
+                }
+            }
+            return emotion;
+        }
+
+        public static void init()
+        {
+            
+            bowreference.AddRange(wpf_moodlog.Properties.Resources.bow_algorithm_reference.Split());
+            emoticons.AddRange(wpf_moodlog.Properties.Resources.emoticons.Split());
+            nrc_emotion.AddRange(wpf_moodlog.Properties.Resources.NRC_emotion_lexicon_wordlevel_alphabetized_v0_92__1_.Split());
+            prepNInter.AddRange(wpf_moodlog.Properties.Resources.ngrams1.Split());
+            tempa.AddRange(wpf_moodlog.Properties.Resources.NRC_emotion_lexicon_wordlevel_alphabetized_v0_92__1_.Split('\n'));
+            prep.AddRange(wpf_moodlog.Properties.Resources.PrepRef.Split('\n'));
         }
 
     }

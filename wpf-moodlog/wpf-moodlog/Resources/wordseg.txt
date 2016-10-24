@@ -1,0 +1,6 @@
+import sys
+sys.path.append("C:\Python27\Lib")
+from wordsegment import segment
+def simpleFunc(x):
+    return str(segment(x))
+simpleFunc(x)
