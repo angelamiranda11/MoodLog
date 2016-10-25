@@ -38,9 +38,16 @@ namespace wpf_moodlog
             lastName.Text = Global.User.LastName;
             firstName.Text = Global.User.FirstName;
             username.Text = Global.User.Username;
-            password.Text = Global.User.Password;
+            password.Text = getHiddenPassword();
             birthday.Text = Global.User.Birthday;
             gender.Text = Global.User.GenderCode;
+        }
+
+        private string getHiddenPassword()
+        {
+            string password = Global.User.Password;
+
+            return password[0] + new String('x', password.Length - 1);
         }
 
         private void setDateTodayLabel()
