@@ -161,7 +161,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Model\Global.cs" />
-    <Compile Include="ReadWriteCSV.cs" />
+    <Compile Include="Model\ReadWriteCSV.cs" />
     <Compile Include="Model\User.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
