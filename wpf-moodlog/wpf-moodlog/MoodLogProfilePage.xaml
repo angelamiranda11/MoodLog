@@ -10,71 +10,71 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition Height="15*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="90*"/>
         </Grid.RowDefinitions>
-        <Grid Height="40" VerticalAlignment="Top" Background="#FFD6B9ED">
-            <Label x:Name="dateTodayLabel" Content="Oct 30" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" FontSize="14"/>
+        <Grid Background="#D6B9ED">
+            <Label x:Name="dateTodayLabel" Content="Oct 30" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" FontSize="16"/>
         </Grid>
-        <Grid HorizontalAlignment="Left" Height="600" Grid.Row="1" VerticalAlignment="Top" Width="960">
+
+        <Grid Grid.Row="1" VerticalAlignment="Stretch">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <StackPanel x:Name="___No_Name_" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,40,0,0" Height="240" Width="220">
-                <Button x:Name="profileButton" Margin="10" Width="200" Background="#FF9D53B3">
+            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,30,0,0">
+                <Button x:Name="profileButton" MouseEnter="profileButton_MouseEnter" MouseLeave="profileButton_MouseLeave" Style="{StaticResource ProfileButtonStyle}">
                     <StackPanel Orientation="Horizontal" Width="100">
-                        <Image Source="Images/fa-user-white.png" Height="15" Width="15" Margin="5"/>
-                        <Label Content="PROFILE" Margin="5" Foreground="White" TextOptions.TextHintingMode="Animated"/>
+                        <Image x:Name="profileImage" Source="Images/profile-black.png" Height="15" Width="15" Margin="5"/>
+                        <Label x:Name="profileLabel" Content="PROFILE" Margin="5" Foreground="{DynamicResource DarkPurple}" TextOptions.TextHintingMode="Animated"/>
                     </StackPanel>
                 </Button>
-                <Button x:Name="entriesButton" Margin="10" Width="200" Background="#FF9C7EFD" Click="entriesButton_Click">
+                <Button x:Name="entriesButton" MouseEnter="entriesButton_MouseEnter" MouseLeave="entriesButton_MouseLeave" Style="{StaticResource EntriesButtonStyle}">
                     <StackPanel Orientation="Horizontal" Width="100">
-                        <Image Source="Images/fa-entries-white.png" Height="15" Width="15" Margin="5"/>
-                        <Label Content="ENTRIES" Margin="5" Foreground="White" TextOptions.TextHintingMode="Animated"/>
+                        <Image x:Name="entriesImage" Source="Images/entries-black.png" Height="15" Width="15" Margin="5"/>
+                        <Label x:Name="entriesLabel" Content="ENTRIES" Margin="5" Foreground="{DynamicResource DarkViolet}" TextOptions.TextHintingMode="Animated"/>
                     </StackPanel>
                 </Button>
-                <Button x:Name="statsButton" Margin="10" Width="200" Background="#FFD6B9ED">
+                <Button x:Name="statsButton" MouseEnter="statsButton_MouseEnter" MouseLeave="statsButton_MouseLeave" Style="{StaticResource StatsButtonStyle}">
                     <StackPanel Orientation="Horizontal" Width="100">
-                        <Image Source="Images/fa-line-chart.png" Height="15" Width="15" Margin="5"/>
-                        <Label Content="STATS" Margin="5" Foreground="Black" TextOptions.TextHintingMode="Animated"/>
+                        <Image x:Name="statsImage" Source="Images/stats-black.png" Height="15" Width="15" Margin="5"/>
+                        <Label x:Name="statsLabel" Content="STATS" Margin="5" Foreground="{DynamicResource LightPurple}" TextOptions.TextHintingMode="Animated"/>
                     </StackPanel>
                 </Button>
-                <Button x:Name="logoutButton" Margin="10" Width="200" Background="#FFA3E88A">
+                <Button x:Name="logoutButton" MouseEnter="logoutButton_MouseEnter" MouseLeave="logoutButton_MouseLeave" Style="{StaticResource LogoutButtonStyle}">
                     <StackPanel Orientation="Horizontal" Width="100">
-                        <Image Source="Images/fa-logout.png" Height="15" Width="15" Margin="5"/>
-                        <Label Content="LOGOUT" Margin="5" Foreground="Black" TextOptions.TextHintingMode="Animated"/>
+                        <Image x:Name="logoutImage" Source="Images/logout-black.png" Height="15" Width="15" Margin="5"/>
+                        <Label x:Name="logoutLabel" Content="LOGOUT" Margin="5" Foreground="{DynamicResource Green}" TextOptions.TextHintingMode="Animated"/>
                     </StackPanel>
                 </Button>
             </StackPanel>
-            <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Margin="10,50,0,0" Width="500" Background="#FFECF0F1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="9*"/>
-                    <ColumnDefinition Width="16*"/>
-                </Grid.ColumnDefinitions>
+            <Grid Grid.Column="1" HorizontalAlignment="Left" Margin="30,40,0,0" VerticalAlignment="Top" Width="465" Background="{DynamicResource Clouds}">
                 <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition Height="Auto" MinHeight="46"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <Image x:Name="image" Source="Images/fa-profile.png" Grid.Column="1" Margin="10,50,0,30" HorizontalAlignment="Left" Width="100"/>
-                <Label x:Name="label1" Content="Penequito" Grid.Row="1" Grid.Column="1" Margin="10,10,0,9.667" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14" Foreground="#FF9D53B3" Height="29" Width="73"/>
-                <Label x:Name="label1_Copy" Content="Yedda Joseth" Grid.Row="2" Grid.Column="1" Margin="10,10.333,0,10.333" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14" Foreground="#FF9D53B3" Height="28" Width="91"/>
-                <Label x:Name="label1_Copy1" Content="Female" Grid.Row="3" Grid.Column="1" Margin="10,9.667,0,10" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14" Foreground="#FF9D53B3" Height="29" Width="54"/>
-                <Label x:Name="label1_Copy2" Content="July 6, 1996" Grid.Row="4" Grid.Column="1" Margin="10,10,0,9.667" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14" Foreground="#FF9D53B3" Height="29" Width="81"/>
-                <Label x:Name="label1_Copy3" Content="Yedda" Grid.Row="5" Grid.Column="1" Margin="10,10.333,0,10.333" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14" Foreground="#FF9D53B3" Height="28" Width="49"/>
-                <Label x:Name="label1_Copy4" Content="xxxxxxxxxxx" Grid.Row="6" Grid.Column="1" Margin="10,9.667,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Foreground="#FF9D53B3" Height="29" Width="81"/>
-                <Label x:Name="label1_Copy5" Content="Last Name" Grid.Row="1" Margin="50,10,0,9.667" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14" Height="29" Width="75"/>
-                <Label x:Name="label1_Copy6" Content="First Name" Grid.Row="2" Margin="50,10.333,0,10.333" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14" Height="28" Width="77"/>
-                <Label x:Name="label1_Copy7" Content="Gender" Grid.Row="3" Margin="50,9.667,0,10" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14" Height="29" Width="55"/>
-                <Label x:Name="label1_Copy8" Content="Birthday" Grid.Row="4" Margin="50,10,0,9.667" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14" Height="29" Width="61"/>
-                <Label x:Name="label1_Copy9" Content="Username" Grid.Row="5" Margin="50,10.333,0,10.333" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14" Height="28" Width="72"/>
-                <Label x:Name="label1_Copy10" Content="Password" Grid.Row="6" Margin="50,9.667,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Height="29" Width="68"/>
-
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="35*"/>
+                    <ColumnDefinition Width="25*"/>
+                    <ColumnDefinition Width="40*"/>
+                </Grid.ColumnDefinitions>
+                <Image x:Name="image" HorizontalAlignment="Center" Height="100" Margin="30,30,10,10" VerticalAlignment="Top" Width="100" Source="Images/profile-black.png" Grid.Row="0" Grid.RowSpan="6"/>
+                <Label x:Name="label" Content="Last Name" Grid.Column="1" Margin="10,30,10,10" Height="25" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <Label x:Name="label_Copy" Content="First Name" Grid.Column="1" Grid.Row="1" Margin="10" Height="25" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <Label x:Name="label_Copy1" Content="Username" Grid.Column="1" Grid.Row="2" Margin="10" Height="25" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <Label x:Name="label_Copy2" Content="Password" Grid.Column="1" Grid.Row="3" Margin="10" Height="25" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <Label x:Name="label_Copy3" Content="Birthday" Grid.Column="1" Grid.Row="4" Margin="10" Height="25" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <Label x:Name="label_Copy4" Content="Gender" RenderTransformOrigin="0.386,2.679" Grid.Column="1" Grid.Row="5" Margin="10,10,10,30" Height="25" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <TextBlock x:Name="lastName" TextWrapping="Wrap" Text="Penequito" Foreground="{DynamicResource DarkPurple}" Grid.Column="2" Margin="10,30,10,10" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <TextBlock x:Name="firstName" TextWrapping="Wrap" Text="Yedda Joseth" Foreground="{DynamicResource DarkPurple}" Grid.Column="2" Grid.Row="1" Margin="10" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <TextBlock x:Name="username" TextWrapping="Wrap" Text="yjpenequito" Foreground="{DynamicResource DarkPurple}" Grid.Column="2" Grid.Row="2" Margin="10" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <TextBlock x:Name="password" TextWrapping="Wrap" Text="xxxxxxxxxx" Foreground="{DynamicResource DarkPurple}" Grid.Column="2" Grid.Row="3" Margin="10" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <TextBlock x:Name="birthday" TextWrapping="Wrap" Text="July 6, 1996" Foreground="{DynamicResource DarkPurple}" Grid.Column="2" Grid.Row="4" Margin="10" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <TextBlock x:Name="gender" TextWrapping="Wrap" Text="Female" Foreground="{DynamicResource DarkPurple}" Grid.Column="2" Grid.Row="5" Margin="10,10,10,30" HorizontalAlignment="Left" VerticalAlignment="Center"/>
             </Grid>
         </Grid>
     </Grid>

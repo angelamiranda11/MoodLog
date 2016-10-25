@@ -45,7 +45,7 @@
                 <ColumnDefinition Width="70*"/>
             </Grid.ColumnDefinitions>
             
-            <TextBlock Padding="10" HorizontalAlignment="Stretch" Text="The username and/or password you entered is invalid" Margin="10" Foreground="Red" Background="Pink" Grid.Row="0" Grid.ColumnSpan="2" TextAlignment="Center" Visibility="Hidden"/>
+            <TextBlock x:Name="errorTextBlock" Padding="10" HorizontalAlignment="Stretch" Text="The username and/or password you entered is invalid" Margin="10" Foreground="Red" Background="Pink" Grid.Row="0" Grid.ColumnSpan="2" TextAlignment="Center" Visibility="Hidden"/>
 
             <Label x:Name="label" Content="Username" Height="25" VerticalContentAlignment="Center" Margin="10" Grid.Row="1" Grid.Column="0"/>
             <TextBox x:Name="usernameTextBox" TextWrapping="Wrap" Height="25" VerticalContentAlignment="Center" Margin="10" Padding="5,0" Grid.Row="1" Grid.Column="1"/>
