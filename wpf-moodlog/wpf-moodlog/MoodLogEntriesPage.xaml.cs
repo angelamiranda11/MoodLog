@@ -10,6 +10,8 @@ using System.Collections.ObjectModel;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Reflection;
+using System.IO;
 using System.Collections;
 using IronPython.Hosting;
 using Microsoft.Scripting.Hosting;
@@ -59,7 +61,35 @@ namespace wpf_moodlog
 
             customizePage();
             
-            // loadPreviousEntries();
+            loadPreviousEntries();
+        }
+
+        private void loadPreviousEntries()
+        {
+            Stream entries = getEntriesStream();
+
+            using (CsvFileReader reader = new CsvFileReader(entries))
+            {
+                CsvRow row = new CsvRow();
+                while (reader.ReadRow(row))
+                {
+                    string date = row[1];
+                    string time = row[2];
+                    string text = row[3];
+
+                    string dateTime = date + " " + time;
+                    Border previousEntry = createEntryFrom(text, true, dateTime);
+
+                    entriesStackPanel.Children.Add(previousEntry);
+                }
+            }
+        }
+
+        public Stream getEntriesStream()
+        {
+            string filename = Global.User.Entries;
+
+            return Assembly.GetExecutingAssembly().GetManifestResourceStream("wpf_moodlog.Data." + filename + ".csv");
         }
 
         private void customizePage()
@@ -342,7 +372,7 @@ namespace wpf_moodlog
 
         private void addEntryButton_Click(object sender, RoutedEventArgs e)
         {
-            Border newEntry = createEntryFrom(entryTextBox.Text);
+            Border newEntry = createEntryFrom(entryTextBox.Text, false, "");
 
             entriesStackPanel.Children.Add(newEntry);
 
@@ -387,29 +417,50 @@ namespace wpf_moodlog
             return entry;
         }
 
-        private TextBlock createSummaryDateTime()
+        private TextBlock createSummaryDateTime(bool isPreviousEntry, string dateTime)
         {
             DateTime thisDay = DateTime.Now;
 
             TextBlock summaryDateTime = new TextBlock();
-            summaryDateTime.Text = thisDay.ToString("dddd, MMMM dd, h:mm tt");
+
+            if (isPreviousEntry)
+            {
+                summaryDateTime.Text = dateTime;
+            }
+            else
+            {
+                summaryDateTime.Text = thisDay.ToString("dddd, MMMM dd, h:mm tt");
+            }
 
             return summaryDateTime;
         }
 
-        private Dictionary<Emotion, float> getEmotionsFrom(String text)
+        private Dictionary<Emotion, float> getEmotionsFrom(String text, bool isPreviousEntry)
         {
             var emotions = new Dictionary<Emotion, float>();
 
-            Program p = new Program();
-            float[] results = p.processText(text);
+            if (isPreviousEntry)
+            {
+                emotions.Add(Emotion.Joy, 0);
+                emotions.Add(Emotion.Sadness, 0);
+                emotions.Add(Emotion.Anger, 0);
+                emotions.Add(Emotion.Surprised, 0);
+                emotions.Add(Emotion.Disgust, 0);
+                emotions.Add(Emotion.Fear, 0);
+            }
+            else
+            {
+                Program p = new Program();
+                float[] results = p.processText(text);
 
-            emotions.Add(Emotion.Joy, results[0]);
-            emotions.Add(Emotion.Sadness, results[1]);
-            emotions.Add(Emotion.Anger, results[2]);
-            emotions.Add(Emotion.Surprised, results[3]);
-            emotions.Add(Emotion.Disgust, results[4]);
-            emotions.Add(Emotion.Fear, results[5]);
+                emotions.Add(Emotion.Joy, results[0]);
+                emotions.Add(Emotion.Sadness, results[1]);
+                emotions.Add(Emotion.Anger, results[2]);
+                emotions.Add(Emotion.Surprised, results[3]);
+                emotions.Add(Emotion.Disgust, results[4]);
+                emotions.Add(Emotion.Fear, results[5]);
+            }
+
             return emotions;
         }
 
@@ -514,27 +565,27 @@ namespace wpf_moodlog
             return summaryEmotionsText;
         }
 
-        private DockPanel createEntrySummaryFrom(String text)
+        private DockPanel createEntrySummaryFrom(String text, bool isPreviousEntry, string dateTime)
         {
             DockPanel summary = new DockPanel()
             {
                 Background = convertHexToBrush("#ecf0f1"),
             };  
 
-            Dictionary<Emotion, float> emotions = getEmotionsFrom(text);
+            Dictionary<Emotion, float> emotions = getEmotionsFrom(text, isPreviousEntry);
 
             PieSeries allEmotionsChart = createSummaryEmotionsChartFrom(emotions);
-            TextBlock dateTime = createSummaryDateTime();
+            TextBlock dateTimeText = createSummaryDateTime(isPreviousEntry, dateTime);
             TextBlock dominantEmotion = createSummaryDominantEmotionFrom(emotions);
             StackPanel allEmotionsText = createSummaryEmotionsTextFrom(emotions);
 
             DockPanel.SetDock(allEmotionsChart, Dock.Left);
-            DockPanel.SetDock(dateTime, Dock.Top);
+            DockPanel.SetDock(dateTimeText, Dock.Top);
             DockPanel.SetDock(dominantEmotion, Dock.Top);
             DockPanel.SetDock(allEmotionsText, Dock.Top);
 
             summary.Children.Add(allEmotionsChart);
-            summary.Children.Add(dateTime);
+            summary.Children.Add(dateTimeText);
             summary.Children.Add(dominantEmotion);
             summary.Children.Add(allEmotionsText);
 
@@ -558,10 +609,10 @@ namespace wpf_moodlog
             entryWithBorder.LayoutTransform = new RotateTransform(180);
             entryWithBorder.Margin = new Thickness(0, 10, 0, 10);
         }
-
-        private Border createEntryFrom(String text)
+        
+        private Border createEntryFrom(String text, bool isPreviousEntry, string dateTime)
         {
-            DockPanel summary = createEntrySummaryFrom(text);
+            DockPanel summary = createEntrySummaryFrom(text, isPreviousEntry, dateTime);
             TextBlock content = createEntryContentFrom(text);
 
             StackPanel newEntry = combineSummaryAndContentOfEntry(summary, content);

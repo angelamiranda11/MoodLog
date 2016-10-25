@@ -40,18 +40,30 @@ namespace wpf_moodlog
         }
 
 
-        string _iD;
+        private string _iD;
         public string ID
         {
-            get;
-            set;
+            get
+            {
+                return this._iD;
+            }
+            set
+            {
+                this._iD = value;
+            }
         }
 
-        string _firstName;
+        private string _firstName;
         public string FirstName
         {
-            get;
-            set;
+            get
+            {
+                return this._firstName;
+            }
+            set
+            {
+                this._firstName = value;
+            }
         }
 
         string _lastName;
@@ -107,11 +119,6 @@ namespace wpf_moodlog
         {
             get;
             set;
-        }
-
-        public Stream GetEntriesStream()
-        {
-            return Assembly.GetExecutingAssembly().GetManifestResourceStream("wpf_moodlog.Data." + this._entries + ".csv");
         }
     }
 }
