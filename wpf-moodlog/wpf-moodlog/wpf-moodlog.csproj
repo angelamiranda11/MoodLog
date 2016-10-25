@@ -250,7 +250,14 @@
   <ItemGroup>
     <None Include="Resources\Data.txt" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\angry_face.png" />
+    <Resource Include="Images\face_with_cold_sweat.png" />
+    <Resource Include="Images\fearful_face.png" />
+    <Resource Include="Images\purple_heart.png" />
+    <Resource Include="Images\smiling_face_with_horns.png" />
+    <Resource Include="Images\winking_face.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
