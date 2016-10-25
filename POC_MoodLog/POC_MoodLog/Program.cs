@@ -4,13 +4,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using IronPython.Hosting;
 using Microsoft.Scripting.Hosting;
-using Microsoft.Scripting;
-using System.IO;
-using System.Text.RegularExpressions;
-using System.Reflection;
 
 namespace POC_MoodLog
 {
