@@ -8,11 +8,12 @@ namespace wpf_moodlog
 {
     public static class Global
     {
-        private static User s_sUser;
         public static User User
         {
             get;
             set;
         }
+
+
     }
 }

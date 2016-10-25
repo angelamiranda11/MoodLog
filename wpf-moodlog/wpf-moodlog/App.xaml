@@ -104,22 +104,22 @@
             </ResourceDictionary>
             <ResourceDictionary>
                 <Style x:Key="DataPointStyle" TargetType="{x:Type Control}">
-                    <Setter Property="Background" Value="DarkGoldenrod"/>
-                </Style>
-            </ResourceDictionary>
-            <ResourceDictionary>
-                <Style x:Key="DataPointStyle" TargetType="{x:Type Control}">
                     <Setter Property="Background" Value="Blue"/>
                 </Style>
             </ResourceDictionary>
             <ResourceDictionary>
                 <Style x:Key="DataPointStyle" TargetType="{x:Type Control}">
-                    <Setter Property="Background" Value="Purple"/>
+                    <Setter Property="Background" Value="Red"/>
                 </Style>
             </ResourceDictionary>
             <ResourceDictionary>
                 <Style x:Key="DataPointStyle" TargetType="{x:Type Control}">
-                    <Setter Property="Background" Value="Red"/>
+                    <Setter Property="Background" Value="DarkGoldenrod"/>
+                </Style>
+            </ResourceDictionary>
+            <ResourceDictionary>
+                <Style x:Key="DataPointStyle" TargetType="{x:Type Control}">
+                    <Setter Property="Background" Value="Purple"/>
                 </Style>
             </ResourceDictionary>
             <ResourceDictionary>
