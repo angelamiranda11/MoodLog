@@ -45,11 +45,11 @@ namespace wpf_moodlog
         {
             get
             {
-                return this._iD;
+                return _iD;
             }
             set
             {
-                this._iD = value;
+                _iD = value;
             }
         }
 
@@ -58,19 +58,25 @@ namespace wpf_moodlog
         {
             get
             {
-                return this._firstName;
+                return _firstName;
             }
             set
             {
-                this._firstName = value;
+                _firstName = value;
             }
         }
 
         string _lastName;
         public string LastName
         {
-            get;
-            set;
+            get
+            {
+                return _lastName;
+            }
+            set
+            {
+                _lastName = value;
+            }
         }
 
         Gender _genderCode;
@@ -96,29 +102,53 @@ namespace wpf_moodlog
         string _birthday;
         public string Birthday
         {
-            get;
-            set;
+            get
+            {
+                return _birthday;
+            }
+            set
+            {
+                _birthday = value;
+            }
         }
 
         string _username;
         public string Username
         {
-            get;
-            set;
+            get
+            {
+                return _username;
+            }
+            set
+            {
+                _username = value;
+            }
         }
 
         string _password;
         public string Password
         {
-            get;
-            set;
+            get
+            {
+                return _password;
+            }
+            set
+            {
+                _password = value;
+            }
         }
 
         string _entries;
         public string Entries
         {
-            get;
-            set;
+            get
+            {
+                return _entries;
+            }
+            set
+            {
+                _entries = value;
+            }
         }
     }
 }
