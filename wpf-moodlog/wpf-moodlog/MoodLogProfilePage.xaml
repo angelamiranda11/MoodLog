@@ -41,7 +41,7 @@
                         <Label x:Name="statsLabel" Content="STATS" Margin="5" Foreground="{DynamicResource LightPurple}" TextOptions.TextHintingMode="Animated"/>
                     </StackPanel>
                 </Button>
-                <Button x:Name="logoutButton" MouseEnter="logoutButton_MouseEnter" MouseLeave="logoutButton_MouseLeave" Style="{StaticResource LogoutButtonStyle}">
+                <Button x:Name="logoutButton" MouseEnter="logoutButton_MouseEnter" MouseLeave="logoutButton_MouseLeave" Style="{StaticResource LogoutButtonStyle}" Click="logoutButton_Click">
                     <StackPanel Orientation="Horizontal" Width="100">
                         <Image x:Name="logoutImage" Source="Images/logout-black.png" Height="15" Width="15" Margin="5"/>
                         <Label x:Name="logoutLabel" Content="LOGOUT" Margin="5" Foreground="{DynamicResource Green}" TextOptions.TextHintingMode="Animated"/>

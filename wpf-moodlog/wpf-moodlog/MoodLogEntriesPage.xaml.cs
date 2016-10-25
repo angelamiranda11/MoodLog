@@ -151,6 +151,13 @@ namespace wpf_moodlog
         private void logoutButton_Click(object sender, RoutedEventArgs e)
         {
             // View Login page
+            MessageBoxResult result = MessageBox.Show("Are you sure you want to go?", "Logout", MessageBoxButton.OKCancel);
+
+            if (result == MessageBoxResult.OK)
+            {
+                MoodLogLoginPage moodLogLoginPage = new MoodLogLoginPage();
+                this.NavigationService.Navigate(moodLogLoginPage);
+            }
         }
 
         private void logoutButton_MouseEnter(object sender, RoutedEventArgs e)
