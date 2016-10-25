@@ -375,7 +375,7 @@ namespace wpf_moodlog
             Border newEntry = createEntryFrom(entryTextBox.Text, false, "");
 
             entriesStackPanel.Children.Add(newEntry);
-
+            
             resetEntryTextBox();
         }
 
