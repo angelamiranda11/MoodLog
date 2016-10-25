@@ -69,12 +69,12 @@
                 <Label x:Name="label_Copy2" Content="Password" Grid.Column="1" Grid.Row="3" Margin="10" Height="25" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                 <Label x:Name="label_Copy3" Content="Birthday" Grid.Column="1" Grid.Row="4" Margin="10" Height="25" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                 <Label x:Name="label_Copy4" Content="Gender" RenderTransformOrigin="0.386,2.679" Grid.Column="1" Grid.Row="5" Margin="10,10,10,30" Height="25" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="Penequito" Foreground="{DynamicResource DarkPurple}" Grid.Column="2" Margin="10,30,10,10" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                <TextBlock x:Name="textBlock_Copy" TextWrapping="Wrap" Text="Yedda Joseth" Foreground="{DynamicResource DarkPurple}" Grid.Column="2" Grid.Row="1" Margin="10" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                <TextBlock x:Name="textBlock_Copy1" TextWrapping="Wrap" Text="yjpenequito" Foreground="{DynamicResource DarkPurple}" Grid.Column="2" Grid.Row="2" Margin="10" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                <TextBlock x:Name="textBlock_Copy2" TextWrapping="Wrap" Text="xxxxxxxxxx" Foreground="{DynamicResource DarkPurple}" Grid.Column="2" Grid.Row="3" Margin="10" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                <TextBlock x:Name="textBlock_Copy3" TextWrapping="Wrap" Text="July 6, 1996" Foreground="{DynamicResource DarkPurple}" Grid.Column="2" Grid.Row="4" Margin="10" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                <TextBlock x:Name="textBlock_Copy4" TextWrapping="Wrap" Text="Female" Foreground="{DynamicResource DarkPurple}" Grid.Column="2" Grid.Row="5" Margin="10,10,10,30" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <TextBlock x:Name="lastName" TextWrapping="Wrap" Text="Penequito" Foreground="{DynamicResource DarkPurple}" Grid.Column="2" Margin="10,30,10,10" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <TextBlock x:Name="firstName" TextWrapping="Wrap" Text="Yedda Joseth" Foreground="{DynamicResource DarkPurple}" Grid.Column="2" Grid.Row="1" Margin="10" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <TextBlock x:Name="username" TextWrapping="Wrap" Text="yjpenequito" Foreground="{DynamicResource DarkPurple}" Grid.Column="2" Grid.Row="2" Margin="10" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <TextBlock x:Name="password" TextWrapping="Wrap" Text="xxxxxxxxxx" Foreground="{DynamicResource DarkPurple}" Grid.Column="2" Grid.Row="3" Margin="10" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <TextBlock x:Name="birthday" TextWrapping="Wrap" Text="July 6, 1996" Foreground="{DynamicResource DarkPurple}" Grid.Column="2" Grid.Row="4" Margin="10" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <TextBlock x:Name="gender" TextWrapping="Wrap" Text="Female" Foreground="{DynamicResource DarkPurple}" Grid.Column="2" Grid.Row="5" Margin="10,10,10,30" HorizontalAlignment="Left" VerticalAlignment="Center"/>
             </Grid>
         </Grid>
     </Grid>

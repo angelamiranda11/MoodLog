@@ -24,7 +24,23 @@ namespace wpf_moodlog
         {
             InitializeComponent();
 
+            customizePage();
+        }
+
+        private void customizePage()
+        {
             setDateTodayLabel();
+            setUserDetails();
+        }
+
+        private void setUserDetails()
+        {
+            lastName.Text = Global.User.LastName;
+            firstName.Text = Global.User.FirstName;
+            username.Text = Global.User.Username;
+            password.Text = Global.User.Password;
+            birthday.Text = Global.User.Birthday;
+            gender.Text = Global.User.GenderCode;
         }
 
         private void setDateTodayLabel()
@@ -99,5 +115,6 @@ namespace wpf_moodlog
             logoutLabel.Foreground = App.Current.Resources["Green"] as SolidColorBrush;
             logoutImage.Source = new BitmapImage(new Uri("Images/logout-black.png", UriKind.Relative));
         }
+
     }
 }

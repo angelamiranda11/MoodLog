@@ -1,2 +1,3 @@
-id,first_name,last_name,gender,birthday,username,password,entries
-1,Yedda,Penequito,F,"July 6,1996",yheddie,pen,entries_01
+1,Yena,Aguiles,F,"July 6, 1996",yena,aguiles,entries_01
+2,Angel,Fajardo,F,"December 10, 1996",angel,fajardo,entries_02
+3,Ara,Javier,F,"April 15, 1997",ara,javier,entries_03
