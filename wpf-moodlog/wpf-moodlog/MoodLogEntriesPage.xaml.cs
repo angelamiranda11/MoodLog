@@ -19,7 +19,7 @@ namespace wpf_moodlog
 {
     public enum Emotion { Joy, Surprised, Sadness, Disgust, Anger, Fear };
 
-    public static class Extensions
+    public static class EmotionExtensions
     {
         public static SolidColorBrush GetColor(this Emotion e)
         {
@@ -58,8 +58,15 @@ namespace wpf_moodlog
         {
             InitializeComponent();
 
-            setDateTodayLabel();
+            customizePage();
+            
             // loadPreviousEntries();
+        }
+
+        private void customizePage()
+        {
+            setDateTodayLabel();
+            setHiUserLabel();
         }
 
         private void profileButton_Click(object sender, RoutedEventArgs e)
@@ -223,6 +230,11 @@ namespace wpf_moodlog
             DateTime thisDay = DateTime.Today;
 
             dateTodayLabel.Content = thisDay.ToString("MMM d");
+        }
+
+        private void setHiUserLabel()
+        {
+            hiUserLabel.Content = "Hi, " + Global.User.FirstName;
         }
 
         private void appendToEntryTextBox(String str)
