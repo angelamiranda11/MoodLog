@@ -58,13 +58,6 @@ namespace wpf_moodlog
             dateTodayLabel.Content = thisDay.ToString("MMM d");
         }
 
-        private void profileButton_Click(object sender, RoutedEventArgs e)
-        {
-            // View Profile page
-            MoodLogProfilePage moodLogProfilePage = new MoodLogProfilePage();
-            this.NavigationService.Navigate(moodLogProfilePage);
-        }
-
         private void profileButton_MouseEnter(object sender, RoutedEventArgs e)
         {
             profileLabel.Foreground = Brushes.White;
@@ -75,6 +68,13 @@ namespace wpf_moodlog
         {
             profileLabel.Foreground = App.Current.Resources["DarkPurple"] as SolidColorBrush;
             profileImage.Source = new BitmapImage(new Uri("Images/profile-black.png", UriKind.Relative));
+        }
+
+        private void entriesButton_Click(object sender, RoutedEventArgs e)
+        {
+            // View Entries page
+            MoodLogEntriesPage moodlogEntriesPage = Global.EntriesPage;
+            this.NavigationService.Navigate(moodlogEntriesPage);
         }
 
         private void entriesButton_MouseEnter(object sender, RoutedEventArgs e)
@@ -92,6 +92,8 @@ namespace wpf_moodlog
         private void statsButton_Click(object sender, RoutedEventArgs e)
         {
             // View Stats page
+            MoodLogStatsPage moodLogStatsPage = Global.StatsPage;
+            this.NavigationService.Navigate(moodLogStatsPage);
         }
 
         private void statsButton_MouseEnter(object sender, RoutedEventArgs e)
@@ -122,6 +124,5 @@ namespace wpf_moodlog
             logoutLabel.Foreground = App.Current.Resources["Green"] as SolidColorBrush;
             logoutImage.Source = new BitmapImage(new Uri("Images/logout-black.png", UriKind.Relative));
         }
-
     }
 }

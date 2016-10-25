@@ -65,12 +65,15 @@ namespace wpf_moodlog
                     {
                         isValidUser = true;
                         Global.User = new User(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7]);
+
+                        instantiateMoodLogPages();
                     }
                 }
             }
 
             return isValidUser;
         }
+
 
         private Stream getUserCsvStream()
         {
@@ -85,6 +88,13 @@ namespace wpf_moodlog
         private string getPasswordFrom(CsvRow row)
         {
             return row[6];
+        }
+
+        public void instantiateMoodLogPages()
+        {
+            Global.EntriesPage = new MoodLogEntriesPage();
+            Global.ProfilePage = new MoodLogProfilePage();
+            Global.StatsPage = new MoodLogStatsPage();
         }
     }
 }

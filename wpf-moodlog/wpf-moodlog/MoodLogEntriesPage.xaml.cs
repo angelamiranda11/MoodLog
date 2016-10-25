@@ -101,7 +101,7 @@ namespace wpf_moodlog
         private void profileButton_Click(object sender, RoutedEventArgs e)
         {
             // View Profile page
-            MoodLogProfilePage moodLogProfilePage = new MoodLogProfilePage();
+            MoodLogProfilePage moodLogProfilePage = Global.ProfilePage;
             this.NavigationService.Navigate(moodLogProfilePage);
         }
 
@@ -132,6 +132,8 @@ namespace wpf_moodlog
         private void statsButton_Click(object sender, RoutedEventArgs e)
         {
             // View Stats page
+            MoodLogStatsPage moodLogStatsPage = Global.StatsPage;
+            this.NavigationService.Navigate(moodLogStatsPage);
         }
 
         private void statsButton_MouseEnter(object sender, RoutedEventArgs e)

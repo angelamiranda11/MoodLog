@@ -13,7 +13,21 @@ namespace wpf_moodlog
             get;
             set;
         }
+        public static MoodLogEntriesPage EntriesPage
+        {
+            get;
+            set;
+        }
+        public static MoodLogProfilePage ProfilePage
+        {
+            get;
+            set;
+        }
 
-
+        public static MoodLogStatsPage StatsPage
+        {
+            get;
+            set;
+        }
     }
 }
