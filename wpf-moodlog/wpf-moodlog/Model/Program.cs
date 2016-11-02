@@ -153,17 +153,17 @@ namespace wpf_moodlog
                                 x = Math.Abs(x - 5);
                                 y = Math.Abs(y - 5);
                                 Debug.WriteLine("Entered Quadrant 2; Angle: "+ (Math.Atan2(y, x) * (180 / Math.PI)));
-                                if (180-(Math.Atan2(y, x) * (180 / Math.PI)) >= 90 && 180 - (Math.Atan2(y, x) * (180 / Math.PI)) < 120)
+                                if (Math.Abs((Math.Atan2(y, x) * (180 / Math.PI))) >= 90 && (Math.Abs(Math.Atan2(y, x) * (180 / Math.PI))) < 120)
                                 {
                                     wordCommaEmotion.Add(word + "," + "disgust");
                                     disgust[0] += 1;
                                 }
-                                else if (180 - (Math.Atan2(y, x) * (180 / Math.PI)) >= 120 && 180 - (Math.Atan2(y, x) * (180 / Math.PI)) < 150)
+                                else if (Math.Abs((Math.Atan2(y, x) * (180 / Math.PI))) >= 120 && (Math.Abs(Math.Atan2(y, x) * (180 / Math.PI)))< 150)
                                 {
                                     wordCommaEmotion.Add(word + "," + "anger");
                                     anger[0] += 1;
                                 }
-                                else if (180 - (Math.Atan2(y, x) * (180 / Math.PI)) >= 150 && 180 - (Math.Atan2(y, x) * (180 / Math.PI)) < 180)
+                                else if (Math.Abs((Math.Atan2(y, x) * (180 / Math.PI)))>= 150 && (Math.Abs(Math.Atan2(y, x) * (180 / Math.PI))) < 180)
                                 {
                                     wordCommaEmotion.Add(word + "," + "fear");
                                     fear[0] += 1;
@@ -176,7 +176,7 @@ namespace wpf_moodlog
                             {
                                 x = Math.Abs(x - 5);
                                 y = Math.Abs(y - 5);
-                                Debug.WriteLine("Entered Quadrant 4; Angle: " + (Math.Atan2(y, x) * (180 / Math.PI)));
+                                Debug.WriteLine("Entered Quadrant 4; Angle: " + (360+(Math.Atan2(y, x) * (180 / Math.PI))));
                                 wordCommaEmotion.Add(word + "," + "neutral");
                             }
                             else if (y > 5 && y <= 10)
