@@ -150,8 +150,8 @@ namespace wpf_moodlog
                             }
                             else if (y > 5 && y <= 10)
                             {
-                                x = Math.Abs(x - 5);
-                                y = Math.Abs(y - 5);
+                                x = x - 5;
+                                y = y - 5;
                                 Debug.WriteLine("Entered Quadrant 2; Angle: "+ (Math.Atan2(y, x) * (180 / Math.PI)));
                                 if (Math.Abs((Math.Atan2(y, x) * (180 / Math.PI))) >= 90 && (Math.Abs(Math.Atan2(y, x) * (180 / Math.PI))) < 120)
                                 {
@@ -181,8 +181,8 @@ namespace wpf_moodlog
                             }
                             else if (y > 5 && y <= 10)
                             {
-                                x = Math.Abs(x - 5);
-                                y = Math.Abs(y - 5);
+                                x = x - 5;
+                                y = y - 5;
                                 Debug.WriteLine("Entered Quadrant 1; Angle: " + (Math.Atan2(y, x) * (180 / Math.PI)));
                                 if ((Math.Atan2(y, x) * (180 / Math.PI)) >= 0 && (Math.Atan2(y, x) * (180 / Math.PI)) < 45)
                                 {
