@@ -64,8 +64,18 @@ namespace wpf_moodlog
 
             foreach (String seg in hashtagCollection)
             {
-                String bigram = String.Join(",", makeBigrams(seg));
-                ngramCollection.Add(bigram);
+                String[] hashtags = seg.Split();
+                foreach(String segs in hashtags)
+                {
+                    //improvement: Considering prepositions in hashtag processing
+                    Debug.WriteLine("Processing " + segs);
+                    if (bowreference.Contains(segs))
+                    {
+                        Debug.WriteLine("Adding " + segs);
+                        memWord.Add(segs.ToLower());
+                        finalBoW.Add(segs.ToLower());
+                    }
+                }
             }
             var gcc2 = input.Split(punctuations);
             foreach (var item2 in gcc2)
