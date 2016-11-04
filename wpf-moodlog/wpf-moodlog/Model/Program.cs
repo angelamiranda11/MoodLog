@@ -139,7 +139,10 @@ namespace wpf_moodlog
                         {
                             if (y < 5 && y >= 0)
                             {
-                                if ((Math.Atan2(y, x) * (180 / Math.PI) + 180) >= 180 && (Math.Atan2(y, x) * (180 / Math.PI) + 180) <= 270)
+                                x = Math.Abs(x - 5);
+                                y = Math.Abs(y - 5);
+                                Debug.WriteLine("Entered Quadrant 3; Angle: " + (180+Math.Atan2(y, x) * (180 / Math.PI)));
+                                if ((180 + Math.Atan2(y, x) * (180 / Math.PI)) >= 180 && (180 + Math.Atan2(y, x) * (180 / Math.PI)) < 270)
                                 {
                                     wordCommaEmotion.Add(word + "," + "sad");
                                     sad[0] += 1;
@@ -147,17 +150,20 @@ namespace wpf_moodlog
                             }
                             else if (y > 5 && y <= 10)
                             {
-                                if ((Math.Atan2(y, x) * (180 / Math.PI) + 90) >= 90 && (Math.Atan2(y, x) * (180 / Math.PI) + 90) <= 120)
+                                x = x - 5;
+                                y = y - 5;
+                                Debug.WriteLine("Entered Quadrant 2; Angle: "+ (Math.Atan2(y, x) * (180 / Math.PI)));
+                                if (Math.Abs((Math.Atan2(y, x) * (180 / Math.PI))) >= 90 && (Math.Abs(Math.Atan2(y, x) * (180 / Math.PI))) < 120)
                                 {
                                     wordCommaEmotion.Add(word + "," + "disgust");
                                     disgust[0] += 1;
                                 }
-                                if ((Math.Atan2(y, x) * (180 / Math.PI) + 90) >= 120 && (Math.Atan2(y, x) * (180 / Math.PI) + 90) <= 150)
+                                else if (Math.Abs((Math.Atan2(y, x) * (180 / Math.PI))) >= 120 && (Math.Abs(Math.Atan2(y, x) * (180 / Math.PI)))< 150)
                                 {
                                     wordCommaEmotion.Add(word + "," + "anger");
                                     anger[0] += 1;
                                 }
-                                if ((Math.Atan2(y, x) * (180 / Math.PI) + 90) >= 150 && (Math.Atan2(y, x) * (180 / Math.PI) + 90) <= 180)
+                                else if (Math.Abs((Math.Atan2(y, x) * (180 / Math.PI)))>= 150 && (Math.Abs(Math.Atan2(y, x) * (180 / Math.PI))) < 180)
                                 {
                                     wordCommaEmotion.Add(word + "," + "fear");
                                     fear[0] += 1;
@@ -168,16 +174,22 @@ namespace wpf_moodlog
                         {
                             if (y < 5 && y >= 0 || x == 5)
                             {
+                                x = Math.Abs(x - 5);
+                                y = Math.Abs(y - 5);
+                                Debug.WriteLine("Entered Quadrant 4; Angle: " + (360+(Math.Atan2(y, x) * (180 / Math.PI))));
                                 wordCommaEmotion.Add(word + "," + "neutral");
                             }
                             else if (y > 5 && y <= 10)
                             {
-                                if ((Math.Atan2(y, x) * (180 / Math.PI) + 0) >= 30 && (Math.Atan2(y, x) * (180 / Math.PI) + 0) <= 60)
+                                x = x - 5;
+                                y = y - 5;
+                                Debug.WriteLine("Entered Quadrant 1; Angle: " + (Math.Atan2(y, x) * (180 / Math.PI)));
+                                if ((Math.Atan2(y, x) * (180 / Math.PI)) >= 0 && (Math.Atan2(y, x) * (180 / Math.PI)) < 45)
                                 {
                                     wordCommaEmotion.Add(word + "," + "joy");
                                     joy[0] += 1;
                                 }
-                                if ((Math.Atan2(y, x) * (180 / Math.PI) + 0) >= 60 && (Math.Atan2(y, x) * (180 / Math.PI) + 0) <= 90)
+                                else if ((Math.Atan2(y, x) * (180 / Math.PI)) >= 45 && (Math.Atan2(y, x) * (180 / Math.PI)) < 90)
                                 {
                                     wordCommaEmotion.Add(word + "," + "surprise");
                                     surprise[0] += 1;
