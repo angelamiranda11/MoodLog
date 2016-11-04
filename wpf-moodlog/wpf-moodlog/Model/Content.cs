@@ -10,9 +10,9 @@ namespace wpf_moodlog.Model
 {
     class Content
     {
-        private String Text;
+        private string Text;
 
-        public Content(String Text)
+        public Content(string Text)
         {
             this.Text = Text;
             this.UI = new TextBlock();
@@ -36,8 +36,17 @@ namespace wpf_moodlog.Model
         private void initUIProperties()
         {
             _UI.Margin = new Thickness(5);
-            _UI.Text = this.Text;
+            Console.Write(Text);
+            _UI.Text = getUnicodeOfString(Text);
             _UI.TextWrapping = TextWrapping.WrapWithOverflow;
         }
+
+        private string getUnicodeOfString(string text)
+        {
+            byte[] unicodeBytes = Encoding.Unicode.GetBytes(text);
+
+            return Encoding.Unicode.GetString(unicodeBytes);
+        }
+
     }
 }

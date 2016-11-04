@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -11,39 +13,24 @@ namespace wpf_moodlog.Model
 {
     public class Entry
     {
-        private static DateTime thisDay = DateTime.Now;
-
         private string Text;
-        private string Date;
-        private string Time;
-        private bool IsNewEntry;
+        private DateTime DateTime;
+        private Emotions Emotions;
 
-        public Entry(string Text, string Date, string Time)
+        public Entry(string Text, DateTime DateTime, Emotions Emotions)
         {
             this.Text = Text;
-            this.Date = Date;
-            this.Time = Time;
-            this.IsNewEntry = false;
+            this.DateTime = DateTime;
+            this.Emotions = Emotions;
             this.UI = new StackPanel();
         }
 
         public Entry(string Text)
         {
             this.Text = Text;
-            this.Date = DateToday();
-            this.Time = TimeToday();
-            this.IsNewEntry = true;
+            this.DateTime = DateTime.Now;
+            this.Emotions = new Emotions(Text);
             this.UI = new StackPanel();
-        }
-
-        private string DateToday()
-        {
-            return thisDay.ToString("dddd, MMMM dd,");
-        }
-
-        private string TimeToday()
-        {
-            return thisDay.ToString("h:mm tt");
         }
 
         StackPanel _UI;
@@ -51,7 +38,7 @@ namespace wpf_moodlog.Model
         {   
             get 
             {
-                Summary summary = new Summary(this.Text, this.Date, this.Time, this.IsNewEntry);
+                Summary summary = new Summary(this.DateTime, this.Emotions);
                 Content content = new Content(this.Text);
 
                 addToUIChildren(summary.UI, content.UI);
@@ -86,6 +73,43 @@ namespace wpf_moodlog.Model
 
                 return border;
             }
+        }
+
+        public void writeToCsv()
+        {
+            Stream entries = getEntriesStream();
+
+            using (CsvFileWriter writer = new CsvFileWriter(entries))
+            {
+                for (int i = 0; i < 100; i++)
+                {
+                    CsvRow row = new CsvRow();
+
+                    row.Add("");
+                    row.Add(DateTime.ToString("yyyy"));
+                    row.Add(DateTime.ToString("M"));
+                    row.Add(DateTime.ToString("d"));
+                    row.Add(DateTime.ToString("H"));
+                    row.Add(DateTime.ToString("m"));
+                    row.Add(Text);
+
+                    float[] values = Emotions.Values;
+
+                    foreach (float value in values)
+                    {
+                        row.Add(value.ToString());
+                    }
+
+                    writer.WriteRow(row);
+                }
+            }
+        }
+
+        public Stream getEntriesStream()
+        {
+            string filename = Global.User.Entries;
+
+            return Assembly.GetExecutingAssembly().GetManifestResourceStream("wpf_moodlog.Data." + filename + ".csv");
         }
     }
 }
