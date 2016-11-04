@@ -74,15 +74,53 @@ namespace wpf_moodlog
                 CsvRow row = new CsvRow();
                 while (reader.ReadRow(row))
                 {
-                    string text = row[3];
-                    string date = row[1];
-                    string time = row[2];
+                    string text = getTextFrom(row);
+                    DateTime dateTime = getDateTimeFrom(row);
+                    Emotions emotions = getEmotionsFrom(row);
 
-                    Entry entry = new Entry(text, date, time);
+                    Entry entry = new Entry(text, dateTime, emotions);
 
                     entriesStackPanel.Children.Add(entry.BorderedUI);
                 }
             }
+        }
+
+        private string getTextFrom(CsvRow row)
+        {
+            return row[6];
+        }
+
+        private DateTime getDateTimeFrom(CsvRow row)
+        {
+            int year = Convert.ToInt32(row[1]);
+            int month = Convert.ToInt32(row[2]);
+            int day = Convert.ToInt32(row[3]);
+            int hour = Convert.ToInt32(row[4]);
+            int minute = Convert.ToInt32(row[5]);
+
+            return new DateTime(year, month, day, hour, minute, 0);
+        }
+
+        private Emotions getEmotionsFrom(CsvRow row)
+        {
+            float joy = float.Parse(row[7]);
+            float sadness = float.Parse(row[8]);
+            float anger = float.Parse(row[9]);
+            float surprised = float.Parse(row[10]);
+            float disgust = float.Parse(row[11]);
+            float fear = float.Parse(row[12]);
+
+            float[] values =
+            {
+                joy,
+                sadness,
+                anger,
+                surprised,
+                disgust,
+                fear,
+            };
+            
+            return new Emotions(values);
         }
 
         public Stream getEntriesStream()
@@ -376,6 +414,7 @@ namespace wpf_moodlog
             resetEntryTextBox();
 
             Entry entry = new Entry(text);
+            //entry.writeToCsv();
 
             entriesStackPanel.Children.Add(entry.BorderedUI);
         }

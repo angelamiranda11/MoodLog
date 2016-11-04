@@ -13,9 +13,9 @@ using System.Windows.Shapes;
 
 namespace wpf_moodlog.Model
 {
-    class Emotions
+    public class Emotions
     {
-        private const int nEmotions = 6;
+        public const int nEmotions = 6;
         private Emotion[] Names = {
             Emotion.Joy,
             Emotion.Sadness,
@@ -24,15 +24,11 @@ namespace wpf_moodlog.Model
             Emotion.Disgust,
             Emotion.Fear
         };
-        private float[] Values = new float[nEmotions];
+        public float[] Values { get; }
 
-        public Emotions(string Text, bool IsNewEntry)
+        public Emotions(float[] Values)
         {
-            if (IsNewEntry)
-            {
-                this.Values = new Program().processText(Text);
-            }
-
+            this.Values = Values;
             this.ChartUI = new PieSeries();
             this.DominantUI = new TextBlock();
             this.LegendUI = new StackPanel();
@@ -40,6 +36,25 @@ namespace wpf_moodlog.Model
             initChartUIProperties();
             initDominantUIProperties();
             initLegendUIProperties();
+        }
+
+        public Emotions(string Text)
+        {
+            this.Values = compute(Text);
+            this.ChartUI = new PieSeries();
+            this.DominantUI = new TextBlock();
+            this.LegendUI = new StackPanel();
+
+            initChartUIProperties();
+            initDominantUIProperties();
+            initLegendUIProperties();
+        }
+
+        private float[] compute(string text)
+        {
+            Program program = new Program();
+
+            return program.processText(text);
         }
 
         private Emotion Dominant()

@@ -1,14 +1,135 @@
-﻿<Page x:Class="wpf_moodlog.MoodLogStatsPage"
+﻿<Page
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:wpf_moodlog"
+      xmlns:chartingToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit" x:Class="wpf_moodlog.MoodLogStatsPage"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
+      d:DesignHeight="640" d:DesignWidth="960"
       Title="MoodLogStatsPage">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="90*"/>
+        </Grid.RowDefinitions>
+        <Grid Background="#FFD6B9ED">
+            <Label x:Name="dateTodayLabel" Content="Oct 30" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" FontSize="16"/>
+        </Grid>
+
+        <Grid Grid.Row="1" VerticalAlignment="Stretch">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,30,0,0">
+                <Button x:Name="profileButton" MouseEnter="profileButton_MouseEnter" MouseLeave="profileButton_MouseLeave" Click="profileButton_Click" Style="{StaticResource ProfileButtonStyle}">
+                    <StackPanel Orientation="Horizontal" Width="100">
+                        <Image x:Name="profileImage" Source="Images/profile-black.png" Height="15" Width="15" Margin="5"/>
+                        <Label x:Name="profileLabel" Content="PROFILE" Margin="5" Foreground="{DynamicResource DarkPurple}" TextOptions.TextHintingMode="Animated"/>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="entriesButton" MouseEnter="entriesButton_MouseEnter" MouseLeave="entriesButton_MouseLeave" Click="entriesButton_Click" Style="{StaticResource EntriesButtonStyle}">
+                    <StackPanel Orientation="Horizontal" Width="100">
+                        <Image x:Name="entriesImage" Source="Images/entries-black.png" Height="15" Width="15" Margin="5"/>
+                        <Label x:Name="entriesLabel" Content="ENTRIES" Margin="5" Foreground="{DynamicResource DarkViolet}" TextOptions.TextHintingMode="Animated"/>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="statsButton" MouseEnter="statsButton_MouseEnter" MouseLeave="statsButton_MouseLeave" Style="{StaticResource StatsButtonStyle}">
+                    <StackPanel Orientation="Horizontal" Width="100">
+                        <Image x:Name="statsImage" Source="Images/stats-black.png" Height="15" Width="15" Margin="5"/>
+                        <Label x:Name="statsLabel" Content="STATS" Margin="5" Foreground="{DynamicResource LightPurple}" TextOptions.TextHintingMode="Animated"/>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="logoutButton" MouseEnter="logoutButton_MouseEnter" MouseLeave="logoutButton_MouseLeave" Click="logoutButton_Click" Style="{StaticResource LogoutButtonStyle}">
+                    <StackPanel Orientation="Horizontal" Width="100">
+                        <Image x:Name="logoutImage" Source="Images/logout-black.png" Height="15" Width="15" Margin="5"/>
+                        <Label x:Name="logoutLabel" Content="LOGOUT" Margin="5" Foreground="{DynamicResource Green}" TextOptions.TextHintingMode="Animated"/>
+                    </StackPanel>
+                </Button>
+
+                <!-- Month Picker -->
+                <Viewbox Width="200" Margin="10">
+                    <Calendar x:Name="calendar" DisplayModeChanged="calendar_DisplayModeChanged" Margin="0" DisplayMode="Year" SelectionMode="None" Width="Auto" Background="{DynamicResource Clouds}" BorderBrush="{DynamicResource Clouds}" BorderThickness="0"/>
+                </Viewbox>
+            </StackPanel>
+            <ScrollViewer Height="Auto" Grid.Column="1" HorizontalAlignment="Stretch">
+                <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="Auto" Margin="30,40">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="50*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    
+                    <!-- Monthly Line Chart-->
+                    <chartingToolkit:Chart Title="Monthly" Palette="{DynamicResource ChartPalette}" Grid.ColumnSpan="2" Height="300" Margin="0,0,0,10" Background="#00000000" BorderBrush="#FF7F8C8D">
+                        <chartingToolkit:Chart.DataContext>
+                            <PointCollection>1,10 2,20 3,30 4,40</PointCollection>
+                        </chartingToolkit:Chart.DataContext>
+                        <chartingToolkit:LineSeries Title="Joy"
+                            ItemsSource="{Binding Points, Delay=2500, IsAsync=False}"                              
+                            IndependentValueBinding="{Binding Day}"
+                            DependentValueBinding="{Binding Value}"/>
+                        <chartingToolkit:LineSeries Title="Sadness"
+                            ItemsSource="{Binding Points, Delay=2500, IsAsync=False}"                              
+                            IndependentValueBinding="{Binding Day}"
+                            DependentValueBinding="{Binding Value}"/>
+                        <chartingToolkit:LineSeries Title="Anger"
+                            ItemsSource="{Binding Points, Delay=2500, IsAsync=False}"                              
+                            IndependentValueBinding="{Binding Day}"
+                            DependentValueBinding="{Binding Value}"/>
+                        <chartingToolkit:LineSeries Title="Surprised"
+                            ItemsSource="{Binding Points, Delay=2500, IsAsync=False}"                              
+                            IndependentValueBinding="{Binding Day}"
+                            DependentValueBinding="{Binding Value}"/>
+                        <chartingToolkit:LineSeries Title="Disgust"
+                            ItemsSource="{Binding Points, Delay=2500, IsAsync=False}"                              
+                            IndependentValueBinding="{Binding Day}"
+                            DependentValueBinding="{Binding Value}"/>
+                        <chartingToolkit:LineSeries Title="Fear"
+                            ItemsSource="{Binding Points, Delay=2500, IsAsync=False}"                              
+                            IndependentValueBinding="{Binding Day}"
+                            DependentValueBinding="{Binding Value}"/>
+                    </chartingToolkit:Chart>
+
+                    <!-- Week 1 Bar Chart-->
+                    <chartingToolkit:Chart x:Name="weekOneChart" Title="Week 1" LegendStyle="{DynamicResource LegendStyle}" Background="#00000000" BorderBrush="#FF7F8C8D"  Grid.Row="1" Height="250" Margin="0,10,10,10" Palette="{DynamicResource ChartPalette}">
+                        <chartingToolkit:Chart.DataContext>
+                            <PointCollection>1,10 2,20 3,30 4,40</PointCollection>
+                        </chartingToolkit:Chart.DataContext>
+                        <chartingToolkit:ColumnSeries DependentValueBinding="{Binding Value}" IndependentValueBinding="{Binding Key}" ItemsSource="{Binding}"/>
+                    </chartingToolkit:Chart>
+
+                    <!-- Week 2 Bar Chart-->
+                    <chartingToolkit:Chart x:Name="weekTwoChart" Title="Week 2" LegendStyle="{DynamicResource LegendStyle}" Background="#00000000" BorderBrush="#FF7F8C8D" Palette="{DynamicResource ChartPalette}" Grid.Row="1" Grid.Column="1" Height="250" Margin="10,10,0,10">
+                        <chartingToolkit:Chart.DataContext>
+                            <PointCollection>1,10 2,20 3,30 4,40</PointCollection>
+                        </chartingToolkit:Chart.DataContext>
+                        <chartingToolkit:ColumnSeries DependentValueBinding="{Binding Value}" IndependentValueBinding="{Binding Key}" ItemsSource="{Binding}"/>
+                    </chartingToolkit:Chart>
+
+                    <!-- Week 3 Bar Chart-->
+                    <chartingToolkit:Chart x:Name="weekThreeChart" Title="Week 3" LegendStyle="{DynamicResource LegendStyle}" Background="#00000000" BorderBrush="#FF7F8C8D" Palette="{DynamicResource ChartPalette}" Grid.Row="2" Height="250" Margin="0,10,10,10">
+                        <chartingToolkit:Chart.DataContext>
+                            <PointCollection>1,10 2,20 3,30 4,40</PointCollection>
+                        </chartingToolkit:Chart.DataContext>
+                        <chartingToolkit:ColumnSeries DependentValueBinding="{Binding Value}" IndependentValueBinding="{Binding Key}" ItemsSource="{Binding}"/>
+                    </chartingToolkit:Chart>
+
+                    <!-- Week 4 Bar Chart-->
+                    <chartingToolkit:Chart x:Name="weekFourChart" Title="Week 4" LegendStyle="{DynamicResource LegendStyle}" Background="#00000000" BorderBrush="#FF7F8C8D" Palette="{DynamicResource ChartPalette}" Grid.Row="2" Grid.Column="1" Height="250" Margin="10,10,0,10">
+                        <chartingToolkit:Chart.DataContext>
+                            <PointCollection>1,10 2,20 3,30 4,40</PointCollection>
+                        </chartingToolkit:Chart.DataContext>
+                        <chartingToolkit:ColumnSeries DependentValueBinding="{Binding Value}" IndependentValueBinding="{Binding Key}" ItemsSource="{Binding}"/>
+                    </chartingToolkit:Chart>
+                </Grid>
+            </ScrollViewer>
+        </Grid>
     </Grid>
 </Page>
