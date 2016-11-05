@@ -21,7 +21,7 @@ namespace wpf_moodlog.Model
         {
             this.Text = Text;
             this.DateTime = DateTime;
-            this.Emotions = Emotions;
+            this.Emotions = new Emotions(Text); // temporary code until computed emotions cannot yet be written to csv
             this.UI = new StackPanel();
         }
 
