@@ -36,7 +36,7 @@ namespace wpf_moodlog
             this.Birthday = Birthday;
             this.Username = Username;
             this.Password = Password;
-            this.Entries = Entries;
+            this.EntriesFilename = Entries;
         }
 
 
@@ -138,16 +138,16 @@ namespace wpf_moodlog
             }
         }
 
-        string _entries;
-        public string Entries
+        string _entriesFilename;
+        public string EntriesFilename
         {
             get
             {
-                return _entries;
+                return _entriesFilename;
             }
             set
             {
-                _entries = value;
+                _entriesFilename = value;
             }
         }
     }

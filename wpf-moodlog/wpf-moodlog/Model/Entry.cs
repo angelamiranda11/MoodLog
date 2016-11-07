@@ -14,21 +14,21 @@ namespace wpf_moodlog.Model
     public class Entry
     {
         private string Text;
-        private DateTime DateTime;
+        private DateTime DateAndTime;
         private Emotions Emotions;
 
-        public Entry(string Text, DateTime DateTime, Emotions Emotions)
+        public Entry(string Text, DateTime DateAndTime, Emotions Emotions)
         {
             this.Text = Text;
-            this.DateTime = DateTime;
-            this.Emotions = Emotions;
+            this.DateAndTime = DateAndTime;
+            this.Emotions = Emotions; // temporary code until computed emotions cannot yet be written to csv
             this.UI = new StackPanel();
         }
 
         public Entry(string Text)
         {
             this.Text = Text;
-            this.DateTime = DateTime.Now;
+            this.DateAndTime = DateTime.Now;
             this.Emotions = new Emotions(Text);
             this.UI = new StackPanel();
         }
@@ -38,7 +38,7 @@ namespace wpf_moodlog.Model
         {   
             get 
             {
-                Summary summary = new Summary(this.DateTime, this.Emotions);
+                Summary summary = new Summary(this.DateAndTime, this.Emotions);
                 Content content = new Content(this.Text);
 
                 addToUIChildren(summary.UI, content.UI);
@@ -75,41 +75,34 @@ namespace wpf_moodlog.Model
             }
         }
 
-        public void writeToCsv()
+        public void WriteToCsv()
         {
-            Stream entries = getEntriesStream();
-
-            using (CsvFileWriter writer = new CsvFileWriter(entries))
+            using (StreamWriter w = File.AppendText(Global.Path + Global.User.EntriesFilename))
             {
-                for (int i = 0; i < 100; i++)
-                {
-                    CsvRow row = new CsvRow();
-
-                    row.Add("");
-                    row.Add(DateTime.ToString("yyyy"));
-                    row.Add(DateTime.ToString("M"));
-                    row.Add(DateTime.ToString("d"));
-                    row.Add(DateTime.ToString("H"));
-                    row.Add(DateTime.ToString("m"));
-                    row.Add(Text);
-
-                    float[] values = Emotions.Values;
-
-                    foreach (float value in values)
-                    {
-                        row.Add(value.ToString());
-                    }
-
-                    writer.WriteRow(row);
-                }
+                w.WriteLine(this.ToString());
             }
         }
 
-        public Stream getEntriesStream()
+        public override string ToString()
         {
-            string filename = Global.User.Entries;
+            List<string> thisRow = new List<string>();
 
-            return Assembly.GetExecutingAssembly().GetManifestResourceStream("wpf_moodlog.Data." + filename + ".csv");
+            thisRow.Add("0");
+            thisRow.Add(DateAndTime.Year.ToString());
+            thisRow.Add(DateAndTime.Month.ToString());
+            thisRow.Add(DateAndTime.Day.ToString());
+            thisRow.Add(DateAndTime.Hour.ToString());
+            thisRow.Add(DateAndTime.Minute.ToString());
+
+            thisRow.Add('\"' + Text + '\"');
+
+            float[] values = Emotions.Values;
+            foreach (float value in values)
+            {
+                thisRow.Add(value.ToString());
+            }
+
+            return String.Join(",", thisRow);
         }
     }
 }
