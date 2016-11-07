@@ -101,7 +101,7 @@ namespace wpf_moodlog
 
         private Stream getEntriesStream()
         {
-            string filename = Global.User.Entries;
+            string filename = Global.User.EntriesFilename;
 
             return Assembly.GetExecutingAssembly().GetManifestResourceStream("wpf_moodlog.Data." + filename + ".csv");
         }

@@ -55,7 +55,6 @@ namespace wpf_moodlog
     /// </summary>
     public partial class MoodLogEntriesPage : Page
     {
-
         public MoodLogEntriesPage()
         {
             InitializeComponent();
@@ -67,16 +66,17 @@ namespace wpf_moodlog
 
         private void loadPreviousEntries()
         {
-            Stream entries = getEntriesStream();
+            User user = Global.User;
+            Stream entries = Global.GetStreamOf(user.EntriesFilename, FileMode.Open);
 
             using (CsvFileReader reader = new CsvFileReader(entries))
             {
-                CsvRow row = new CsvRow();
-                while (reader.ReadRow(row))
+                CsvRow thisRow = new CsvRow();
+                while (reader.ReadRow(thisRow))
                 {
-                    string text = getTextFrom(row);
-                    DateTime dateTime = getDateTimeFrom(row);
-                    Emotions emotions = getEmotionsFrom(row);
+                    string text = getTextFrom(thisRow);
+                    DateTime dateTime = getDateTimeFrom(thisRow);
+                    Emotions emotions = getEmotionsFrom(thisRow);
 
                     Entry entry = new Entry(text, dateTime, emotions);
 
@@ -121,13 +121,6 @@ namespace wpf_moodlog
             };
             
             return new Emotions(values);
-        }
-
-        public Stream getEntriesStream()
-        {
-            string filename = Global.User.Entries;
-
-            return Assembly.GetExecutingAssembly().GetManifestResourceStream("wpf_moodlog.Data." + filename + ".csv");
         }
 
         private void customizePage()
@@ -414,7 +407,7 @@ namespace wpf_moodlog
             resetEntryTextBox();
 
             Entry entry = new Entry(text);
-            //entry.writeToCsv();
+            entry.WriteToCsv();
 
             entriesStackPanel.Children.Add(entry.BorderedUI);
         }

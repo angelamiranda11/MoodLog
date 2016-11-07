@@ -145,10 +145,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Data\user.csv" />
-    <EmbeddedResource Include="Data\entries_2.csv" />
-    <EmbeddedResource Include="Data\entries_3.csv" />
-    <EmbeddedResource Include="Data\entries_1.csv" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

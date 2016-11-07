@@ -50,23 +50,23 @@ namespace wpf_moodlog
 
         private bool isValidUser()
         {
-            Stream userCsvStream = getUserCsvStream();
             bool isValidUser = false;
+
+            Stream userCsvStream = Global.GetStreamOf("user.csv", FileMode.Open);
 
             using (CsvFileReader reader = new CsvFileReader(userCsvStream))
             {
-                CsvRow row = new CsvRow();
-                while (reader.ReadRow(row))
+                CsvRow thisrow = new CsvRow();
+                while (reader.ReadRow(thisrow))
                 {
-                    string username = getUsernameFrom(row);
-                    string password = getPasswordFrom(row);
+                    string username = getUsernameFrom(thisrow);
+                    string password = getPasswordFrom(thisrow);
 
                     if (username == usernameTextBox.Text && password == passwordBox.Password)
                     {
                         isValidUser = true;
-                        Global.User = new User(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7]);
 
-                        instantiateMoodLogPages();
+                        initGlobalVariablesWith(thisrow);
                     }
                 }
             }
@@ -77,7 +77,9 @@ namespace wpf_moodlog
 
         private Stream getUserCsvStream()
         {
-            return Assembly.GetExecutingAssembly().GetManifestResourceStream("wpf_moodlog.Data.user.csv");
+            string filename = "user.csv";
+
+            return new FileStream("C:\\" + filename, FileMode.Open);
         }
 
         private string getUsernameFrom(CsvRow row)
@@ -90,8 +92,9 @@ namespace wpf_moodlog
             return row[6];
         }
 
-        public void instantiateMoodLogPages()
+        public void initGlobalVariablesWith(CsvRow row)
         {
+            Global.User = new User(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7]);
             Global.EntriesPage = new MoodLogEntriesPage();
             Global.ProfilePage = new MoodLogProfilePage();
             Global.StatsPage = new MoodLogStatsPage();
