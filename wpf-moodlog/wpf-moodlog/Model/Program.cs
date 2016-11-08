@@ -47,34 +47,24 @@ namespace wpf_moodlog
                 if (item.IndexOf('#') == 0 && item != "")
                 {
                     String segmented = doSegment(item);
-                    char[] arr = segmented.ToCharArray();
-
-                    arr = Array.FindAll<char>(arr, (c => (char.IsLetterOrDigit(c)
-                                                      || char.IsWhiteSpace(c))));
-                    segmented = new string(arr);
-                    hashtagCollection.Add(segmented);
+                    String resegmented = "";
+                    char[] resegmentSymbols = { '[','\'',',',']'};
+                    foreach(String reseg in segmented.Split(resegmentSymbols))
+                    {
+                        if (reseg != "" && reseg!=" ")
+                        {
+                            resegmented += reseg+" ";
+                        }
+                    }
+                    String bigram = String.Join(",", makeBigrams(resegmented.Trim()));
+                    Debug.WriteLine("HASHTAG BIGRAMS: " + bigram);
+                    ngramCollection.Add(bigram);
                     input = input.Remove(input.IndexOf(item[0]), item.Length);
                 }
                 else if (emoticons.Contains(item) && item != "")
                 {
                     emoticonCollection.Add(item);
                     input = input.Remove(input.IndexOf(item[0]), item.Length);
-                }
-            }
-
-            foreach (String seg in hashtagCollection)
-            {
-                String[] hashtags = seg.Split();
-                foreach(String segs in hashtags)
-                {
-                    //improvement: Considering prepositions in hashtag processing
-                    Debug.WriteLine("Processing " + segs);
-                    if (bowreference.Contains(segs))
-                    {
-                        Debug.WriteLine("Adding " + segs);
-                        memWord.Add(segs.ToLower());
-                        finalBoW.Add(segs.ToLower());
-                    }
                 }
             }
             var gcc2 = input.Split(punctuations);
@@ -89,6 +79,7 @@ namespace wpf_moodlog
             foreach (String item in sentences)
             {
                 String bigram = String.Join(",", makeBigrams(item));
+                Debug.WriteLine("SENTENCE BIGRAMS: " + bigram);
                 ngramCollection.Add(bigram);
             }
 
