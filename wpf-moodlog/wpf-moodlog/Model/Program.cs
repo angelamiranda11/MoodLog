@@ -40,13 +40,12 @@ namespace wpf_moodlog
         {
             init();
             String input = text;
-            input = input.ToLower();
             var inSplit = input.Split();
             foreach (String item in inSplit)
             {
                 if (item.IndexOf('#') == 0 && item != "")
                 {
-                    String segmented = doSegment(item);
+                    String segmented = doSegment(item.ToLower());
                     String resegmented = "";
                     char[] resegmentSymbols = { '[','\'',',',']'};
                     foreach(String reseg in segmented.Split(resegmentSymbols))
@@ -57,13 +56,21 @@ namespace wpf_moodlog
                         }
                     }
                     String bigram = String.Join(",", makeBigrams(resegmented.Trim()));
+                    if(bigram.Split(',').Length==1 && bowreference.Contains(bigram.Split()[0]))
+                    {
+                        memWord.Add(bigram.Split()[0].ToLower());
+                        finalBoW.Add(bigram.Trim().ToLower());
+                    }else
+                    {
+                        ngramCollection.Add(bigram);
+                    }
                     Debug.WriteLine("HASHTAG BIGRAMS: " + bigram);
-                    ngramCollection.Add(bigram);
                     input = input.Remove(input.IndexOf(item[0]), item.Length);
                 }
                 else if (emoticons.Contains(item) && item != "")
                 {
-                    emoticonCollection.Add(item);
+                    Debug.WriteLine("Emoticon "+item+" detected");
+                    memWord.Add(item.Trim());
                     input = input.Remove(input.IndexOf(item[0]), item.Length);
                 }
             }
@@ -78,7 +85,7 @@ namespace wpf_moodlog
 
             foreach (String item in sentences)
             {
-                String bigram = String.Join(",", makeBigrams(item));
+                String bigram = String.Join(",", makeBigrams(item.ToLower()));
                 Debug.WriteLine("SENTENCE BIGRAMS: " + bigram);
                 ngramCollection.Add(bigram);
             }
@@ -102,7 +109,7 @@ namespace wpf_moodlog
                             if ((bowreference.Contains(item2) && Array.IndexOf(temp3, item2) == 1) ||
                                 (prepNInter.Contains(item2) && Array.IndexOf(temp3, item2) == 0) || bowreference.Contains(item2))
                             {
-                                if ((bowreference.Contains(item2) && Array.IndexOf(temp3, item2) == 1) || bowreference.Contains(item2))
+                                if ((bowreference.Contains(item2) && Array.IndexOf(temp3, item2) == temp3.Length-1))
                                 {
                                     if (!finalBoW.Contains(item))
                                     {
@@ -130,7 +137,7 @@ namespace wpf_moodlog
             {
                 foreach (string temp2 in tempa)
                 {
-                    if (temp2 == "") break;
+                    if (temp2 == "" || temp2 =="\r") break;
                     double x = Convert.ToSingle(temp2.Split(',')[1]);
                     double y = Convert.ToSingle(temp2.Split(',')[2]);
                     String word = temp2.Split(',')[0];
@@ -142,7 +149,7 @@ namespace wpf_moodlog
                             {
                                 x = Math.Abs(x - 5);
                                 y = Math.Abs(y - 5);
-                                Debug.WriteLine("Entered Quadrant 3; Angle: " + (180+Math.Atan2(y, x) * (180 / Math.PI)));
+                                Debug.WriteLine(word.ToUpper()+" Entered Quadrant 3; Angle: " + (180+Math.Atan2(y, x) * (180 / Math.PI)));
                                 if ((180 + Math.Atan2(y, x) * (180 / Math.PI)) >= 180 && (180 + Math.Atan2(y, x) * (180 / Math.PI)) < 270)
                                 {
                                     wordCommaEmotion.Add(word + "," + "sad");
@@ -153,7 +160,7 @@ namespace wpf_moodlog
                             {
                                 x = x - 5;
                                 y = y - 5;
-                                Debug.WriteLine("Entered Quadrant 2; Angle: "+ (Math.Atan2(y, x) * (180 / Math.PI)));
+                                Debug.WriteLine(word.ToUpper() + " Entered Quadrant 2; Angle: " + (Math.Atan2(y, x) * (180 / Math.PI)));
                                 if (Math.Abs((Math.Atan2(y, x) * (180 / Math.PI))) >= 90 && (Math.Abs(Math.Atan2(y, x) * (180 / Math.PI))) < 120)
                                 {
                                     wordCommaEmotion.Add(word + "," + "disgust");
@@ -177,14 +184,14 @@ namespace wpf_moodlog
                             {
                                 x = Math.Abs(x - 5);
                                 y = Math.Abs(y - 5);
-                                Debug.WriteLine("Entered Quadrant 4; Angle: " + (360+(Math.Atan2(y, x) * (180 / Math.PI))));
+                                Debug.WriteLine(word.ToUpper() + " Entered Quadrant 4; Angle: " + (360+(Math.Atan2(y, x) * (180 / Math.PI))));
                                 wordCommaEmotion.Add(word + "," + "neutral");
                             }
                             else if (y > 5 && y <= 10)
                             {
                                 x = x - 5;
                                 y = y - 5;
-                                Debug.WriteLine("Entered Quadrant 1; Angle: " + (Math.Atan2(y, x) * (180 / Math.PI)));
+                                Debug.WriteLine(word.ToUpper() + " Entered Quadrant 1; Angle: " + (Math.Atan2(y, x) * (180 / Math.PI)));
                                 if ((Math.Atan2(y, x) * (180 / Math.PI)) >= 0 && (Math.Atan2(y, x) * (180 / Math.PI)) < 45)
                                 {
                                     wordCommaEmotion.Add(word + "," + "joy");
@@ -313,6 +320,11 @@ namespace wpf_moodlog
                 if (float.IsNaN(item[1])) { item[1] = 0; }
                 outYesProb[k] = item[0];
                 k++;
+            }
+            Debug.WriteLine("Words and Emotion:");
+            foreach(String wordEmotion in wordCommaEmotion)
+            {
+                Debug.WriteLine(wordEmotion);
             }
             return outYesProb;
         }
