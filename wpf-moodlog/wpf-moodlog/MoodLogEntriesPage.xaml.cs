@@ -67,22 +67,29 @@ namespace wpf_moodlog
         private void loadPreviousEntries()
         {
             User user = Global.User;
-            Stream entries = Global.GetStreamOf(user.EntriesFilename, FileMode.Open);
 
-            using (CsvFileReader reader = new CsvFileReader(entries))
+            using (CsvFileReader reader = new CsvFileReader(Global.GetStreamOf(user.EntriesFilename, FileMode.Open)))
             {
                 CsvRow thisRow = new CsvRow();
                 while (reader.ReadRow(thisRow))
                 {
-                    string text = getTextFrom(thisRow);
+                    int id = getIdFrom(thisRow);
                     DateTime dateTime = getDateTimeFrom(thisRow);
+                    string text = getTextFrom(thisRow);
                     Emotions emotions = getEmotionsFrom(thisRow);
 
-                    Entry entry = new Entry(text, dateTime, emotions);
+                    Entry entry = new Entry(id, text, dateTime, emotions);
+
+                    //entry.writeToNewCsv(); // Temporary code for extracting emotion values
 
                     entriesStackPanel.Children.Add(entry.BorderedUI);
                 }
             }
+        }
+
+        private int getIdFrom(CsvRow row)
+        {
+            return Convert.ToInt32(row[0]);
         }
 
         private string getTextFrom(CsvRow row)
