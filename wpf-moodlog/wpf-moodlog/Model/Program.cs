@@ -40,13 +40,12 @@ namespace wpf_moodlog
         {
             init();
             String input = text;
-            input = input.ToLower();
             var inSplit = input.Split();
             foreach (String item in inSplit)
             {
                 if (item.IndexOf('#') == 0 && item != "")
                 {
-                    String segmented = doSegment(item);
+                    String segmented = doSegment(item.ToLower());
                     String resegmented = "";
                     char[] resegmentSymbols = { '[','\'',',',']'};
                     foreach(String reseg in segmented.Split(resegmentSymbols))
@@ -60,7 +59,7 @@ namespace wpf_moodlog
                     if(bigram.Split(',').Length==1 && bowreference.Contains(bigram.Split()[0]))
                     {
                         memWord.Add(bigram.Split()[0].ToLower());
-                        finalBoW.Add(bigram.ToLower());
+                        finalBoW.Add(bigram.Trim().ToLower());
                     }else
                     {
                         ngramCollection.Add(bigram);
@@ -70,7 +69,8 @@ namespace wpf_moodlog
                 }
                 else if (emoticons.Contains(item) && item != "")
                 {
-                    emoticonCollection.Add(item);
+                    Debug.WriteLine("Emoticon "+item+" detected");
+                    memWord.Add(item.Trim());
                     input = input.Remove(input.IndexOf(item[0]), item.Length);
                 }
             }
@@ -85,7 +85,7 @@ namespace wpf_moodlog
 
             foreach (String item in sentences)
             {
-                String bigram = String.Join(",", makeBigrams(item));
+                String bigram = String.Join(",", makeBigrams(item.ToLower()));
                 Debug.WriteLine("SENTENCE BIGRAMS: " + bigram);
                 ngramCollection.Add(bigram);
             }
@@ -137,7 +137,7 @@ namespace wpf_moodlog
             {
                 foreach (string temp2 in tempa)
                 {
-                    if (temp2 == "") break;
+                    if (temp2 == "" || temp2 =="\r") break;
                     double x = Convert.ToSingle(temp2.Split(',')[1]);
                     double y = Convert.ToSingle(temp2.Split(',')[2]);
                     String word = temp2.Split(',')[0];
