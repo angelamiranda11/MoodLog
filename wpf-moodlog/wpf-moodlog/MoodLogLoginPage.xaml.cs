@@ -39,7 +39,7 @@ namespace wpf_moodlog
         {
             if (isValidUser())
             {
-                MoodLogEntriesPage moodLogEntriesPage = new MoodLogEntriesPage();
+                MoodLogEntriesPage moodLogEntriesPage = Global.EntriesPage;
                 this.NavigationService.Navigate(moodLogEntriesPage);
             }
             else
