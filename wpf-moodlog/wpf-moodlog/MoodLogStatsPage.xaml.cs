@@ -39,7 +39,13 @@ namespace wpf_moodlog
     /// </summary>
     public partial class MoodLogStatsPage : Page
     {
-        private ObservableCollection<DataPoint> Points = new ObservableCollection<DataPoint>();
+        private ObservableCollection<DataPoint> MonthPoints = new ObservableCollection<DataPoint>();
+        private ObservableCollection<DataPoint> WeekOnePoints = new ObservableCollection<DataPoint>();
+        private ObservableCollection<DataPoint> WeekTwoPoints = new ObservableCollection<DataPoint>();
+        private ObservableCollection<DataPoint> WeekThreePoints = new ObservableCollection<DataPoint>();
+        private ObservableCollection<DataPoint> WeekFourPoints = new ObservableCollection<DataPoint>();
+        private ObservableCollection<DataPoint> WeekFivePoints = new ObservableCollection<DataPoint>();
+
         public class DataPoint
         {
             public int Day { get; set; }
@@ -64,6 +70,8 @@ namespace wpf_moodlog
 
             setCalendarDisplayDate();
 
+            initDaysOfMonthPoints();
+
             loadChartData();
 
             setAllSeriesDataContext();
@@ -71,15 +79,23 @@ namespace wpf_moodlog
 
         private void calendar_DisplayDateChanged(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine("Calendar's display date changed");
             loadChartData();
         }
 
         private void loadChartData()
         {
-            Points.Clear();
+            MonthPoints.Clear();
+            WeekOnePoints.Clear();
+            WeekTwoPoints.Clear();
+            WeekThreePoints.Clear();
+            WeekFourPoints.Clear();
+            WeekFivePoints.Clear();
 
-            initDaysOfPoints();
+            initDaysOfMonthPoints();
+
+            DataPoint previousPoint = new DataPoint();
+            int nEntriesOnDay = 1;
+            int day = 0;
 
             User user = Global.User;
             using (CsvFileReader reader = new CsvFileReader(Global.GetStreamOf(user.EntriesFilename, FileMode.Open)))
@@ -88,52 +104,209 @@ namespace wpf_moodlog
 
                 while (reader.ReadRow(thisRow))
                 {
-                    int month = getMonthFrom(thisRow);
+                    DateTime date = getDateTimeFrom(thisRow);
+                    int weekNo = date.GetWeekOfMonth();
 
-                    if (month == selectedMonth())
+                    DataPoint point;
+
+                    if (date.Month == selectedMonth())
                     {
-                        int day = getDayFrom(thisRow);
+                        if (day == getDayFrom(thisRow))
+                        {
+                            point = getPointOnThis(day);
 
-                        var point = getPointOnThis(day);
+                            nEntriesOnDay++;
 
-                        point.Joy = float.Parse(thisRow[7]);
-                        point.Sadness = float.Parse(thisRow[8]);
-                        point.Anger = float.Parse(thisRow[9]);
-                        point.Surprised = float.Parse(thisRow[10]);
-                        point.Disgust = float.Parse(thisRow[11]);
-                        point.Fear = float.Parse(thisRow[12]);
+                            MonthPoints.Remove(point);
+
+                            float[] values = getValuesFrom(thisRow);
+
+                            point.Joy += values[0];
+                            point.Sadness += values[1];
+                            point.Anger += values[2];
+                            point.Surprised += values[3];
+                            point.Disgust += values[4];
+                            point.Fear += values[5];
+
+                            MonthPoints.Add(point);
+
+                            previousPoint = point;
+                        }
+                        else
+                        {
+                            if (nEntriesOnDay != 1)
+                            {
+                                MonthPoints.Remove(previousPoint);
+
+                                previousPoint.Joy /= nEntriesOnDay;
+                                previousPoint.Sadness /= nEntriesOnDay;
+                                previousPoint.Anger /= nEntriesOnDay;
+                                previousPoint.Surprised /= nEntriesOnDay;
+                                previousPoint.Disgust /= nEntriesOnDay;
+                                previousPoint.Fear /= nEntriesOnDay;
+
+                                nEntriesOnDay = 1;
+
+                                switch (weekNo)
+                                {
+                                    case 1:
+                                        WeekOnePoints.Add(previousPoint);
+                                        break;
+                                    case 2:
+                                        WeekTwoPoints.Add(previousPoint);
+                                        break;
+                                    case 3:
+                                        WeekThreePoints.Add(previousPoint);
+                                        break;
+                                    case 4:
+                                        WeekFourPoints.Add(previousPoint);
+                                        break;
+                                    case 5:
+                                        WeekFivePoints.Add(previousPoint);
+                                        break;
+                                    default:
+                                        break;
+                                }
+
+                                MonthPoints.Add(previousPoint);
+                            }
+                               
+                            day = getDayFrom(thisRow);
+
+                            point = getPointOnThis(day);
+
+                            MonthPoints.Remove(point);
+
+                            float[] values = getValuesFrom(thisRow);
+
+                            point.Joy = values[0];
+                            point.Sadness = values[1];
+                            point.Anger = values[2];
+                            point.Surprised = values[3];
+                            point.Disgust = values[4];
+                            point.Fear = values[5];
+
+                            switch (weekNo)
+                            {
+                                case 1:
+                                    WeekOnePoints.Add(point);
+                                    break;
+                                case 2:
+                                    WeekTwoPoints.Add(point);
+                                    break;
+                                case 3:
+                                    WeekThreePoints.Add(point);
+                                    break;
+                                case 4:
+                                    WeekFourPoints.Add(point);
+                                    break;
+                                case 5:
+                                    WeekFivePoints.Add(point);
+                                    break;
+                                default:
+                                    break;
+                            }
+
+                            MonthPoints.Add(point);
+                        }
+
                     }
                 }
             }
 
-            foreach(DataPoint point in Points)
+            foreach (var monthPoint in MonthPoints)
             {
-                Console.WriteLine(point.Day + "," + point.Joy + "," + point.Sadness + "," + point.Anger + "," + point.Surprised + "," + point.Disgust + "," + point.Fear);
+                Console.WriteLine(monthPoint.Day + "," + monthPoint.Joy + "," + monthPoint.Sadness + "," + monthPoint.Anger + "," + monthPoint.Surprised + "," + monthPoint.Disgust + "," + monthPoint.Fear);
             }
+            Console.WriteLine("End of week one points");
+        }
+        
+        private DateTime getDateTimeFrom(CsvRow thisRow)
+        {
+            int year = Convert.ToInt32(thisRow[1]);
+            int month = Convert.ToInt32(thisRow[2]);
+            int day = Convert.ToInt32(thisRow[3]);
+            int hour = Convert.ToInt32(thisRow[4]);
+            int minute = Convert.ToInt32(thisRow[5]);
+
+            return new DateTime(year, month, day, hour, minute, 0);
         }
 
+        private float[] getValuesFrom(CsvRow thisRow)
+        {
+            float[] values = new float[6];
+            int firstValueColNo = 7;
+            int lastValueColNo = 12;
+
+            for(int i = firstValueColNo; i <= lastValueColNo; i++)
+            {
+                values[i - firstValueColNo] = float.Parse(thisRow[i]) * 100;
+            }
+
+            return values;
+        }
         private void setAllSeriesDataContext()
         {
-            joySeries.DataContext = Points;
-            sadnessSeries.DataContext = Points;
-            angerSeries.DataContext = Points;
-            disgustSeries.DataContext = Points;
-            surprisedSeries.DataContext = Points;
-            fearSeries.DataContext = Points;
+            joySeries.DataContext = MonthPoints;
+            sadnessSeries.DataContext = MonthPoints;
+            angerSeries.DataContext = MonthPoints;
+            disgustSeries.DataContext = MonthPoints;
+            surprisedSeries.DataContext = MonthPoints;
+            fearSeries.DataContext = MonthPoints;
+
+            joyWeekOneSeries.DataContext = WeekOnePoints;
+            sadnessWeekOneSeries.DataContext = WeekOnePoints;
+            angerWeekOneSeries.DataContext = WeekOnePoints;
+            disgustWeekOneSeries.DataContext = WeekOnePoints;
+            disgustWeekOneSeries.DataContext = WeekOnePoints;
+            surprisedWeekOneSeries.DataContext = WeekOnePoints;
+            fearWeekOneSeries.DataContext = WeekOnePoints;
+
+            joyWeekTwoSeries.DataContext = WeekTwoPoints;
+            sadnessWeekTwoSeries.DataContext = WeekTwoPoints;
+            angerWeekTwoSeries.DataContext = WeekTwoPoints;
+            disgustWeekTwoSeries.DataContext = WeekTwoPoints;
+            disgustWeekTwoSeries.DataContext = WeekTwoPoints;
+            surprisedWeekTwoSeries.DataContext = WeekTwoPoints;
+            fearWeekTwoSeries.DataContext = WeekTwoPoints;
+
+            joyWeekThreeSeries.DataContext = WeekThreePoints;
+            sadnessWeekThreeSeries.DataContext = WeekThreePoints;
+            angerWeekThreeSeries.DataContext = WeekThreePoints;
+            disgustWeekThreeSeries.DataContext = WeekThreePoints;
+            disgustWeekThreeSeries.DataContext = WeekThreePoints;
+            surprisedWeekThreeSeries.DataContext = WeekThreePoints;
+            fearWeekThreeSeries.DataContext = WeekThreePoints;
+
+            joyWeekFourSeries.DataContext = WeekFourPoints;
+            sadnessWeekFourSeries.DataContext = WeekFourPoints;
+            angerWeekFourSeries.DataContext = WeekFourPoints;
+            disgustWeekFourSeries.DataContext = WeekFourPoints;
+            disgustWeekFourSeries.DataContext = WeekFourPoints;
+            surprisedWeekFourSeries.DataContext = WeekFourPoints;
+            fearWeekFourSeries.DataContext = WeekFourPoints;
+
+            joyWeekFiveSeries.DataContext = WeekFivePoints;
+            sadnessWeekFiveSeries.DataContext = WeekFivePoints;
+            angerWeekFiveSeries.DataContext = WeekFivePoints;
+            disgustWeekFiveSeries.DataContext = WeekFivePoints;
+            disgustWeekFiveSeries.DataContext = WeekFivePoints;
+            surprisedWeekFiveSeries.DataContext = WeekFivePoints;
+            fearWeekFiveSeries.DataContext = WeekFivePoints;
         }
 
         private DataPoint getPointOnThis(int day)
         {
-            return Points.Where(X => X.Day == day).FirstOrDefault();
+            return MonthPoints.Where(X => X.Day == day).FirstOrDefault();
         }
 
-        private void initDaysOfPoints()
+        private void initDaysOfMonthPoints()
         {
             int daysInMonth = getNDaysIn(selectedMonth());
 
             for (int i = 1; i <= daysInMonth; i++)
             {
-                Points.Add(new DataPoint()
+                MonthPoints.Add(new DataPoint()
                 {
                     Day = i,
                     Joy = 0,

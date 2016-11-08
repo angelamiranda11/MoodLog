@@ -182,7 +182,7 @@ namespace wpf_moodlog.Model
 
             Label percent = new Label()
             {
-                Content = (value * 100.0) + "%",
+                Content = ((value / Values.Sum()) * 100.0) + "%",
                 FontSize = 8,
                 Foreground = Brushes.White,
                 HorizontalContentAlignment = HorizontalAlignment.Center,
