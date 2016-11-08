@@ -13,12 +13,14 @@ namespace wpf_moodlog.Model
 {
     public class Entry
     {
+        private int ID;
         private string Text;
         private DateTime DateAndTime;
         private Emotions Emotions;
 
-        public Entry(string Text, DateTime DateAndTime, Emotions Emotions)
+        public Entry(int id, string Text, DateTime DateAndTime, Emotions Emotions)
         {
+            this.ID = id;
             this.Text = Text;
             this.DateAndTime = DateAndTime;
             this.Emotions = Emotions; // temporary code until computed emotions cannot yet be written to csv
@@ -27,6 +29,7 @@ namespace wpf_moodlog.Model
 
         public Entry(string Text)
         {
+            this.ID = 0;
             this.Text = Text;
             this.DateAndTime = DateTime.Now;
             this.Emotions = new Emotions(Text);
@@ -75,6 +78,17 @@ namespace wpf_moodlog.Model
             }
         }
 
+        // Temporary method for extracting emotion values
+        public void writeToNewCsv()
+        {
+            string path = Global.Path;
+            string filename = "entries_" + Global.User.ID + "_temp.csv";
+
+            string fullPath = Path.Combine(path, filename);
+
+            File.AppendAllText(fullPath, this.ToString() + Environment.NewLine);
+        }
+
         public void WriteToCsv()
         {
             using (StreamWriter w = File.AppendText(Global.Path + Global.User.EntriesFilename))
@@ -87,7 +101,7 @@ namespace wpf_moodlog.Model
         {
             List<string> thisRow = new List<string>();
 
-            thisRow.Add("0");
+            thisRow.Add(Convert.ToString(ID));
             thisRow.Add(DateAndTime.Year.ToString());
             thisRow.Add(DateAndTime.Month.ToString());
             thisRow.Add(DateAndTime.Day.ToString());

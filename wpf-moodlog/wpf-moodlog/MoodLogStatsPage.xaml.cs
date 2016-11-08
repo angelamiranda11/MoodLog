@@ -39,119 +39,133 @@ namespace wpf_moodlog
     /// </summary>
     public partial class MoodLogStatsPage : Page
     {
-        private KeyValuePair<string, int>[] WeekOneData;
-        private KeyValuePair<string, int>[] WeekTwoData;
-        private KeyValuePair<string, int>[] WeekThreeData;
-        private KeyValuePair<string, int>[] WeekFourData;
+        private ObservableCollection<DataPoint> Points = new ObservableCollection<DataPoint>();
+        public class DataPoint
+        {
+            public int Day { get; set; }
+            public float Joy { get; set; }
+            public float Sadness { get; set; }
+            public float Anger { get; set; }
+            public float Surprised { get; set; }
+            public float Disgust { get; set; }
+            public float Fear { get; set; }
+        }
 
         public MoodLogStatsPage()
         {
             InitializeComponent();
 
             customizePage();
-            loadWeeklyChartData();
-        }
-
-        private void loadWeeklyChartData()
-        {
-            loadWeekOneChartData();
-            loadWeekTwoChartData();
-            loadWeekThreeChartData();
-            loadWeekFourChartData();
         }
 
         private void customizePage()
         {
             setDateTodayLabel();
+
+            setCalendarDisplayDate();
+
+            loadChartData();
+
+            setAllSeriesDataContext();
+        }
+
+        private void calendar_DisplayDateChanged(object sender, RoutedEventArgs e)
+        {
+            Console.WriteLine("Calendar's display date changed");
+            loadChartData();
         }
 
         private void loadChartData()
         {
-            if (calendar.SelectedDate.HasValue)
-            {
-                //string month = calendar.SelectedDate.Value.ToString("MMMM");
-            }
+            Points.Clear();
 
-            Stream entries = getEntriesStream();
+            initDaysOfPoints();
 
-            using (CsvFileReader reader = new CsvFileReader(entries))
+            User user = Global.User;
+            using (CsvFileReader reader = new CsvFileReader(Global.GetStreamOf(user.EntriesFilename, FileMode.Open)))
             {
-                CsvRow row = new CsvRow();
-                while (reader.ReadRow(row))
+                CsvRow thisRow = new CsvRow();
+
+                while (reader.ReadRow(thisRow))
                 {
-                    string thisEntryMonth = getMonthFrom(row);
+                    int month = getMonthFrom(thisRow);
 
-                    if (thisEntryMonth == selectedMonth())
+                    if (month == selectedMonth())
                     {
-                        // get emotion values
+                        int day = getDayFrom(thisRow);
+
+                        var point = getPointOnThis(day);
+
+                        point.Joy = float.Parse(thisRow[7]);
+                        point.Sadness = float.Parse(thisRow[8]);
+                        point.Anger = float.Parse(thisRow[9]);
+                        point.Surprised = float.Parse(thisRow[10]);
+                        point.Disgust = float.Parse(thisRow[11]);
+                        point.Fear = float.Parse(thisRow[12]);
                     }
                 }
             }
+
+            foreach(DataPoint point in Points)
+            {
+                Console.WriteLine(point.Day + "," + point.Joy + "," + point.Sadness + "," + point.Anger + "," + point.Surprised + "," + point.Disgust + "," + point.Fear);
+            }
         }
 
-        private string selectedMonth()
+        private void setAllSeriesDataContext()
         {
-            return calendar.SelectedDate.Value.ToString("MMMM");
+            joySeries.DataContext = Points;
+            sadnessSeries.DataContext = Points;
+            angerSeries.DataContext = Points;
+            disgustSeries.DataContext = Points;
+            surprisedSeries.DataContext = Points;
+            fearSeries.DataContext = Points;
         }
 
-        private string getMonthFrom(CsvRow row)
+        private DataPoint getPointOnThis(int day)
         {
-            return row[2];
+            return Points.Where(X => X.Day == day).FirstOrDefault();
         }
 
-        private Stream getEntriesStream()
+        private void initDaysOfPoints()
         {
-            string filename = Global.User.EntriesFilename;
+            int daysInMonth = getNDaysIn(selectedMonth());
 
-            return Assembly.GetExecutingAssembly().GetManifestResourceStream("wpf_moodlog.Data." + filename + ".csv");
+            for (int i = 1; i <= daysInMonth; i++)
+            {
+                Points.Add(new DataPoint()
+                {
+                    Day = i,
+                    Joy = 0,
+                    Sadness = 0,
+                    Anger = 0,
+                    Disgust = 0,
+                    Surprised = 0,
+                    Fear = 0
+                });
+            }
         }
 
-        private void loadWeekOneChartData()
+        private int getNDaysIn(int thisMonth)
         {
-            ((ColumnSeries)weekOneChart.Series[0]).ItemsSource =
-                new KeyValuePair<string, int>[]{
-                new KeyValuePair<string,int>("Joy", 12),
-                new KeyValuePair<string,int>("Sadness", 25),
-                new KeyValuePair<string,int>("Anger", 5),
-                new KeyValuePair<string,int>("Suprised", 6),
-                new KeyValuePair<string,int>("Disgust", 10),
-                new KeyValuePair<string,int>("Fear", 4) };
+            int yearNow = DateTime.Now.Year;
+
+            return DateTime.DaysInMonth(yearNow, thisMonth);
         }
 
-        private void loadWeekTwoChartData()
+        private int selectedMonth()
         {
-            ((ColumnSeries)weekTwoChart.Series[0]).ItemsSource =
-                new KeyValuePair<string, int>[]{
-                new KeyValuePair<string,int>("Joy", 12),
-                new KeyValuePair<string,int>("Sadness", 25),
-                new KeyValuePair<string,int>("Anger", 5),
-                new KeyValuePair<string,int>("Suprised", 6),
-                new KeyValuePair<string,int>("Disgust", 10),
-                new KeyValuePair<string,int>("Fear", 4) };
+            return calendar.DisplayDate.Month;
         }
 
-        private void loadWeekThreeChartData()
+        private int getMonthFrom(CsvRow row)
         {
-            ((ColumnSeries)weekThreeChart.Series[0]).ItemsSource =
-                new KeyValuePair<string, int>[]{
-                new KeyValuePair<string,int>("Joy", 12),
-                new KeyValuePair<string,int>("Sadness", 25),
-                new KeyValuePair<string,int>("Anger", 5),
-                new KeyValuePair<string,int>("Suprised", 6),
-                new KeyValuePair<string,int>("Disgust", 10),
-                new KeyValuePair<string,int>("Fear", 4) };
+            return Convert.ToInt32(row[2]);
         }
 
-        private void loadWeekFourChartData()
+        private int getDayFrom(CsvRow row)
         {
-            ((ColumnSeries)weekFourChart.Series[0]).ItemsSource =
-                new KeyValuePair<string, int>[]{
-                new KeyValuePair<string,int>("Joy", 12),
-                new KeyValuePair<string,int>("Sadness", 25),
-                new KeyValuePair<string,int>("Anger", 5),
-                new KeyValuePair<string,int>("Suprised", 6),
-                new KeyValuePair<string,int>("Disgust", 10),
-                new KeyValuePair<string,int>("Fear", 4) };
+            return Convert.ToInt32(row[3]);
         }
 
         private void setDateTodayLabel()
@@ -160,6 +174,11 @@ namespace wpf_moodlog
             DateTime thisDay = DateTime.Today;
 
             dateTodayLabel.Content = thisDay.ToString("MMM d");
+        }
+
+        private void setCalendarDisplayDate()
+        {
+            calendar.DisplayDate = DateTime.Now;
         }
 
         private void profileButton_Click(object sender, RoutedEventArgs e)
