@@ -1616,7 +1616,6 @@ sunlight,7.76,6.1
 sunny,7.76,6.1
 sunrise,7.86,5.06
 sunset,7.68,4.2
-super,7,6.3
 surgery,2.86,6.35
 surpass,6.4,8,23
 surpassed,6.4,8,23
