@@ -80,7 +80,7 @@ namespace wpf_moodlog
 
                     Entry entry = new Entry(id, text, dateTime, emotions);
 
-                    //entry.writeToNewCsv(); // Temporary code for extracting emotion values
+                    entry.writeToNewCsv(); // Temporary code for extracting emotion values
 
                     entriesStackPanel.Children.Add(entry.BorderedUI);
                 }

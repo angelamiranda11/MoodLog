@@ -54,7 +54,16 @@ namespace wpf_moodlog.Model
         {
             Program program = new Program();
 
-            return program.processText(text);
+            float[] values = program.processText(text);
+
+            float sum = values.Sum();
+
+            for(int i = 0; i < values.Length; i++)
+            {
+                values[i] = values[i] / sum;
+            }
+
+            return values;
         }
 
         //private Emotion Dominant()
@@ -182,7 +191,7 @@ namespace wpf_moodlog.Model
 
             Label percent = new Label()
             {
-                Content = ((value / Values.Sum()) * 100.0) + "%",
+                Content = (value * 100.0) + "%",
                 FontSize = 8,
                 Foreground = Brushes.White,
                 HorizontalContentAlignment = HorizontalAlignment.Center,
