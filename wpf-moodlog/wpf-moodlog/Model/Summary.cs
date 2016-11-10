@@ -11,11 +11,13 @@ namespace wpf_moodlog.Model
 {
     class Summary
     {
+        private int ID;
         private DateTime DateTime;
         private Emotions Emotions;
 
-        public Summary(DateTime DateTime, Emotions Emotions)
+        public Summary(int ID, DateTime DateTime, Emotions Emotions)
         {
+            this.ID = ID;
             this.DateTime = DateTime;
             this.Emotions = Emotions;
             this.UI = new DockPanel();
@@ -30,7 +32,7 @@ namespace wpf_moodlog.Model
             {
                 PieSeries chart = Emotions.ChartUI;
                 TextBlock dateTime = DateTimeUI();
-                TextBlock dominant = Emotions.DominantUI;
+                TextBlock dominant = EntryNoUI();
                 StackPanel legend = Emotions.LegendUI;
 
                 DockPanel.SetDock(chart, Dock.Left);
@@ -48,6 +50,13 @@ namespace wpf_moodlog.Model
             }
         }
 
+        private TextBlock EntryNoUI()
+        {
+            return new TextBlock()
+            {
+                Text = '#' + ID.ToString(),
+            };
+        }
         private void initUIProperties()
         {
             _UI.Background = convertToBrush("#ecf0f1");
