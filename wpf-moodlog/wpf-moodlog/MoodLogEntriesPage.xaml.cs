@@ -17,6 +17,7 @@ using IronPython.Hosting;
 using Microsoft.Scripting.Hosting;
 using System.Diagnostics;
 using wpf_moodlog.Model;
+using ConsoleRedirection;
 
 namespace wpf_moodlog
 {
@@ -55,6 +56,8 @@ namespace wpf_moodlog
     /// </summary>
     public partial class MoodLogEntriesPage : Page
     {
+        TextWriter _writer = null;
+
         public MoodLogEntriesPage()
         {
             InitializeComponent();
@@ -62,6 +65,11 @@ namespace wpf_moodlog
             customizePage();
             
             loadPreviousEntries();
+
+            _writer = new TextBoxStreamWriter(computationTextBox);
+
+            // Redirect the out Console stream
+            Console.SetOut(_writer);
         }
 
         private void loadPreviousEntries()

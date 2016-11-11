@@ -140,11 +140,11 @@ namespace wpf_moodlog
 
 
             // Code for debugging
-            foreach (var monthPoint in MonthPoints)
-            {
-                Console.WriteLine(monthPoint.Day + "," + monthPoint.Joy + "," + monthPoint.Sadness + "," + monthPoint.Anger + "," + monthPoint.Surprised + "," + monthPoint.Disgust + "," + monthPoint.Fear);
-            }
-            Console.WriteLine("End of month points");
+            //foreach (var monthPoint in MonthPoints)
+            //{
+            //    Console.WriteLine(monthPoint.Day + "," + monthPoint.Joy + "," + monthPoint.Sadness + "," + monthPoint.Anger + "," + monthPoint.Surprised + "," + monthPoint.Disgust + "," + monthPoint.Fear);
+            //}
+            //Console.WriteLine("End of month points");
         }
 
         private void clearAllDataPoints()
