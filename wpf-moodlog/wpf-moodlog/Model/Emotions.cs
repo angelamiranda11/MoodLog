@@ -33,7 +33,6 @@ namespace wpf_moodlog.Model
             this.LegendUI = new StackPanel();
 
             initChartUIProperties();
-            //initDominantUIProperties();
             initLegendUIProperties();
         }
 
@@ -113,13 +112,6 @@ namespace wpf_moodlog.Model
             _ChartUI.Margin = new Thickness(5, 0, 20, 0);
             _ChartUI.Palette = Application.Current.Resources["ChartPalette"] as Collection<ResourceDictionary>;
         }
-
-        //private void initDominantUIProperties()
-        //{
-        //    _DominantUI.FontWeight = FontWeights.Bold;
-        //    _DominantUI.Foreground = Dominant().GetColor();
-        //    _DominantUI.Text = Dominant().GetName().ToUpper();
-        //}
 
         private void initLegendUIProperties()
         {

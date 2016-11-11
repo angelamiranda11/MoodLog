@@ -66,9 +66,13 @@ namespace wpf_moodlog
             
             loadPreviousEntries();
 
+            setConsoleWriter();
+        }
+
+        private void setConsoleWriter()
+        {
             _writer = new TextBoxStreamWriter(computationTextBox);
 
-            // Redirect the out Console stream
             Console.SetOut(_writer);
         }
 

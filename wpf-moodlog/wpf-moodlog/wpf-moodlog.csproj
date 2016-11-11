@@ -105,6 +105,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\ConsoleRedirection.cs" />
     <Compile Include="Model\Content.cs" />
     <Compile Include="Model\Emotions.cs" />
     <Compile Include="Model\Entry.cs" />
@@ -112,7 +113,6 @@
     <Compile Include="Model\Program.cs" />
     <Compile Include="Model\ReadWriteCSV.cs" />
     <Compile Include="Model\Summary.cs" />
-    <Compile Include="Model\TextBoxStreamWriter.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="MoodLogEntriesPage.xaml.cs">
       <DependentUpon>MoodLogEntriesPage.xaml</DependentUpon>

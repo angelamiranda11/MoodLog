@@ -45,8 +45,7 @@ namespace wpf_moodlog
             {
                 if (item.IndexOf('#') == 0 && item != "")
                 {
-                    string label = "HASHTAG DETECTED";
-                    Console.WriteLine(String.Format("{0}:\n {1}", label, item));
+                    writeToConsole("hashtag detected", item);
                     String segmented = doSegment(item.ToLower());
                     String resegmented = "";
                     char[] resegmentSymbols = { '[','\'',',',']'};
@@ -66,14 +65,12 @@ namespace wpf_moodlog
                     {
                         ngramCollection.Add(bigram);
                     }
-                    label = "HASHTAG BIGRAMS";
-                    Console.WriteLine(String.Format("{0}:\n {1}", label, bigram));
+                    writeToConsole("hashtag bigrams", bigram);
                     input = input.Remove(input.IndexOf(item[0]), item.Length);
                 }
                 else if (emoticons.Contains(item) && item != "")
                 {
-                    string label = "EMOTICON DETECTED";
-                    Console.WriteLine(String.Format("{0}:\n {1}", label, item));
+                    writeToConsole("emoticon detected", item);
                     memWord.Add(item.Trim());
                     input = input.Remove(input.IndexOf(item[0]), item.Length);
                 }
@@ -91,12 +88,7 @@ namespace wpf_moodlog
             {
                 IEnumerable makeBigramsResult = makeBigrams(item.ToLower());
                 String bigram = String.Join(",", makeBigramsResult);
-                string label = "SENTENCE BIGRAMS";
-                Console.WriteLine(label);
-                foreach(var i in makeBigramsResult)
-                {
-                    Console.WriteLine(i);
-                }
+                writeToConsole("sentence bigrams", makeBigramsResult);
                 ngramCollection.Add(bigram);
             }
 
@@ -308,13 +300,16 @@ namespace wpf_moodlog
                 }
             }
 
+            Console.WriteLine();
+            Console.WriteLine(String.Format("{0,-10}|{1,-5}|{2,-5}", "Emotion", "Yes", "No"));
+            Console.WriteLine("--------------------");
             //frequency of each word, yes is [0] and no is [1]
-            Console.WriteLine("Joy: " + joy[0] + " " + joy[1]);
-            Console.WriteLine("Sad: " + sad[0] + " " + sad[1]);
-            Console.WriteLine("Anger: " + anger[0] + " " + anger[1]);
-            Console.WriteLine("Surprise: " + surprise[0] + " " + surprise[1]);
-            Console.WriteLine("Disgust: " + disgust[0] + " " + disgust[1]);
-            Console.WriteLine("Fear: " + fear[0] + " " + fear[1]);
+            Console.WriteLine(String.Format("{0,-10}|{1,-5}|{2,-5}", "Joy", joy[0], joy[1]));
+            Console.WriteLine(String.Format("{0,-10}|{1,-5}|{2,-5}", "Sad", sad[0], sad[1]));
+            Console.WriteLine(String.Format("{0,-10}|{1,-5}|{2,-5}", "Anger", anger[0], anger[1]));
+            Console.WriteLine(String.Format("{0,-10}|{1,-5}|{2,-5}", "Surprise", surprise[0], surprise[1]));
+            Console.WriteLine(String.Format("{0,-10}|{1,-5}|{2,-5}", "Disgust", disgust[0], disgust[1]));
+            Console.WriteLine(String.Format("{0,-10}|{1,-5}|{2,-5}", "Fear", fear[0], fear[1]));
 
             //Population of other important variables
             float allYes = joy[0] + sad[0] + anger[0] + surprise[0] + disgust[0] + fear[0];
@@ -331,7 +326,9 @@ namespace wpf_moodlog
                 outYesProb[k] = item[0];
                 k++;
             }
-            Console.WriteLine("Words and Emotion:");
+            Console.WriteLine();
+            Console.WriteLine("Word && Emotion");
+            Console.WriteLine("==========================");
             foreach(String wordEmotion in wordCommaEmotion)
             {
                 Console.WriteLine(wordEmotion);
@@ -452,6 +449,27 @@ namespace wpf_moodlog
             prepNInter.AddRange(wpf_moodlog.Properties.Resources.ngrams1.Split());
             tempa.AddRange(wpf_moodlog.Properties.Resources.NRC_emotion_lexicon_wordlevel_alphabetized_v0_92__1_.Split('\n'));
             prep.AddRange(wpf_moodlog.Properties.Resources.PrepRef.Split('\n'));
+        }
+
+        private void writeToConsole(string label, string content)
+        {
+            Console.WriteLine(label.ToUpper());
+            Console.WriteLine("--------------------------");
+            Console.WriteLine(content);
+            Console.WriteLine();
+        }
+
+        private void writeToConsole(string label, IEnumerable content)
+        {
+            Console.WriteLine(label.ToUpper());
+            Console.WriteLine("--------------------------");
+            
+            foreach(var item in content)
+            {
+                Console.WriteLine(item);
+            }
+
+            Console.WriteLine();
         }
     }
 }

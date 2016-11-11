@@ -34,7 +34,7 @@ namespace wpf_moodlog.Model
             {
                 PieSeries chart = Emotions.ChartUI;
                 TextBlock dateTime = DateTimeUI();
-                Button showComputation = ShowComputationUI();
+                Button showComputation = ShowComputationUI(); ;
                 StackPanel legend = Emotions.LegendUI;
 
                 DockPanel.SetDock(chart, Dock.Left);
@@ -54,19 +54,18 @@ namespace wpf_moodlog.Model
 
         private Button ShowComputationUI()
         {
-            Button button = new Button()
+            Button showComputation = new Button()
             {
-                Content = "Show computation of entry #" + ID.ToString(),
+                Content = "Show computation of entry #" + this.ID,
                 HorizontalAlignment = HorizontalAlignment.Left,
-                Margin = new Thickness(0,5,0,5),
+                Margin = new Thickness(0, 3, 0, 3),
                 Padding = new Thickness(1),
-                Width = 195,
-                Name = "showComputation" + ID,
+                Width = 225,
             };
 
-            button.Click += new RoutedEventHandler(showComputationButton_Click);
+            showComputation.Click += new RoutedEventHandler(showComputationButton_Click);
 
-            return button;
+            return showComputation;
         }
 
         private void showComputationButton_Click(object sender, RoutedEventArgs e)
@@ -75,35 +74,32 @@ namespace wpf_moodlog.Model
 
             Button showComputationButton = e.Source as Button;
 
-            int buttonId = Convert.ToInt32(showComputationButton.Name.Remove(0, "showComputation".Length));
-
             User user = Global.User;
             using (CsvFileReader reader = new CsvFileReader(Global.GetStreamOf(user.EntriesFilename, FileMode.Open)))
             {
-                CsvRow row = new CsvRow();
-                while (reader.ReadRow(row))
+                CsvRow thisRow = new CsvRow();
+                while (reader.ReadRow(thisRow))
                 {
-                    int rowId = getIdFrom(row);
+                    int id = getIdFrom(thisRow);
                     
-                    if (rowId == buttonId)
+                    if (id == this.ID)
                     {
-                        string rowText = getTextFrom(row);
-                        Program program = new Program();
+                        string text = getTextFrom(thisRow);
 
-                        program.processText(rowText);
+                        new Program().processText(text);
                     }
                 }
             }
         }
 
-        private string getTextFrom(CsvRow row)
-        {
-            return row[6];
-        }
-
         private int getIdFrom(CsvRow row)
         {
             return Convert.ToInt32(row[0]);
+        }
+
+        private string getTextFrom(CsvRow row)
+        {
+            return row[6];
         }
 
         private void initUIProperties()
