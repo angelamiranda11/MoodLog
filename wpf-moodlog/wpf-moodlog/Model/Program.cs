@@ -102,7 +102,7 @@ namespace wpf_moodlog
                             if ((bowreference.Contains(item2) && Array.IndexOf(temp3, item2) == 1) ||
                                 (prepNInter.Contains(item2) && Array.IndexOf(temp3, item2) == 0) || bowreference.Contains(item2))
                             {
-                                if ((bowreference.Contains(item2) && Array.IndexOf(temp3, item2) == temp3.Length - 1) || bowreference.Contains(item2))
+                                if ((bowreference.Contains(item2) && Array.IndexOf(temp3, item2) == temp3.Length - 1))
                                 {
                                     if (!finalBoW.Contains(item))
                                     {
