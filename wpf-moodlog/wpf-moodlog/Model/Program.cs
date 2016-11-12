@@ -109,7 +109,7 @@ namespace wpf_moodlog
                             if ((bowreference.Contains(item2) && Array.IndexOf(temp3, item2) == 1) ||
                                 (prepNInter.Contains(item2) && Array.IndexOf(temp3, item2) == 0) || bowreference.Contains(item2))
                             {
-                                if ((bowreference.Contains(item2) && Array.IndexOf(temp3, item2) == temp3.Length-1))
+                                if ((bowreference.Contains(item2) && Array.IndexOf(temp3, item2) == temp3.Length-1) || bowreference.Contains(item2))
                                 {
                                     if (!finalBoW.Contains(item))
                                     {
@@ -152,6 +152,7 @@ namespace wpf_moodlog
                                 Debug.WriteLine(word.ToUpper()+" Entered Quadrant 3; Angle: " + (180+Math.Atan2(y, x) * (180 / Math.PI)));
                                 if ((180 + Math.Atan2(y, x) * (180 / Math.PI)) >= 180 && (180 + Math.Atan2(y, x) * (180 / Math.PI)) < 270)
                                 {
+                                    Debug.WriteLine("Sad +1");
                                     wordCommaEmotion.Add(word + "," + "sad");
                                     sad[0] += 1;
                                 }
@@ -163,16 +164,19 @@ namespace wpf_moodlog
                                 Debug.WriteLine(word.ToUpper() + " Entered Quadrant 2; Angle: " + (Math.Atan2(y, x) * (180 / Math.PI)));
                                 if (Math.Abs((Math.Atan2(y, x) * (180 / Math.PI))) >= 90 && (Math.Abs(Math.Atan2(y, x) * (180 / Math.PI))) < 120)
                                 {
+                                    Debug.WriteLine("Disgust +1");
                                     wordCommaEmotion.Add(word + "," + "disgust");
                                     disgust[0] += 1;
                                 }
                                 else if (Math.Abs((Math.Atan2(y, x) * (180 / Math.PI))) >= 120 && (Math.Abs(Math.Atan2(y, x) * (180 / Math.PI)))< 150)
                                 {
+                                    Debug.WriteLine("Anger +1");
                                     wordCommaEmotion.Add(word + "," + "anger");
                                     anger[0] += 1;
                                 }
                                 else if (Math.Abs((Math.Atan2(y, x) * (180 / Math.PI)))>= 150 && (Math.Abs(Math.Atan2(y, x) * (180 / Math.PI))) < 180)
                                 {
+                                    Debug.WriteLine("Fear +1");
                                     wordCommaEmotion.Add(word + "," + "fear");
                                     fear[0] += 1;
                                 }
@@ -194,11 +198,13 @@ namespace wpf_moodlog
                                 Debug.WriteLine(word.ToUpper() + " Entered Quadrant 1; Angle: " + (Math.Atan2(y, x) * (180 / Math.PI)));
                                 if ((Math.Atan2(y, x) * (180 / Math.PI)) >= 0 && (Math.Atan2(y, x) * (180 / Math.PI)) < 45)
                                 {
+                                    Debug.WriteLine("Joy +1");
                                     wordCommaEmotion.Add(word + "," + "joy");
                                     joy[0] += 1;
                                 }
                                 else if ((Math.Atan2(y, x) * (180 / Math.PI)) >= 45 && (Math.Atan2(y, x) * (180 / Math.PI)) < 90)
                                 {
+                                    Debug.WriteLine("Surprise +1");
                                     wordCommaEmotion.Add(word + "," + "surprise");
                                     surprise[0] += 1;
                                 }
@@ -412,6 +418,7 @@ namespace wpf_moodlog
 
             foreach (float[] temp in sixEmotions)
             {
+                Debug.WriteLine(temp[0]);
                 temp[0] = ((temp[0] / allYes) * (allYes / totalFreq)) / ((temp[0] + temp[1]) / totalFreq);
                 temp[1] = 1 - temp[0];
                 sixEmotions[count] = temp;
