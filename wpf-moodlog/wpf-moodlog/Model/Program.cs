@@ -57,15 +57,8 @@ namespace wpf_moodlog
                         }
                     }
                     String bigram = String.Join(",", makeBigrams(resegmented.Trim()));
-                    if(bigram.Split(',').Length==1 && bowreference.Contains(bigram.Split()[0]))
-                    {
-                        memWord.Add(bigram.Split()[0].ToLower());
-                        finalBoW.Add(bigram.ToLower());
-                    }else
-                    {
-                        ngramCollection.Add(bigram);
-                    }
                     Debug.WriteLine("HASHTAG BIGRAMS: " + bigram);
+                    ngramCollection.Add(bigram);
                     input = input.Remove(input.IndexOf(item[0]), item.Length);
                 }
                 else if (emoticons.Contains(item) && item != "")

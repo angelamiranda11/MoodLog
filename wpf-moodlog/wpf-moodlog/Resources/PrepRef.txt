@@ -13,7 +13,6 @@ not,-,1
 overly,+,1
 perfectly,+,1
 so,+,1
-super,+,1
 too,+,1
 totally,+,1
 truly,+,1

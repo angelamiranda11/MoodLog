@@ -1616,6 +1616,7 @@ sunlight
 sunny
 sunrise
 sunset
+super
 surgery
 surpass
 surpassed
