@@ -320,6 +320,12 @@ namespace wpf_moodlog
                 outYesProb[k] = item[0];
                 k++;
             }
+            Debug.WriteLine("Joy: " + outYesProb[0] + " " + joy[1]);
+            Debug.WriteLine("Sad: " + outYesProb[1] + " " + sad[1]);
+            Debug.WriteLine("Anger: " + outYesProb[2] + " " + anger[1]);
+            Debug.WriteLine("Surprise: " + outYesProb[3] + " " + surprise[1]);
+            Debug.WriteLine("Disgust: " + outYesProb[4] + " " + disgust[1]);
+            Debug.WriteLine("Fear: " + outYesProb[5] + " " + fear[1]);
             Debug.WriteLine("Words and Emotion:");
             foreach(String wordEmotion in wordCommaEmotion)
             {
@@ -411,7 +417,6 @@ namespace wpf_moodlog
 
             foreach (float[] temp in sixEmotions)
             {
-                Debug.WriteLine(temp[0]);
                 temp[0] = ((temp[0] / allYes) * (allYes / totalFreq)) / ((temp[0] + temp[1]) / totalFreq);
                 temp[1] = 1 - temp[0];
                 sixEmotions[count] = temp;
