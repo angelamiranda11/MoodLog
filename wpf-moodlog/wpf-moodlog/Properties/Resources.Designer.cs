@@ -61,34 +61,34 @@ namespace wpf_moodlog.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to abduct,2.76,5.53
-        ///abducted,2.76,5.53
-        ///abducting,2.76,5,53
-        ///abduction,2.76,5.53
-        ///abominable,1.83,4.72
-        ///abort,3.5,5.39
-        ///aborted,3.5,5.39
-        ///aborted,3.5,5.39
-        ///aborting,3.5,5.39
+        ///   Looks up a localized string similar to abduction,2.76,5.53
         ///abortion,3.5,5.39
         ///absurd,4.26,4.36
         ///abundance,6.59,5.51
-        ///abundant,6.59,5.51
         ///abuse,1.8,6.83
-        ///abused,1.8,6.83
-        ///abusing,1.8,6.83
-        ///accept,7.98,5.4
         ///acceptance,7.98,5.4
-        ///accepted,7.98,5.4
-        ///accepting,7.98,5.4
         ///accident,2.05,6.26
-        ///accidentally,2.05,6.26
         ///ace,6.88,5.5
-        ///aced,6.88,5.5
-        ///aces,6.88,5.5
-        ///ache,2.46,4.5
-        ///ached,2.46,4.5
-        ///ached,2.46,4.5 [rest of string was truncated]&quot;;.
+        ///ache,2.46,5
+        ///achievement,7.89,5.53
+        ///activate,5.46,4.86
+        ///addict,2.48,5.66
+        ///addicted,2.51,4.81
+        ///admired,7.74,6.11
+        ///adorable,7.81,5.12
+        ///adult,6.49,4.76
+        ///advantage,6.95,4.76
+        ///adventure,7.6,6.98
+        ///affection,8.39,6.21
+        ///afraid,2,6.67
+        ///aggressive,5.1,5.83
+        ///agility,6.46,4.85
+        ///agony,2.43,6.06
+        ///agreement,7.08,5.02
+        ///air,6.34,4.12
+        ///alcoholic,2.84,5.69
+        ///alert,6.2,6.85
+        ///alien [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string anewReference {
             get {
@@ -97,60 +97,64 @@ namespace wpf_moodlog.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to abduct
-        ///abducted
-        ///abducting
-        ///abduction
-        ///abominable
-        ///abort
-        ///aborted
-        ///aborted
-        ///aborting
+        ///   Looks up a localized string similar to abduction
         ///abortion
         ///absurd
         ///abundance
-        ///abundant
         ///abuse
-        ///abused
-        ///abusing
-        ///accept
         ///acceptance
-        ///accepted
-        ///accepting
         ///accident
-        ///accidentally
         ///ace
-        ///aced
-        ///aces
-        ///ache
-        ///ached
-        ///ached
-        ///aches
-        ///achieve
-        ///achieved
         ///achievement
-        ///achievements
-        ///aching
         ///activate
-        ///activated
-        ///activates
-        ///activating
         ///addict
         ///addicted
-        ///addicting
-        ///addicts
-        ///admire
         ///admired
-        ///admiring
         ///adorable
         ///adult
-        ///adults
         ///advantage
-        ///advantages
         ///adventure
-        ///adventures
         ///affection
-        ///affectio [rest of string was truncated]&quot;;.
+        ///afraid
+        ///aggressive
+        ///agility
+        ///agony
+        ///agreement
+        ///air
+        ///alcoholic
+        ///alert
+        ///alien
+        ///alimony
+        ///alive
+        ///allergy
+        ///alley
+        ///alone
+        ///aloof
+        ///ambition
+        ///ambulance
+        ///angel
+        ///anger
+        ///angry
+        ///anguished
+        ///ankle
+        ///annoy
+        ///answer
+        ///anxious
+        ///applause
+        ///appliance
+        ///arm
+        ///army
+        ///aroused
+        ///arrogant
+        ///art
+        ///assassin
+        ///assault
+        ///astonished
+        ///astronaut
+        ///athletics
+        ///autumn
+        ///avalanche
+        ///ave [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string bow_algorithm_reference {
             get {
@@ -213,34 +217,6 @@ namespace wpf_moodlog.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to :),8.21,6.49
-        ///:],8.21,6.49
-        ///=),8.21,6.49
-        ///:D,8.21,6.49
-        ///:smiling_face:,8.21,6.49
-        ///^^,8.21,6.49
-        ///:smiling_face_with_smiling_eyes:,8.21,6.49
-        ///:smiling_face_with_heart_shaped_eyes:,8.21,6.49
-        ///:face_with_tears_of_joy:,8.21,6.49
-        ///:smiling_face_with_open_mouth:,8.21,6.49
-        ///:grinning_face_with_smiling_eyes:,8.21,6.49
-        ///O:),8.21,6.49
-        ///:smiling_face_with_halo:,8.21,6.49
-        ///&lt;3,8.72,6.44
-        ///:heavy_black_heart:,8.72,6.44
-        ///;),8.21,6.49
-        ///:winking_face:,8.21,6.49
-        ///:face_with_open_mouth:,7.47,7.47
-        ///:astonished_face:,7.47,7.47
-        ///: [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string emoticonsResource {
-            get {
-                return ResourceManager.GetString("emoticonsResource", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to best 
         ///cannot  
         ///can&apos;t  
@@ -268,34 +244,34 @@ namespace wpf_moodlog.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to abduct,2.76,5.53
-        ///abducted,2.76,5.53
-        ///abducting,2.76,5,53
-        ///abduction,2.76,5.53
-        ///abominable,1.83,4.72
-        ///abort,3.5,5.39
-        ///aborted,3.5,5.39
-        ///aborted,3.5,5.39
-        ///aborting,3.5,5.39
+        ///   Looks up a localized string similar to abduction,2.76,5.53
         ///abortion,3.5,5.39
         ///absurd,4.26,4.36
         ///abundance,6.59,5.51
-        ///abundant,6.59,5.51
         ///abuse,1.8,6.83
-        ///abused,1.8,6.83
-        ///abusing,1.8,6.83
-        ///accept,7.98,5.4
         ///acceptance,7.98,5.4
-        ///accepted,7.98,5.4
-        ///accepting,7.98,5.4
         ///accident,2.05,6.26
-        ///accidentally,2.05,6.26
         ///ace,6.88,5.5
-        ///aced,6.88,5.5
-        ///aces,6.88,5.5
-        ///ache,2.46,4.5
-        ///ached,2.46,4.5
-        ///ached,2.46,4.5 [rest of string was truncated]&quot;;.
+        ///ache,2.46,5
+        ///achievement,7.89,5.53
+        ///activate,5.46,4.86
+        ///addict,2.48,5.66
+        ///addicted,2.51,4.81
+        ///admired,7.74,6.11
+        ///adorable,7.81,5.12
+        ///adult,6.49,4.76
+        ///advantage,6.95,4.76
+        ///adventure,7.6,6.98
+        ///affection,8.39,6.21
+        ///afraid,2,6.67
+        ///aggressive,5.1,5.83
+        ///agility,6.46,4.85
+        ///agony,2.43,6.06
+        ///agreement,7.08,5.02
+        ///air,6.34,4.12
+        ///alcoholic,2.84,5.69
+        ///alert,6.2,6.85
+        ///alien [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string NRC_emotion_lexicon_wordlevel_alphabetized_v0_92__1_ {
             get {
@@ -319,7 +295,6 @@ namespace wpf_moodlog.Properties {
         ///overly,+,1
         ///perfectly,+,1
         ///so,+,1
-        ///super,+,1
         ///too,+,1
         ///totally,+,1
         ///truly,+,1
