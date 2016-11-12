@@ -102,10 +102,10 @@
 
                     <!--Week 1 Bar Chart-->
                     <chartingToolkit:Chart x:Name="weekOneChart" LegendStyle="{DynamicResource LegendStyle}" Title="Week 1" Background="#00000000" BorderBrush="#FF7F8C8D"  Grid.Row="1" Height="250" Margin="0,10,10,10" Palette="{DynamicResource ChartPalette}">
-                        <chartingToolkit:Chart.Axes>
-                            <chartingToolkit:LinearAxis Title="Percentage" Orientation="Y" Location="Left" Minimum="0" Maximum="100"/>
+                        <!--<chartingToolkit:Chart.Axes>
+                            <chartingToolkit:LinearAxis Title="Percentage" Orientation="Y" Location="Left" Minimum="0" Maximum="200"/>
                             <chartingToolkit:LinearAxis Title="Day" Orientation="X" Interval="1" Location="Bottom"/>
-                        </chartingToolkit:Chart.Axes>
+                        </chartingToolkit:Chart.Axes>-->
 
                         <chartingToolkit:ColumnSeries Name="joyWeekOneSeries" Title="Joy"  
                             ItemsSource="{Binding}"
@@ -135,11 +135,6 @@
 
                     <!--Week 2 Bar Chart-->
                     <chartingToolkit:Chart x:Name="weekTwoChart" Title="Week 2" LegendStyle="{DynamicResource LegendStyle}" Background="#00000000" BorderBrush="#FF7F8C8D" Palette="{DynamicResource ChartPalette}" Grid.Row="1" Grid.Column="1" Height="250" Margin="10,10,0,10">
-                        <chartingToolkit:Chart.Axes>
-                            <chartingToolkit:LinearAxis Title="Percentage" Orientation="Y" Location="Left" Minimum="0" Maximum="100"/>
-                            <chartingToolkit:LinearAxis Title="Day" Orientation="X" Interval="1" Location="Bottom"/>
-                        </chartingToolkit:Chart.Axes>
-                        
                         <chartingToolkit:ColumnSeries Name="joyWeekTwoSeries" Title="Joy"  
                             ItemsSource="{Binding}"
                             IndependentValuePath="Day"
@@ -168,11 +163,6 @@
 
                     <!--Week 3 Bar Chart-->
                     <chartingToolkit:Chart x:Name="weekThreeChart" Title="Week 3" LegendStyle="{DynamicResource LegendStyle}" Background="#00000000" BorderBrush="#FF7F8C8D" Palette="{DynamicResource ChartPalette}" Grid.Row="2" Height="250" Margin="0,10,10,10">
-                        <chartingToolkit:Chart.Axes>
-                            <chartingToolkit:LinearAxis Title="Percentage" Orientation="Y" Location="Left" Minimum="0" Maximum="100"/>
-                            <chartingToolkit:LinearAxis Title="Day" Orientation="X" Interval="1" Location="Bottom"/>
-                        </chartingToolkit:Chart.Axes>
-                        
                         <chartingToolkit:ColumnSeries Name="joyWeekThreeSeries" Title="Joy"  
                             ItemsSource="{Binding}"
                             IndependentValuePath="Day"
@@ -201,11 +191,6 @@
 
                     <!--Week 4 Bar Chart-->
                     <chartingToolkit:Chart x:Name="weekFourChart" Title="Week 4" LegendStyle="{DynamicResource LegendStyle}" Background="#00000000" BorderBrush="#FF7F8C8D" Palette="{DynamicResource ChartPalette}" Grid.Row="2" Grid.Column="1" Height="250" Margin="10,10,0,10">
-                        <chartingToolkit:Chart.Axes>
-                            <chartingToolkit:LinearAxis Title="Percentage" Orientation="Y" Location="Left" Minimum="0" Maximum="100"/>
-                            <chartingToolkit:LinearAxis Title="Day" Orientation="X" Interval="1" Location="Bottom"/>
-                        </chartingToolkit:Chart.Axes>
-                        
                         <chartingToolkit:ColumnSeries Name="joyWeekFourSeries" Title="Joy"  
                             ItemsSource="{Binding}"
                             IndependentValuePath="Day"
@@ -234,11 +219,6 @@
 
                     <!--Week 5 Bar Chart-->
                     <chartingToolkit:Chart x:Name="weekFiveChart" Title="Week 5" LegendStyle="{DynamicResource LegendStyle}" Background="#00000000" BorderBrush="#FF7F8C8D" Palette="{DynamicResource ChartPalette}" Grid.Row="3" Height="250" Margin="0,10,10,10">
-                        <chartingToolkit:Chart.Axes>
-                            <chartingToolkit:LinearAxis Title="Percentage" Orientation="Y" Location="Left" Minimum="0" Maximum="100"/>
-                            <chartingToolkit:LinearAxis Title="Day" Orientation="X" Interval="1" Location="Bottom"/>
-                        </chartingToolkit:Chart.Axes>
-                        
                         <chartingToolkit:ColumnSeries Name="joyWeekFiveSeries" Title="Joy"  
                             ItemsSource="{Binding}"
                             IndependentValuePath="Day"
