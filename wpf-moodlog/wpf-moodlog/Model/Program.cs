@@ -40,38 +40,30 @@ namespace wpf_moodlog
         {
             init();
             String input = text;
+            input = input.ToLower();
             var inSplit = input.Split();
             foreach (String item in inSplit)
             {
                 if (item.IndexOf('#') == 0 && item != "")
                 {
-                    writeToConsole("hashtag detected", item);
-                    String segmented = doSegment(item.ToLower());
+                    String segmented = doSegment(item);
                     String resegmented = "";
-                    char[] resegmentSymbols = { '[','\'',',',']'};
-                    foreach(String reseg in segmented.Split(resegmentSymbols))
+                    char[] resegmentSymbols = { '[', '\'', ',', ']' };
+                    foreach (String reseg in segmented.Split(resegmentSymbols))
                     {
-                        if (reseg != "" && reseg!=" ")
+                        if (reseg != "" && reseg != " ")
                         {
-                            resegmented += reseg+" ";
+                            resegmented += reseg + " ";
                         }
                     }
                     String bigram = String.Join(",", makeBigrams(resegmented.Trim()));
-                    if(bigram.Split(',').Length==1 && bowreference.Contains(bigram.Split()[0]))
-                    {
-                        memWord.Add(bigram.Split()[0].ToLower());
-                        finalBoW.Add(bigram.Trim().ToLower());
-                    }else
-                    {
-                        ngramCollection.Add(bigram);
-                    }
-                    writeToConsole("hashtag bigrams", bigram);
+                    Debug.WriteLine("HASHTAG BIGRAMS: " + bigram);
+                    ngramCollection.Add(bigram);
                     input = input.Remove(input.IndexOf(item[0]), item.Length);
                 }
                 else if (emoticons.Contains(item) && item != "")
                 {
-                    writeToConsole("emoticon detected", item);
-                    memWord.Add(item.Trim());
+                    emoticonCollection.Add(item);
                     input = input.Remove(input.IndexOf(item[0]), item.Length);
                 }
             }
@@ -86,9 +78,8 @@ namespace wpf_moodlog
 
             foreach (String item in sentences)
             {
-                IEnumerable makeBigramsResult = makeBigrams(item.ToLower());
-                String bigram = String.Join(",", makeBigramsResult);
-                writeToConsole("sentence bigrams", makeBigramsResult);
+                String bigram = String.Join(",", makeBigrams(item));
+                Debug.WriteLine("SENTENCE BIGRAMS: " + bigram);
                 ngramCollection.Add(bigram);
             }
 
@@ -111,12 +102,12 @@ namespace wpf_moodlog
                             if ((bowreference.Contains(item2) && Array.IndexOf(temp3, item2) == 1) ||
                                 (prepNInter.Contains(item2) && Array.IndexOf(temp3, item2) == 0) || bowreference.Contains(item2))
                             {
-                                if ((bowreference.Contains(item2) && Array.IndexOf(temp3, item2) == temp3.Length-1))
+                                if ((bowreference.Contains(item2) && Array.IndexOf(temp3, item2) == temp3.Length - 1) || bowreference.Contains(item2))
                                 {
                                     if (!finalBoW.Contains(item))
                                     {
                                         memWord.Add(item2.ToLower());
-                                        Console.WriteLine("Adding " + item2);
+                                        Debug.WriteLine("Adding " + item2);
                                         finalBoW.Add(item.ToLower());
                                     }
                                 }
@@ -125,7 +116,7 @@ namespace wpf_moodlog
                                     if (!finalBoW.Contains(item))
                                     {
                                         memWord.Add(temp3[1].ToLower());
-                                        Console.WriteLine("Adding " + temp3[1]);
+                                        Debug.WriteLine("Adding " + temp3[1]);
                                         finalBoW.Add(item.ToLower());
                                     }
                                 }
@@ -139,7 +130,7 @@ namespace wpf_moodlog
             {
                 foreach (string temp2 in tempa)
                 {
-                    if (temp2 == "" || temp2 =="\r") break;
+                    if (temp2.Trim() == "") break;
                     double x = Convert.ToSingle(temp2.Split(',')[1]);
                     double y = Convert.ToSingle(temp2.Split(',')[2]);
                     String word = temp2.Split(',')[0];
@@ -151,9 +142,10 @@ namespace wpf_moodlog
                             {
                                 x = Math.Abs(x - 5);
                                 y = Math.Abs(y - 5);
-                                Console.WriteLine(word.ToUpper()+" Entered Quadrant 3; Angle: " + (180+Math.Atan2(y, x) * (180 / Math.PI)));
+                                Debug.WriteLine(word.ToUpper() + " Entered Quadrant 3; Angle: " + (180 + Math.Atan2(y, x) * (180 / Math.PI)));
                                 if ((180 + Math.Atan2(y, x) * (180 / Math.PI)) >= 180 && (180 + Math.Atan2(y, x) * (180 / Math.PI)) < 270)
                                 {
+                                    Debug.WriteLine("Sad +1");
                                     wordCommaEmotion.Add(word + "," + "sad");
                                     sad[0] += 1;
                                 }
@@ -162,19 +154,22 @@ namespace wpf_moodlog
                             {
                                 x = x - 5;
                                 y = y - 5;
-                                Console.WriteLine(word.ToUpper() + " Entered Quadrant 2; Angle: " + (Math.Atan2(y, x) * (180 / Math.PI)));
+                                Debug.WriteLine(word.ToUpper() + " Entered Quadrant 2; Angle: " + (Math.Atan2(y, x) * (180 / Math.PI)));
                                 if (Math.Abs((Math.Atan2(y, x) * (180 / Math.PI))) >= 90 && (Math.Abs(Math.Atan2(y, x) * (180 / Math.PI))) < 120)
                                 {
+                                    Debug.WriteLine("Disgust +1");
                                     wordCommaEmotion.Add(word + "," + "disgust");
                                     disgust[0] += 1;
                                 }
-                                else if (Math.Abs((Math.Atan2(y, x) * (180 / Math.PI))) >= 120 && (Math.Abs(Math.Atan2(y, x) * (180 / Math.PI)))< 150)
+                                else if (Math.Abs((Math.Atan2(y, x) * (180 / Math.PI))) >= 120 && (Math.Abs(Math.Atan2(y, x) * (180 / Math.PI))) < 150)
                                 {
+                                    Debug.WriteLine("Anger +1");
                                     wordCommaEmotion.Add(word + "," + "anger");
                                     anger[0] += 1;
                                 }
-                                else if (Math.Abs((Math.Atan2(y, x) * (180 / Math.PI)))>= 150 && (Math.Abs(Math.Atan2(y, x) * (180 / Math.PI))) < 180)
+                                else if (Math.Abs((Math.Atan2(y, x) * (180 / Math.PI))) >= 150 && (Math.Abs(Math.Atan2(y, x) * (180 / Math.PI))) < 180)
                                 {
+                                    Debug.WriteLine("Fear +1");
                                     wordCommaEmotion.Add(word + "," + "fear");
                                     fear[0] += 1;
                                 }
@@ -186,21 +181,23 @@ namespace wpf_moodlog
                             {
                                 x = Math.Abs(x - 5);
                                 y = Math.Abs(y - 5);
-                                Console.WriteLine(word.ToUpper() + " Entered Quadrant 4; Angle: " + (360+(Math.Atan2(y, x) * (180 / Math.PI))));
+                                Debug.WriteLine(word.ToUpper() + " Entered Quadrant 4; Angle: " + (360 + (Math.Atan2(y, x) * (180 / Math.PI))));
                                 wordCommaEmotion.Add(word + "," + "neutral");
                             }
                             else if (y > 5 && y <= 10)
                             {
                                 x = x - 5;
                                 y = y - 5;
-                                Console.WriteLine(word.ToUpper() + " Entered Quadrant 1; Angle: " + (Math.Atan2(y, x) * (180 / Math.PI)));
+                                Debug.WriteLine(word.ToUpper() + " Entered Quadrant 1; Angle: " + (Math.Atan2(y, x) * (180 / Math.PI)));
                                 if ((Math.Atan2(y, x) * (180 / Math.PI)) >= 0 && (Math.Atan2(y, x) * (180 / Math.PI)) < 45)
                                 {
+                                    Debug.WriteLine("Joy +1");
                                     wordCommaEmotion.Add(word + "," + "joy");
                                     joy[0] += 1;
                                 }
                                 else if ((Math.Atan2(y, x) * (180 / Math.PI)) >= 45 && (Math.Atan2(y, x) * (180 / Math.PI)) < 90)
                                 {
+                                    Debug.WriteLine("Surprise +1");
                                     wordCommaEmotion.Add(word + "," + "surprise");
                                     surprise[0] += 1;
                                 }
@@ -300,16 +297,13 @@ namespace wpf_moodlog
                 }
             }
 
-            Console.WriteLine();
-            Console.WriteLine(String.Format("{0,-10}|{1,-5}|{2,-5}", "Emotion", "Yes", "No"));
-            Console.WriteLine("--------------------");
             //frequency of each word, yes is [0] and no is [1]
-            Console.WriteLine(String.Format("{0,-10}|{1,-5}|{2,-5}", "Joy", joy[0], joy[1]));
-            Console.WriteLine(String.Format("{0,-10}|{1,-5}|{2,-5}", "Sad", sad[0], sad[1]));
-            Console.WriteLine(String.Format("{0,-10}|{1,-5}|{2,-5}", "Anger", anger[0], anger[1]));
-            Console.WriteLine(String.Format("{0,-10}|{1,-5}|{2,-5}", "Surprise", surprise[0], surprise[1]));
-            Console.WriteLine(String.Format("{0,-10}|{1,-5}|{2,-5}", "Disgust", disgust[0], disgust[1]));
-            Console.WriteLine(String.Format("{0,-10}|{1,-5}|{2,-5}", "Fear", fear[0], fear[1]));
+            Debug.WriteLine("Joy: " + joy[0] + " " + joy[1]);
+            Debug.WriteLine("Sad: " + sad[0] + " " + sad[1]);
+            Debug.WriteLine("Anger: " + anger[0] + " " + anger[1]);
+            Debug.WriteLine("Surprise: " + surprise[0] + " " + surprise[1]);
+            Debug.WriteLine("Disgust: " + disgust[0] + " " + disgust[1]);
+            Debug.WriteLine("Fear: " + fear[0] + " " + fear[1]);
 
             //Population of other important variables
             float allYes = joy[0] + sad[0] + anger[0] + surprise[0] + disgust[0] + fear[0];
@@ -326,12 +320,16 @@ namespace wpf_moodlog
                 outYesProb[k] = item[0];
                 k++;
             }
-            Console.WriteLine();
-            Console.WriteLine("Word && Emotion");
-            Console.WriteLine("==========================");
-            foreach(String wordEmotion in wordCommaEmotion)
+            Debug.WriteLine("Joy: " + outYesProb[0] + " " + joy[1]);
+            Debug.WriteLine("Sad: " + outYesProb[1] + " " + sad[1]);
+            Debug.WriteLine("Anger: " + outYesProb[2] + " " + anger[1]);
+            Debug.WriteLine("Surprise: " + outYesProb[3] + " " + surprise[1]);
+            Debug.WriteLine("Disgust: " + outYesProb[4] + " " + disgust[1]);
+            Debug.WriteLine("Fear: " + outYesProb[5] + " " + fear[1]);
+            Debug.WriteLine("Words and Emotion:");
+            foreach (String wordEmotion in wordCommaEmotion)
             {
-                Console.WriteLine(wordEmotion);
+                Debug.WriteLine(wordEmotion);
             }
             return outYesProb;
         }
@@ -350,7 +348,7 @@ namespace wpf_moodlog
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                Debug.WriteLine(e.Message);
                 return null;
             }
 
@@ -449,27 +447,6 @@ namespace wpf_moodlog
             prepNInter.AddRange(wpf_moodlog.Properties.Resources.ngrams1.Split());
             tempa.AddRange(wpf_moodlog.Properties.Resources.NRC_emotion_lexicon_wordlevel_alphabetized_v0_92__1_.Split('\n'));
             prep.AddRange(wpf_moodlog.Properties.Resources.PrepRef.Split('\n'));
-        }
-
-        private void writeToConsole(string label, string content)
-        {
-            Console.WriteLine(label.ToUpper());
-            Console.WriteLine("--------------------------");
-            Console.WriteLine(content);
-            Console.WriteLine();
-        }
-
-        private void writeToConsole(string label, IEnumerable content)
-        {
-            Console.WriteLine(label.ToUpper());
-            Console.WriteLine("--------------------------");
-            
-            foreach(var item in content)
-            {
-                Console.WriteLine(item);
-            }
-
-            Console.WriteLine();
         }
     }
 }

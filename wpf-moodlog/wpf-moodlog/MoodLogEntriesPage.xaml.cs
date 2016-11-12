@@ -422,6 +422,7 @@ namespace wpf_moodlog
 
         private void addEntryButton_Click(object sender, RoutedEventArgs e)
         {
+            computationTextBox.Text = "";
             String text = entryTextBox.Text;
             resetEntryTextBox();
 
