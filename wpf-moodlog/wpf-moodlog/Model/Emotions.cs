@@ -30,11 +30,9 @@ namespace wpf_moodlog.Model
         {
             this.Values = Values;
             this.ChartUI = new PieSeries();
-            this.DominantUI = new TextBlock();
             this.LegendUI = new StackPanel();
 
             initChartUIProperties();
-            //initDominantUIProperties();
             initLegendUIProperties();
         }
 
@@ -42,11 +40,9 @@ namespace wpf_moodlog.Model
         {
             this.Values = compute(Text);
             this.ChartUI = new PieSeries();
-            this.DominantUI = new TextBlock();
             this.LegendUI = new StackPanel();
 
             initChartUIProperties();
-            //initDominantUIProperties();
             initLegendUIProperties();
         }
 
@@ -66,23 +62,6 @@ namespace wpf_moodlog.Model
             return values;
         }
 
-        //private Emotion Dominant()
-        //{
-        //    Emotion maxEmotion = 0;
-        //    float maxValue = 0;
-
-        //    for (int i = 0; i < nEmotions; i++)
-        //    {
-        //        if (Values[i] > maxValue)
-        //        {
-        //            maxEmotion = Names[i];
-        //            maxValue = Values[i];
-        //        }
-        //    }
-
-        //    return maxEmotion;
-        //}
-
         PieSeries _ChartUI;
         public PieSeries ChartUI
         {
@@ -97,19 +76,6 @@ namespace wpf_moodlog.Model
             private set
             {
                 this._ChartUI = value;
-            }
-        }
-
-        TextBlock _DominantUI;
-        public TextBlock DominantUI
-        {
-            get
-            {
-                return this._DominantUI;
-            }
-            private set
-            {
-                this._DominantUI = value;
             }
         }
 
@@ -146,13 +112,6 @@ namespace wpf_moodlog.Model
             _ChartUI.Margin = new Thickness(5, 0, 20, 0);
             _ChartUI.Palette = Application.Current.Resources["ChartPalette"] as Collection<ResourceDictionary>;
         }
-
-        //private void initDominantUIProperties()
-        //{
-        //    _DominantUI.FontWeight = FontWeights.Bold;
-        //    _DominantUI.Foreground = Dominant().GetColor();
-        //    _DominantUI.Text = Dominant().GetName().ToUpper();
-        //}
 
         private void initLegendUIProperties()
         {

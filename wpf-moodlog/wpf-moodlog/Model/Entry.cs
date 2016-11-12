@@ -41,7 +41,7 @@ namespace wpf_moodlog.Model
         {   
             get 
             {
-                Summary summary = new Summary(this.DateAndTime, this.Emotions);
+                Summary summary = new Summary(this.ID, this.DateAndTime, this.Emotions);
                 Content content = new Content(this.Text);
 
                 addToUIChildren(summary.UI, content.UI);

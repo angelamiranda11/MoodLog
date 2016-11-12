@@ -47,6 +47,8 @@
                         <Label x:Name="logoutLabel" Content="LOGOUT" Margin="5" Foreground="{DynamicResource Green}" TextOptions.TextHintingMode="Animated"/>
                     </StackPanel>
                 </Button>
+                <Label Content="Computation:" Margin="10,10,10,0"/>
+                <TextBox x:Name="computationTextBox" Height="250" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" Margin="10,0" Width="200" FontFamily="Consolas" TextWrapping="WrapWithOverflow" />
             </StackPanel>
             <ScrollViewer Height="Auto" Grid.Column="1" HorizontalAlignment="Stretch">
                 <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="30,15,40,0">
