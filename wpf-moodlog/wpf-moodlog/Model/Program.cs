@@ -44,6 +44,7 @@ namespace wpf_moodlog
             var inSplit = input.Split();
             foreach (String item in inSplit)
             {
+                writeToConsole("hashtag detected", item);
                 if (item.IndexOf('#') == 0 && item != "")
                 {
                     String segmented = doSegment(item);
@@ -57,12 +58,13 @@ namespace wpf_moodlog
                         }
                     }
                     String bigram = String.Join(",", makeBigrams(resegmented.Trim()));
-                    Debug.WriteLine("HASHTAG BIGRAMS: " + bigram);
+                    writeToConsole("hashtag bigrams", bigram);
                     ngramCollection.Add(bigram);
                     input = input.Remove(input.IndexOf(item[0]), item.Length);
                 }
                 else if (emoticons.Contains(item) && item != "")
                 {
+                    writeToConsole("emoticon detected", item);
                     emoticonCollection.Add(item);
                     input = input.Remove(input.IndexOf(item[0]), item.Length);
                 }
@@ -78,8 +80,9 @@ namespace wpf_moodlog
 
             foreach (String item in sentences)
             {
+                IEnumerable makeBigramsResult = makeBigrams(item.ToLower());
                 String bigram = String.Join(",", makeBigrams(item));
-                Debug.WriteLine("SENTENCE BIGRAMS: " + bigram);
+                writeToConsole("sentence bigrams", makeBigramsResult);
                 ngramCollection.Add(bigram);
             }
 
@@ -126,6 +129,7 @@ namespace wpf_moodlog
 
                 }
             }
+            Console.WriteLine();
             foreach (String words in memWord)
             {
                 foreach (string temp2 in tempa)
@@ -299,13 +303,16 @@ namespace wpf_moodlog
                 }
             }
 
+            Console.WriteLine();
+            Console.WriteLine(String.Format("{0,-10}|{1,-5}|{2,-5}", "Emotion", "Yes", "No"));
+            Console.WriteLine("--------------------");
             //frequency of each word, yes is [0] and no is [1]
-            Debug.WriteLine("Joy: " + joy[0] + " " + joy[1]);
-            Debug.WriteLine("Sad: " + sad[0] + " " + sad[1]);
-            Debug.WriteLine("Anger: " + anger[0] + " " + anger[1]);
-            Debug.WriteLine("Surprise: " + surprise[0] + " " + surprise[1]);
-            Debug.WriteLine("Disgust: " + disgust[0] + " " + disgust[1]);
-            Debug.WriteLine("Fear: " + fear[0] + " " + fear[1]);
+            Console.WriteLine(String.Format("{0,-10}|{1,-5}|{2,-5}", "Joy", joy[0], joy[1]));
+            Console.WriteLine(String.Format("{0,-10}|{1,-5}|{2,-5}", "Sad", sad[0], sad[1]));
+            Console.WriteLine(String.Format("{0,-10}|{1,-5}|{2,-5}", "Anger", anger[0], anger[1]));
+            Console.WriteLine(String.Format("{0,-10}|{1,-5}|{2,-5}", "Surprise", surprise[0], surprise[1]));
+            Console.WriteLine(String.Format("{0,-10}|{1,-5}|{2,-5}", "Disgust", disgust[0], disgust[1]));
+            Console.WriteLine(String.Format("{0,-10}|{1,-5}|{2,-5}", "Fear", fear[0], fear[1]));
 
             //Population of other important variables
             float allYes = joy[0] + sad[0] + anger[0] + surprise[0] + disgust[0] + fear[0];
@@ -449,6 +456,27 @@ namespace wpf_moodlog
             prepNInter.AddRange(wpf_moodlog.Properties.Resources.ngrams1.Split());
             tempa.AddRange(wpf_moodlog.Properties.Resources.NRC_emotion_lexicon_wordlevel_alphabetized_v0_92__1_.Split('\n'));
             prep.AddRange(wpf_moodlog.Properties.Resources.PrepRef.Split('\n'));
+        }
+
+        private void writeToConsole(string label, string content)
+        {
+            Console.WriteLine(label.ToUpper());
+            Console.WriteLine("--------------------------");
+            Console.WriteLine(content);
+            Console.WriteLine();
+        }
+
+        private void writeToConsole(string label, IEnumerable content)
+        {
+            Console.WriteLine(label.ToUpper());
+            Console.WriteLine("--------------------------");
+
+            foreach (var item in content)
+            {
+                Console.WriteLine(item);
+            }
+
+            Console.WriteLine();
         }
     }
 }
